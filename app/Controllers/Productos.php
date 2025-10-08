@@ -5,8 +5,11 @@ namespace App\Controllers;
 class Productos extends BaseController{
 
     public function index(){
-        echo "<h1>ControllerProductos</h1>";
-        print_r($this->session);
+        $data = ['titulo' => 'Listado de Productos'];
+        return view('plantilla/header', $data).
+               view('productos/index', $data).
+               view('plantilla/footer', ['copyright' => '2024']);
+        //return view('productos/index', $data);
     }
 
     public function show($num){

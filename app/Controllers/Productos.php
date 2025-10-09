@@ -14,11 +14,17 @@ class Productos extends BaseController
 
     public function index()
     {
-        /*$db = \Config\Database::connect();
+        $db = \Config\Database::connect();
+        /*
         $query = $db->query("SELECT * FROM producto");
         $results = $query->getResult();*/
 
         $results = $this->productosModel->findAll();
+
+        $queryBuilder = $db->table('producto')
+        ->select('id_producto, nombre_producto, precio_producto')
+        ->where('status', 1)
+        ->get();
 
 
         $data = ['titulo' => 'Listado de Productos', 'copyright' => '2024', 'productos' => $results];

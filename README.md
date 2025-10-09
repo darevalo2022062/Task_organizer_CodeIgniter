@@ -1,68 +1,238 @@
-# CodeIgniter 4 Application Starter
+# 🎓 Sistema Organizador de Tareas Escolares  
+> Proyecto académico desarrollado con **PHP 8.2**, **CodeIgniter 4** y **MariaDB**, bajo el patrón **MVC**.  
+> Diseñado para optimizar la gestión de tareas, cursos y entregas entre **docentes** y **alumnos** de nivel básico.  
 
-## What is CodeIgniter?
+---
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## 🚀 Descripción General
+Este sistema surge de la necesidad de una maestra que busca **organizar mejor las tareas y actividades escolares**.  
+Permite registrar usuarios (docentes y estudiantes), gestionar cursos, asignar tareas, recibir entregas y calificar.  
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+El proyecto fue construido con una **arquitectura limpia**, **segura** y **escalable**, implementando principios de diseño **MVC** y estándares modernos de PHP.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+---
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## 🧠 Características Principales
+✅ Registro, autenticación y roles de usuario (docente / estudiante).  
+✅ Gestión de cursos y asignaciones.  
+✅ Creación y edición de tareas por curso.  
+✅ Subida de archivos por parte de los estudiantes.  
+✅ Calificación y control de estado de entregas.  
+✅ Soporte multilenguaje (Español / Inglés).  
+✅ Sistema de activación por correo electrónico y recuperación de contraseña.  
+✅ CRUD completo con validaciones, timestamps y soft deletes.  
+✅ Compatible con despliegue en GitHub y entornos virtualizados (Lubuntu / XAMPP).
 
-## Installation & updates
+---
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## 🧩 Arquitectura
+El sistema sigue el modelo **MVC (Model–View–Controller)** nativo de CodeIgniter:
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+``` bash
+/app
+├── Controllers/ # Lógica de negocio (User, Course, Task, Submission)
+├── Models/ # Acceso a datos y relaciones
+├── Views/ # Interfaz HTML + Bootstrap 5
+├── Database/
+│ ├── Migrations/ # Versionado de estructura de tablas
+│ └── Seeds/ # Datos iniciales (Admin, roles, etc.)
+└── Config/ # Rutas, filtros, validaciones e idiomas
+```
 
-## Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+---
 
-## Important Change with index.php
+## 🧱 Diseño de Base de Datos
+### Diagrama Entidad–Relación
+> Total: **5 tablas principales + relaciones foráneas**  
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+| Tabla | Descripción |
+|-------|--------------|
+| **users** | Registro y autenticación de usuarios con roles. |
+| **courses** | Cursos gestionados por los docentes. |
+| **tasks** | Actividades asociadas a cursos. |
+| **assignments** | Relación alumno ↔ curso (inscripciones). |
+| **submissions** | Entregas de tareas por parte de los alumnos. |
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+**Relaciones principales:**
+- Un `user (teacher)` tiene muchos `courses`.
+- Un `course` tiene muchas `tasks`.
+- Un `user (student)` puede estar en muchos `courses` (via `assignments`).
+- Un `user` puede realizar muchas `submissions` a distintas `tasks`.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+---
 
-## Repository Management
+## 🛠️ Tecnologías Utilizadas
+| Componente | Versión | Descripción |
+|-------------|----------|-------------|
+| **PHP** | 8.2+ | Lenguaje principal del backend. |
+| **CodeIgniter** | 4.6+ | Framework MVC liviano y eficiente. |
+| **MariaDB** | 10.4+ | Sistema de base de datos relacional. |
+| **Bootstrap** | 5.3 | Diseño moderno y responsive. |
+| **phpMyAdmin** | XAMPP | Administración visual de la base de datos. |
+| **Composer** | 2.x | Gestión de dependencias PHP. |
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+---
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 🧾 Requerimientos
+- PHP 8.2 o superior  
+- Composer 2.x  
+- MariaDB / MySQL  
+- Servidor local (XAMPP o Apache)  
+- Navegador moderno (Chrome, Firefox, Edge)
 
-## Server Requirements
+---
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+## ⚙️ Instalación y Configuración
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+### 1️⃣ Clonar el repositorio
+```bash
+git clone https://github.com/tuusuario/organizador.git
+cd organizador
+```
+---
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+## 2️⃣ Instalar dependencias
+composer install
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+### 3️⃣ Configurar entorno
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+> Copia el archivo de entorno:
+    - cp .env.example .env
+    - Edita .env y ajusta la conexión a tu BD local (XAMPP o MariaDB):
+
+``` bash
+CI_ENVIRONMENT = development
+app.baseURL = 'http://localhost:8080/'
+
+database.default.hostname = 127.0.0.1
+database.default.database = organizador_db
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.charset = utf8mb4
+```
+---
+
+# DB SQL CODE
+```sql
+-- Tabla: users
+-- =========================
+CREATE TABLE users (
+  id               INT AUTO_INCREMENT PRIMARY KEY,
+  name             VARCHAR(100) NOT NULL,
+  email            VARCHAR(120) NOT NULL UNIQUE,
+  password_hash    VARCHAR(255) NOT NULL,
+  role             VARCHAR(50)  NOT NULL DEFAULT 'student',
+  status           TINYINT(1)   NOT NULL DEFAULT 1,
+  confirm_email_at DATETIME NULL,
+  image_path       VARCHAR(255) NULL,
+  created_at       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at       DATETIME NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE INDEX idx_users_status ON users (status);
+CREATE INDEX idx_users_role   ON users (role);
+
+-- Tabla: courses
+-- =========================
+CREATE TABLE courses (
+  id               INT AUTO_INCREMENT PRIMARY KEY,
+  name             VARCHAR(120) NOT NULL,
+  description      TEXT NULL,
+  teacher_owner_id INT NOT NULL,
+  status           TINYINT(1) NOT NULL DEFAULT 1,
+  created_at       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at       DATETIME NULL,
+  CONSTRAINT fk_courses_teacher
+    FOREIGN KEY (teacher_owner_id) REFERENCES users(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE INDEX idx_courses_teacher ON courses (teacher_owner_id);
+CREATE INDEX idx_courses_status  ON courses (status);
+
+-- Tabla: tasks
+-- =========================
+CREATE TABLE tasks (
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  name        VARCHAR(120) NOT NULL,
+  description TEXT NOT NULL,
+  course_id   INT NOT NULL,
+  status      TINYINT(1) NOT NULL DEFAULT 1,
+  created_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at  DATETIME NULL,
+  CONSTRAINT fk_tasks_course
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE INDEX idx_tasks_course  ON tasks (course_id);
+CREATE INDEX idx_tasks_status  ON tasks (status);
+
+-- Tabla: assignments (inscripciones usuario-curso)
+-- =========================
+CREATE TABLE assignments (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  id_user    INT NOT NULL,
+  id_course  INT NOT NULL,
+
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at DATETIME NULL,
+
+  CONSTRAINT uq_assignment UNIQUE (id_user, id_course),
+  CONSTRAINT fk_assign_user
+    FOREIGN KEY (id_user) REFERENCES users(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT fk_assign_course
+    FOREIGN KEY (id_course) REFERENCES courses(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE INDEX idx_assign_user   ON assignments (id_user);
+CREATE INDEX idx_assign_course ON assignments (id_course);
+
+-- Tabla: submissions (entregas de tareas)
+-- =========================
+CREATE TABLE submissions (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  user_id       INT NOT NULL,
+  task_id       INT NOT NULL,
+  file_path     VARCHAR(255) NOT NULL,
+  file_name     VARCHAR(255) NULL,
+  status_submit VARCHAR(50)  NOT NULL DEFAULT 'pending',
+  grade         DECIMAL(5,2) NULL,
+  status        TINYINT(1)  NOT NULL DEFAULT 1,
+  created_at    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at    DATETIME NULL,
+  CONSTRAINT fk_sub_user
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT fk_sub_task
+    FOREIGN KEY (task_id) REFERENCES tasks(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE INDEX idx_submissions_user  ON submissions (user_id);
+CREATE INDEX idx_submissions_task  ON submissions (task_id);
+CREATE INDEX idx_submissions_stat  ON submissions (status_submit);
+
+-- Admin seed
+-- =========================
+INSERT INTO users (name, email, password_hash, role, status, confirm_email_at)
+VALUES ('Admin', 'admin@example.com', 
+        -- Password: Admin123!
+        '$2y$10$wQbHq1pZQ2vK3Qk8T2k8N.uA04n2i6w2m0a0E2s6tN8s6c0h0t3cm',
+        'admin', 1, NOW())
+ON DUPLICATE KEY UPDATE email = email;
+```

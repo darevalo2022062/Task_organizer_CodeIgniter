@@ -20,7 +20,7 @@
       </div>
       <div class="col-lg-6 fade-in-up" style="animation-delay: 0.2s;">
         <div class="card p-4">
-          <img src="<?= base_url('assets/img/dashboard-preview.png') ?>" 
+          <img src="<?= base_url('assets/img/world_hero.png') ?>" 
                alt="Task Organizer Dashboard" 
                class="img-fluid rounded-3 shadow-sm">
         </div>

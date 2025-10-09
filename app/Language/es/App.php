@@ -16,7 +16,7 @@ return [
     'home' => [
         'title' => 'Inicio - Task Organizer',
         'hero' => [
-            'title' => 'Organiza estudiantes de manera eficiente',
+            'title' => '¡Bienvenido 🎓 Maestro a Task Organizer!',
             'subtitle' => 'La Mejor plataforma para gestión Escolar',
             'cta_primary' => 'Comenzar Gratis',
             'cta_secondary' => 'Ver Características',

@@ -16,7 +16,7 @@ return [
     'home' => [
         'title' => 'Home - Task Organizer',
         'hero' => [
-            'title' => 'Organize Tasks Efficiently',
+            'title' => 'Welcome 🎓 Teacher to Task Organizer!',
             'subtitle' => 'The all-in-one platform to manage your students',
             'cta_primary' => 'Get Started Free',
             'cta_secondary' => 'View Features',

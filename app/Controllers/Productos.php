@@ -15,6 +15,7 @@ class Productos extends BaseController
     public function index()
     {
         $db = \Config\Database::connect();
+        helper(filenames: 'form');
         /*
         $query = $db->query("SELECT * FROM producto");
         $results = $query->getResult();*/

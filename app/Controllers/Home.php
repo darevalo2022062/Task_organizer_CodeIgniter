@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        $blade = service('blade');
+        $blade = service(name: 'blade');
         return $blade->render('home');
     }
 }

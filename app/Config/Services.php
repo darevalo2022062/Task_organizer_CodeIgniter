@@ -3,6 +3,8 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use duncan3dc\Laravel\BladeInstance;
+
 
 /**
  * Services Configuration file.
@@ -29,4 +31,20 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+    public static function blade($getShared = true): BladeInstance
+    {
+        if ($getShared) {
+            return static::getSharedInstance('blade');
+        }
+
+        $views = APPPATH . 'Views';
+        $cache = WRITEPATH . 'cache/blade';
+
+        if (!is_dir($cache)) {
+            mkdir($cache, 0777, true);
+        }
+
+        return new BladeInstance($views, $cache);
+    }
 }

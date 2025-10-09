@@ -55,5 +55,7 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = service('session');
         $this->session = service('session');
+        $request->setLocale(session('lang') ?? config('App')->defaultLocale);
+
     }
 }

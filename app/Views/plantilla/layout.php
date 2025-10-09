@@ -40,7 +40,7 @@
    <div
 style="height: 60px; background-color: #f5f5f5; text-align: center; padding-top: 20px; position: relative; bottom: 0; width: 100%;">
     <footer class="footer">
-        <p><?php echo $copyright; ?></p>
+        <p><?php echo date('Y'); ?></p>
     </footer>
    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

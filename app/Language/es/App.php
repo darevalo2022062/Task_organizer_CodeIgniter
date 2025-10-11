@@ -61,5 +61,12 @@ return [
             'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
             'success' => 'Registro exitoso. Por favor, inicia sesión.',
         ],
+        'mail_verify' => [
+            'title' => 'Verifica tu Correo',
+            'instruction' => 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico.',
+            'check_email' => 'Por favor revisa tu email y haz clic en el enlace para verificar tu cuenta.',
+            'spam_notice' => 'Si no ves el correo, por favor revisa tu carpeta de spam.',
+            'resend_button' => 'Reenviar Correo de Verificación',
+        ],
     ]
 ];

@@ -61,5 +61,12 @@ return [
             'login_link' => 'Already have an account? Log In',
             'success' => 'Registration successful! You can now log in.',
         ],
+        'mail_verify' => [
+            'title' => 'Verify Your Email',
+            'instruction' => 'A verification link has been sent to your email address.',
+            'check_email' => 'Please check your email and click the link to verify your account.',
+            'spam_notice' => 'If you don\'t see the email, please check your spam folder.',
+            'resend_button' => 'Resend Verification Email',
+        ],
     ]
 ];

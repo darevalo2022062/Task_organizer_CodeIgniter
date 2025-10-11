@@ -38,17 +38,27 @@ return [
             ],
         ],
     ],
-    'auth'=>[
-        'login'=>[
-            'title'=> 'Iniciar Sesión',
-            'email'=> 'Correo Electrónico',
-            'password'=> 'Contraseña',
-            'submit'=> 'Entrar',
-            'register_link'=> '¿No tienes una cuenta? Regístrate',
-            'remember_me'=> 'Recuérdame',
+    'auth' => [
+        'login' => [
+            'title' => 'Iniciar Sesión',
+            'email' => 'Correo Electrónico',
+            'password' => 'Contraseña',
+            'submit' => 'Entrar',
+            'register_link' => '¿No tienes una cuenta? Regístrate',
+            'remember_me' => 'Recuérdame',
             'error' => [
-                'invalid_credentials'=> 'Credenciales inválidas',
+                'invalid_credentials' => 'Credenciales inválidas',
             ]
-        ]
+        ],
+        'register' => [
+            'title' => 'Crear Cuenta',
+            'name' => 'Nombre Completo',
+            'email' => 'Correo Electrónico',
+            'password' => 'Contraseña',
+            'password_confirm' => 'Confirmar Contraseña',
+            'submit' => 'Crear Cuenta',
+            'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
+            'success' => 'Registro exitoso. Por favor, inicia sesión.',
+        ],
     ]
 ];

@@ -38,17 +38,27 @@ return [
             ],
         ],
     ],
-    'auth'=>[
-        'login'=>[
-            'title'=> 'Log In',
-            'email'=> 'Email Address',
-            'password'=> 'Password',
-            'submit'=> 'Log In',
-            'register_link'=> "Don't have an account? Sign Up",
-            'remember_me'=> 'Remember me',
+    'auth' => [
+        'login' => [
+            'title' => 'Log In',
+            'email' => 'Email Address',
+            'password' => 'Password',
+            'submit' => 'Log In',
+            'register_link' => "Don't have an account? Sign Up",
+            'remember_me' => 'Remember me',
             'error' => [
-                'invalid_credentials'=> 'Credenciales inválidas',
+                'invalid_credentials' => 'Credenciales inválidas',
             ]
-        ]
+        ],
+        'register' => [
+            'title' => 'Create Account',
+            'name' => 'Full Name',
+            'email' => 'Email Address',
+            'password' => 'Password',
+            'password_confirm' => 'Confirm Password',
+            'submit' => 'Create Account',
+            'login_link' => 'Already have an account? Log In',
+            'success' => 'Registration successful! You can now log in.',
+        ],
     ]
 ];

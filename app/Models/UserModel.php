@@ -7,7 +7,7 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $returnType = 'object';
+    protected $returnType = 'array';
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $allowedFields = [
@@ -18,9 +18,11 @@ class UserModel extends Model
         'status',
         'confirm_email_at',
         'image_path',
-        'created_at',
-        'updated_at',
-        'deleted_at'
     ];
+
+    protected $deleteField = 'deleted_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+
 }
 

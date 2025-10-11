@@ -37,11 +37,11 @@ class Auth extends BaseController
         $user = $users->where('email', $email)->first();
 
         if (!$user || !password_verify($pass, $user['password_hash'] ?? '')) {
-            return redirect()->back()->withInput()->with('error', lang('App.auth.login.invalid_credentials'));
+            return redirect()->back()->withInput()->with('error', lang('App.auth.login.error.invalid_credentials'));
         }
 
         if ((int) ($user['status'] ?? 0) !== 1) {
-            return redirect()->back()->with('error', lang('App.auth.login.inactive_user'));
+            return redirect()->back()->with('error', lang('App.auth.login.error.inactive_user'));
         }
 
         session()->regenerate();
@@ -101,7 +101,7 @@ class Auth extends BaseController
 
         $users->insert($data);
 
-        return redirect()->to(base_url('auth/login'))->with('message', lang('App.auth.register.success'));
+        return redirect()->to(base_url('auth/mail_verify'))->with('message', lang('App.auth.register.success'));
 
 
     }

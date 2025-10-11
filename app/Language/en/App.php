@@ -47,7 +47,8 @@ return [
             'register_link' => "Don't have an account? Sign Up",
             'remember_me' => 'Remember me',
             'error' => [
-                'invalid_credentials' => 'Credenciales inválidas',
+                'invalid_credentials' => 'Invalid credentials',
+                'inactive_user' => 'Inactive user. Please check your email.',
             ]
         ],
         'register' => [

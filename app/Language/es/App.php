@@ -48,6 +48,7 @@ return [
             'remember_me' => 'Recuérdame',
             'error' => [
                 'invalid_credentials' => 'Credenciales inválidas',
+                'inactive_user' => 'Usuario inactivo. Por favor, verifica tu correo.',
             ]
         ],
         'register' => [

@@ -22,5 +22,8 @@ $routes->group('auth', static function ($routes) {
     $routes->get('register', 'Auth::register', ['as' => 'auth.register']);
     $routes->post('register', 'Auth::attemptRegister');
 
+    $routes->get('mail_verify', 'Auth::mailVerify', ['as' => 'auth.mail_verify']);
+    $routes->post('mail_verify', 'Auth::attemptMailVerify');
+
     $routes->get('logout', 'Auth::logout', ['as' => 'auth.logout']);
 });

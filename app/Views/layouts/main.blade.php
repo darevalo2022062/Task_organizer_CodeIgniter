@@ -37,10 +37,10 @@
       <div id="navbarGuest" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item me-lg-2">
-            <a class="btn btn-outline-light btn-sm" href="{{ base_url('login') }}">{{ lang('App.nav.login') }}</a>
+            <a class="btn btn-outline-light btn-sm" href="{{ base_url('auth/login') }}">{{ lang('App.nav.login') }}</a>
           </li>
           <li class="nav-item me-lg-2">
-            <a class="btn btn-light btn-sm fw-semibold" href="{{ base_url('register') }}">{{ lang('App.nav.register') }}</a>
+            <a class="btn btn-light btn-sm fw-semibold" href="{{ base_url('auth/register') }}">{{ lang('App.nav.register') }}</a>
           </li>
           <li class="nav-item">
             <div class="btn-group lang-switcher" role="group">

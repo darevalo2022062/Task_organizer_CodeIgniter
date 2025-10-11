@@ -38,4 +38,17 @@ return [
             ],
         ],
     ],
+    'auth'=>[
+        'login'=>[
+            'title'=> 'Iniciar Sesión',
+            'email'=> 'Correo Electrónico',
+            'password'=> 'Contraseña',
+            'submit'=> 'Entrar',
+            'register_link'=> '¿No tienes una cuenta? Regístrate',
+            'remember_me'=> 'Recuérdame',
+            'error' => [
+                'invalid_credentials'=> 'Credenciales inválidas',
+            ]
+        ]
+    ]
 ];

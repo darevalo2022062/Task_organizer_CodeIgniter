@@ -46,9 +46,13 @@ return [
             'submit' => 'Log In',
             'register_link' => "Don't have an account? Sign Up",
             'remember_me' => 'Remember me',
+            'welcome' => 'Welcome back!',
+            'verified' => 'Your email has been successfully verified. You can now log in.',
             'error' => [
                 'invalid_credentials' => 'Invalid credentials',
                 'inactive_user' => 'Inactive user. Please check your email.',
+                'email_not_verified' => 'Email not verified. Please check your email.',
+                'email_verified_link' => 'Verification link is invalid or already used.',
             ]
         ],
         'register' => [

@@ -14,7 +14,7 @@ class Auth extends BaseController
         $blade = service(name: 'blade');
         return $blade->render('auth.login');
     }
-
+    
     public function attemptLogin()
     {
         $rules = [
@@ -25,28 +25,32 @@ class Auth extends BaseController
             'password' => [
                 'label' => 'Password',
                 'rules' => 'required'
-            ]
+            ],
         ];
-
+        
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
-
+        
         $email = $this->request->getPost('email');
         $pass = $this->request->getPost('password');
         $users = model(UserModel::class);
         $user = $users->where('email', $email)->first();
-
+        
         if (!$user || !password_verify($pass, $user['password_hash'] ?? '')) {
             return redirect()->back()->withInput()->with('error', lang('App.auth.login.error.invalid_credentials'));
         }
-
+        
+        if (empty($user['confirm_email_at'])) {
+            return redirect()->back()->withInput()->with('error', lang('App.auth.login.error.email_not_verified'));
+        }
+        
         if ((int) ($user['status'] ?? 0) !== 1) {
             return redirect()->back()->with('error', lang('App.auth.login.error.inactive_user'));
         }
-
+        
         session()->regenerate();
-
+        
         session()->set([
             'uid' => $user['id'],
             'name' => $user['name'],
@@ -54,17 +58,16 @@ class Auth extends BaseController
             'role' => $user['role'] ?? 'student',
             'logged_in' => true,
         ]);
-
+        
         return redirect()->to(base_url('dashboard'))->with('message', lang('App.auth.login.welcome', [$user['name']]));
-
     }
-
+    
     public function register()
     {
         $blade = service(name: 'blade');
         return $blade->render('auth.register');
     }
-
+    
     public function attemptRegister()
     {
         $rules = [
@@ -85,13 +88,13 @@ class Auth extends BaseController
                 'rules' => 'required|matches[password]',
             ],
         ];
-
+        
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
-
+        
         $users = model(UserModel::class);
-
+        
         $data = [
             'name' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
@@ -99,14 +102,14 @@ class Auth extends BaseController
             'status' => 1,
             'role' => 'student',
         ];
-
+        
         $users->insert($data);
         $this->sendEmailVerification($users->where('email', $data['email'])->first());
         return redirect()->to(route_to('auth.mail_verify'))->with('message', lang('App.auth.register.success'));
-
+        
     }
-
-
+    
+    
     public function mailVerifyView()
     {
         $blade = service(name: 'blade');
@@ -115,73 +118,75 @@ class Auth extends BaseController
     private function sendEmailVerification(array $user): bool
     {
         helper('url');
-
+        
         $token = bin2hex(random_bytes(32));
         $hash = hash('sha256', $token);
         $blade = service('blade');
-
-        (new EmailVerificationModel())->insert([
+        
+        $emailVerificationModel = model(EmailVerificationModel::class);
+        
+        $emailVerificationModel->insert([
             'user_id' => $user['id'],
             'token_hash' => $hash,
             'expires_at' => Time::now()->addHours(24)->toDateTimeString(),
         ]);
-
+        
         $verifyUrl = url_to('verify-email', $user['id'], $token);
-
+        
         $email = service('email');
-
+        
         $email->setFrom(config('Email')->fromEmail, config('Email')->fromName);
-
+        
         $email->setMailType('html');
         $email->setNewline("\r\n");
         $email->setCRLF("\r\n");
-
+        
         $email->setTo($user['email']);
         $email->setSubject(lang('App.auth.email.verify_subject') ?? 'Confirma tu correo');
         $email->setMessage($blade->render('emails.verify', [
-            'name' => $user['name'] ?? (lang('App.auth.user_fallback') ?? 'Usuario'),
+            'name' => $user['name'],
             'verifyUrl' => $verifyUrl,
         ]));
-
+        
         if (!$email->send()) {
             log_message('error', 'Email send failed: {debug}', [
                 'debug' => print_r($email->printDebugger(['headers', 'subject', 'body']), true),
             ]);
             return false;
         }
-
+        
         return true;
     }
     public function verifyEmail(int $userId, string $token)
     {
-        $verifs = new EmailVerificationModel();
-        $users = new UserModel();
-
+        $verifs = model(EmailVerificationModel::class);
+        $users = model(UserModel::class);
+        
         $row = $verifs->where('user_id', $userId)
-            ->where('used_at', null)
-            ->orderBy('id', 'desc')
-            ->first();
-
+        ->where('used_at', null)
+        ->orderBy('id', 'desc')
+        ->first();
+        
         if (!$row)
-            return redirect()->to('/login')->with('error', 'Enlace inválido o ya usado.');
-
+            return redirect()->to('auth/login')->with('error', lang('App.auth.login.error.email_verified_link'));
+        
         if (Time::now()->isAfter($row['expires_at']))
-            return redirect()->to('/login')->with('error', 'El enlace expiró.');
-
+            return redirect()->to('auth/login')->with('error', lang('App.auth.login.error.email_verified_link'));
+        
         if (!hash_equals($row['token_hash'], hash('sha256', $token)))
-            return redirect()->to('/login')->with('error', 'Token inválido.');
-
+            return redirect()->to('auth/login')->with('error', lang('App.auth.login.error.email_verified_link'));
+        
         $user = $users->find($userId);
         if (!$user)
-            return redirect()->to('/login')->with('error', 'Usuario no encontrado.');
-
+            return redirect()->to('auth/login')->with('error', lang('App.auth.login.error.email_verified_link'));
+        
         if (empty($user['confirm_email_at'])) {
             $users->update($userId, ['confirm_email_at' => Time::now()->toDateTimeString()]);
         }
-
+        
         $verifs->update($row['id'], ['used_at' => Time::now()->toDateTimeString()]);
-
-        return redirect()->to(route_to('auth.login'))->with('success', lang('App.auth.email.verified'));
+        
+        return redirect()->to('auth/login')->with('success', lang('App.auth.login.verified'));
     }
-
+    
 }

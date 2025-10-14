@@ -46,9 +46,13 @@ return [
             'submit' => 'Entrar',
             'register_link' => '¿No tienes una cuenta? Regístrate',
             'remember_me' => 'Recuérdame',
+            'welcome' => '¡Bienvenido de nuevo!',
+            'verified' => 'Tu correo ha sido verificado exitosamente. Ahora puedes iniciar sesión.',
             'error' => [
                 'invalid_credentials' => 'Credenciales inválidas',
                 'inactive_user' => 'Usuario inactivo. Por favor, verifica tu correo.',
+                'email_not_verified' => 'Correo no verificado. Por favor, verifica tu correo.',
+                'email_verified_link' => 'El enlace de verificación es inválido o ya fue usado.',
             ]
         ],
         'register' => [

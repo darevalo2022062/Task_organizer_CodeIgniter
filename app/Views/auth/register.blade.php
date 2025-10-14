@@ -28,7 +28,7 @@
                             <div class="alert alert-success">{{ session('message') }}</div>
                         @endif
 
-                        <form method="post" action="{{ route_to('auth.register') }}">
+                        <form method="post" action="{{ route_to('auth.register.submit') }}">
                             @csrf
 
                             <div class="mb-3">

@@ -27,8 +27,11 @@
                         @if (session('message'))
                             <div class="alert alert-success">{{ session('message') }}</div>
                         @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
 
-                        <form method="post" action="{{ route_to('auth.login') }}">
+                        <form method="post" action="{{ route_to('auth.login.submit') }}">
                             @csrf
 
                             <div class="mb-3">

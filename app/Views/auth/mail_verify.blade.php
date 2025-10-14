@@ -30,13 +30,6 @@
                             {{ lang('App.auth.mail_verify.spam_notice') }}
                         </div>
 
-                        <form action="{{ route_to('auth.verification.resend') }}" method="POST" class="mb-3">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-primary">
-                                <i class="fas fa-redo me-2"></i>
-                                {{ lang('App.auth.mail_verify.resend_button') }}
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>

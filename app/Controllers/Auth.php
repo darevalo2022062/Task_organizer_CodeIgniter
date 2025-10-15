@@ -34,6 +34,7 @@ class Auth extends BaseController
         
         $email = $this->request->getPost('email');
         $pass = $this->request->getPost('password');
+        $remember = (bool) $this->request->getPost('remember');
         $users = model(UserModel::class);
         $user = $users->where('email', $email)->first();
         
@@ -59,6 +60,30 @@ class Auth extends BaseController
             'logged_in' => true,
         ]);
         
+        //TODO Generete Cookie
+        
+        if ($remember) {
+            $payload = [
+                'uid'=>$user['id'], 
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'role' => $user['role'] ?? 'student',
+                'logged_in' => true,
+                'exp'=> time()+60*60*24*30,
+            ];
+            $enc = service('encrypter')->encrypt(json_encode($payload));
+            response()->setCookie(
+                name:'remember',
+                value: base64_encode($enc),
+                expire: 60*60*24*30,
+                path:'/', domain:'',
+                secure: ENVIRONMENT==='production',
+                httponly:true,
+                samesite:'Lax'
+            );
+        }
+        
+        //
         return redirect()->to(base_url('dashboard'))->with('message', lang('App.auth.login.welcome', [$user['name']]));
     }
     

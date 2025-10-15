@@ -227,6 +227,25 @@ CREATE INDEX idx_submissions_user  ON submissions (user_id);
 CREATE INDEX idx_submissions_task  ON submissions (task_id);
 CREATE INDEX idx_submissions_stat  ON submissions (status_submit);
 
+CREATE TABLE email_verifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token_hash VARCHAR(64),
+    expires_at DATETIME NOT NULL,
+    used_at DATETIME NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NULL,
+    deleted_at DATETIME NULL,
+    INDEX user_id_index (user_id),
+    CONSTRAINT email_verifications_user_id_foreign 
+        FOREIGN KEY (user_id) 
+        REFERENCES users(id) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE INDEX idx_email_verifications_token ON email_verifications (token_hash);
+
 -- Admin seed
 -- =========================
 INSERT INTO users (name, email, password_hash, role, status, confirm_email_at)

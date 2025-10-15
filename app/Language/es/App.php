@@ -48,6 +48,7 @@ return [
             'remember_me' => 'Recuérdame',
             'welcome' => '¡Bienvenido de nuevo!',
             'verified' => 'Tu correo ha sido verificado exitosamente. Ahora puedes iniciar sesión.',
+            'forgot_password' => '¿Olvidaste tu contraseña?',
             'error' => [
                 'invalid_credentials' => 'Credenciales inválidas',
                 'inactive_user' => 'Usuario inactivo. Por favor, verifica tu correo.',
@@ -63,7 +64,7 @@ return [
             'password_confirm' => 'Confirmar Contraseña',
             'submit' => 'Crear Cuenta',
             'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
-            'success' => 'Registro exitoso. Por favor, inicia sesión.',
+            'success' => 'Registro exitoso. Por favor, verifica tu correo.',
         ],
         'mail_verify' => [
             'title' => 'Verifica tu Correo',

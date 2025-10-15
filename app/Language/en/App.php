@@ -48,6 +48,7 @@ return [
             'remember_me' => 'Remember me',
             'welcome' => 'Welcome back!',
             'verified' => 'Your email has been successfully verified. You can now log in.',
+            'forgot_password' => 'Forgot your password?',
             'error' => [
                 'invalid_credentials' => 'Invalid credentials',
                 'inactive_user' => 'Inactive user. Please check your email.',
@@ -63,7 +64,7 @@ return [
             'password_confirm' => 'Confirm Password',
             'submit' => 'Create Account',
             'login_link' => 'Already have an account? Log In',
-            'success' => 'Registration successful! You can now log in.',
+            'success' => 'Registration successful! Please verify your email.',
         ],
         'mail_verify' => [
             'title' => 'Verify Your Email',

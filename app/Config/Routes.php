@@ -33,9 +33,11 @@ $routes->get('verify-email/(:num)/(:segment)', 'AuthMail::verifyEmail/$1/$2', ['
 $routes->get('new-password/(:num)/(:any)', 'AuthMail::newPassword/$1/$2', ['as' => 'new-password']);
 
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
-    $routes->get('/', 'Dashboard::index');
     //? Logout only for the authenticated users
     $routes->post('logout', 'Auth::logout', ['as' => 'auth.logout']);
+
+    //* Dashboard
+    $routes->get('/', 'Dashboard::index');
     $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
     $routes->get('profile', 'Profile::index');
 });

@@ -51,6 +51,9 @@ return [
         'welcome' => 'Bienvenido',
         'intro' => 'Aquí puedes gestionar tus tareas y proyectos de manera eficiente.',
     ],
+    'profile' => [
+        'title' => 'Perfil - Task Organizer',
+    ],
     'auth' => [
         'logout' => [
             'success' => 'Has cerrado sesión exitosamente.',

@@ -175,8 +175,8 @@
         </span>
     </button>
     <ul class="dropdown-menu dropdown-menu-end shadow">
-        <li><a class="dropdown-item" href="{{ base_url('perfil') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
-        <li><a class="dropdown-item" href="{{ base_url('ajustes') }}"><i class="bi bi-gear me-2"></i> {{ lang('App.nav.settings') ?? 'Ajustes' }}</a></li>
+        <li><a class="dropdown-item" href="{{ base_url('profile') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
+        <li><a class="dropdown-item" href="{{ base_url('settings') }}"><i class="bi bi-gear me-2"></i> {{ lang('App.nav.settings') ?? 'Ajustes' }}</a></li>
         <li><hr class="dropdown-divider"></li>
         <li>
             <form action="{{ base_url('logout') }}" method="POST" class="d-inline">
@@ -225,7 +225,7 @@
 
       <!-- Nav links -->
       <div class="list-group list-group-flush list-group-nav mb-3">
-        <a class="list-group-item {{ url_is('perfil*') ? 'active' : '' }}" href="{{ base_url('perfil') }}">
+        <a class="list-group-item {{ url_is('perfil*') ? 'active' : '' }}" href="{{ base_url('profile') }}">
           <i class="bi bi-person"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}
         </a>
         <a class="list-group-item {{ url_is('usuarios*') ? 'active' : '' }}" href="{{ base_url('usuarios') }}">

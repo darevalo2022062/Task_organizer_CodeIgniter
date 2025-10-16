@@ -50,6 +50,9 @@ return [
         'welcome' => 'Welcome',
         'intro' => 'Here you can manage your tasks and projects efficiently.',
     ],
+    'profile' => [
+        'title' => 'Profile - Task Organizer',
+    ],  
     'auth' => [
         'logout' => [
             'success' => 'You have been logged out successfully.',

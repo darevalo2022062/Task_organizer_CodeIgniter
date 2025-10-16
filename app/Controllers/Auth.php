@@ -141,5 +141,8 @@ class Auth extends BaseController
         return $blade->render('auth.forgot_password');
     }
 
+    public function forgotPasswordNewPassword(){
+        
+    }
     
 }

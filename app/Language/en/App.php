@@ -64,6 +64,7 @@ return [
             'submit' => 'Send Reset Link',
             'back_to_login' => 'Back to Login',
             'email_not_exists'=> 'Email address does not exist.',
+            'sended' => 'Instructions have been sent to your email.',
         ],
         'new_password' => [
             'title' => 'Set New Password',

@@ -109,7 +109,8 @@ class AuthMail extends BaseController
             ]);
             return false;
         }
-        return true;
+        $blade = service(name: 'blade');
+        return redirect()->back()->withInput()->with('success', lang('App.auth.forgot_password.sended'));
     }
     
     public function newPassword(int $userId, string $encrypt)

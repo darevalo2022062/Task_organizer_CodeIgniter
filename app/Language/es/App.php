@@ -64,6 +64,7 @@ return [
             'submit' => 'Enviar Enlace de Recuperación',
             'back_to_login' => 'Volver al Inicio de Sesión',
             'email_not_exists'=> 'El correo electrónico no existe.',
+            'sended' => 'Instrucciones enviadas a tu correo.',
         ],
         'new_password' => [
             'title' => 'Establecer Nueva Contraseña',

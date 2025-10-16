@@ -31,11 +31,9 @@
                             <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
 
-                        <form method="post" action="{{ route_to('auth.process_new_password') }}">
+                        <form method="post" action="{{ route_to('auth.forgot_password.new_password') }}">
                             @csrf
-                            <input type="hidden" name="id" value="{{ $id ?? '' }}">
-                            <input type="hidden" name="token" value="{{ $token ?? '' }}">
-
+                            <input type="hidden" name="userId" value="{{ $userId ?? '' }}">
                             <div class="mb-4">
                                 <p class="text-muted">{{ lang('App.auth.new_password.instructions') }}</p>
                             </div>

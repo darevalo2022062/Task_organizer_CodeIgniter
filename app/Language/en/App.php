@@ -56,6 +56,26 @@ return [
                 'email_verified_link' => 'Verification link is invalid or already used.',
             ]
         ],
+        'forgot_password' => [
+            'title' => 'Reset Password',
+            'instructions' => 'Enter your email address and we\'ll send you a link to reset your password.',
+            'email' => 'Email Address',
+            'email_placeholder' => 'your@example.com',
+            'submit' => 'Send Reset Link',
+            'back_to_login' => 'Back to Login',
+            'email_not_exists'=> 'Email address does not exist.',
+        ],
+        'new_password' => [
+            'title' => 'Set New Password',
+            'instructions' => 'Enter your new password. Make sure it\'s secure and different from previous ones.',
+            'password' => 'New Password',
+            'password_placeholder' => 'Minimum 8 characters',
+            'password_help' => 'Password must be at least 8 characters long.',
+            'password_confirm' => 'Confirm Password',
+            'password_confirm_placeholder' => 'Repeat your password',
+            'submit' => 'Update Password',
+            'back_to_login' => 'Back to Login'
+        ],
         'register' => [
             'title' => 'Create Account',
             'name' => 'Full Name',

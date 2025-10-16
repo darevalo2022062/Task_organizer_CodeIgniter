@@ -81,4 +81,59 @@ class AuthMail extends BaseController
         $verifs->update($row['id'], ['used_at' => Time::now()->toDateTimeString()]);
         return redirect()->to('auth/login')->with('success', lang('App.auth.login.verified'));
     }
+    
+    public function forgotPasswordSendMail(){
+        $blade = service('blade');
+        $users = model(UserModel::class);
+        $user = $users->where('email', $this->request->getPost('email'))->first();
+        if (!$user) {
+            return redirect()->back()->withInput()->with('error', lang('App.auth.forgot_password.email_not_exists'));
+        }
+        $encrypted = service('encrypter')->encrypt($user['id']);
+        $stored = rtrim(strtr(base64_encode($encrypted), '+/', '-_'), '=');
+        $verifyUrl = url_to('new-password', $user['id'], $stored);
+        $email = service('email');
+        $email->setFrom(config('Email')->fromEmail, config('Email')->fromName);
+        $email->setMailType('html');
+        $email->setNewline("\r\n");
+        $email->setCRLF("\r\n");
+        $email->setTo($user['email']);
+        $email->setSubject(lang('App.auth.email.forgot_password_subject'));
+        $email->setMessage($blade->render('emails.forgot_password', [
+            'name' => $user['name'],
+            'verifyUrl' => $verifyUrl,
+        ]));
+        if (!$email->send()) {
+            log_message('error', 'Email send failed: {debug}', [
+                'debug' => print_r($email->printDebugger(['headers', 'subject', 'body']), true),
+            ]);
+            return false;
+        }
+        return true;
+    }
+    
+    public function newPassword(int $userId, string $encrypt)
+    {
+        try{
+            $encrypter = service('encrypter');
+            
+            $b64 = strtr($encrypt, '-_', '+/');
+            $b64 .= str_repeat('=', (4 - strlen($b64) % 4) % 4);
+            
+            $cipher = base64_decode($b64, true);
+            if ($cipher === false) {
+                return redirect()->to('auth/login')->with('error', 'Token corrupto');
+            }
+            $decryptedId = $encrypter->decrypt($cipher);
+            if ((string)$decryptedId !== (string)$userId) {
+                return redirect()->to('auth/login')->with('error', 'Token inválido');
+            }
+        }catch (\Exception $e){
+            return redirect()->to('auth/login')->with('error', 'Token inválido');
+        }
+        
+        $blade = service(name: 'blade');
+        return $blade->render('auth.create_new_password', ['userId' => $userId, 'token' => $encrypt]);
+    }
+    
 }

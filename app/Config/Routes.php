@@ -23,7 +23,8 @@ $routes->group('auth',['filter' => 'guest'], static function ($routes) {
     $routes->get('mail-verify', 'AuthMail::mailVerifyView', ['as' => 'auth.mail_verify']);
     $routes->post('logout', 'Auth::logout', ['as' => 'auth.logout']);
     $routes->get('forgot-password', 'Auth::forgotPassword', ['as' => 'auth.forgot_password']);
+    $routes->post('forgot-password-send-mail', 'AuthMail::forgotPasswordSendMail', ['as' => 'auth.forgot_password.send_mail']);
 });
 
 $routes->get('verify-email/(:num)/(:segment)', 'AuthMail::verifyEmail/$1/$2', ['as' => 'verify-email']);
-
+$routes->get('new-password/(:num)/(:any)', 'AuthMail::newPassword/$1/$2', ['as' => 'new-password']);

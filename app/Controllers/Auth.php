@@ -134,5 +134,12 @@ class Auth extends BaseController
         return redirect()->to(route_to('auth.mail_verify'))->with('message', lang('App.auth.register.success'));
         
     }
+
+    public function forgotPassword()
+    {
+        $blade = service(name: 'blade');
+        return $blade->render('auth.forgot_password');
+    }
+
     
 }

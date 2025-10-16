@@ -56,6 +56,26 @@ return [
                 'email_verified_link' => 'El enlace de verificación es inválido o ya fue usado.',
             ]
         ],
+        'forgot_password' => [
+            'title' => 'Recuperar Contraseña',
+            'instructions' => 'Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.',
+            'email' => 'Correo Electrónico',
+            'email_placeholder' => 'tu@ejemplo.com',
+            'submit' => 'Enviar Enlace de Recuperación',
+            'back_to_login' => 'Volver al Inicio de Sesión',
+            'email_not_exists'=> 'El correo electrónico no existe.',
+        ],
+        'new_password' => [
+            'title' => 'Establecer Nueva Contraseña',
+            'instructions' => 'Ingresa tu nueva contraseña. Asegúrate de que sea segura y diferente de las anteriores.',
+            'password' => 'Nueva Contraseña',
+            'password_placeholder' => 'Mínimo 8 caracteres',
+            'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password_confirm' => 'Confirmar Contraseña',
+            'password_confirm_placeholder' => 'Repite tu contraseña',
+            'submit' => 'Actualizar Contraseña',
+            'back_to_login' => 'Volver al Inicio de Sesión'
+        ],
         'register' => [
             'title' => 'Crear Cuenta',
             'name' => 'Nombre Completo',

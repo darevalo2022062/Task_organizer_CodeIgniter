@@ -56,7 +56,7 @@ class Auth extends BaseController
             'uid' => $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
-            'role' => $user['role'] ?? 'student',
+            'role' => $user['role'],
             'avatar' => $user['image_path'] ?? '',
             'logged_in' => true,
         ]);
@@ -68,7 +68,7 @@ class Auth extends BaseController
                 'uid'=>$user['id'], 
                 'name' => $user['name'],
                 'email' => $user['email'],
-                'role' => $user['role'] ?? 'student',
+                'role' => $user['role'],
                 'avatar' => $user['image_path'] ?? '',
                 'logged_in' => true,
                 'exp'=> time()+60*60*24*30,

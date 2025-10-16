@@ -68,6 +68,57 @@ return [
             ],
         ],
     ],
+    'assignments' => [
+        'title' => 'Asignaciones',
+        'subtitle' => 'Gestiona tus tareas y asignaciones',
+        'create_new' => 'Nueva Asignación',
+        'export' => 'Exportar',
+        
+        // Filtros
+        'filter_by_teacher' => 'Filtrar por profesor',
+        'filter_by_course' => 'Filtrar por curso',
+        'filter_by_status' => 'Filtrar por estado',
+        'all_teachers' => 'Todos los profesores',
+        'all_courses' => 'Todos los cursos',
+        'all_status' => 'Todos los estados',
+        
+        // Estados
+        'status_pending' => 'Pendiente',
+        'status_in_progress' => 'En Progreso',
+        'status_completed' => 'Completado',
+        'status_graded' => 'Calificado',
+        
+        // Tabla
+        'assignment_name' => 'Nombre de Asignación',
+        'course' => 'Curso',
+        'teacher' => 'Profesor',
+        'due_date' => 'Fecha Límite',
+        'status' => 'Estado',
+        'grade' => 'Calificación',
+        'students_assigned' => 'Estudiantes Asignados',
+        'actions' => 'Acciones',
+        
+        // Modal crear
+        'create_new_assignment' => 'Crear Nueva Asignación',
+        'select_course' => 'Seleccionar curso',
+        'description' => 'Descripción',
+        'max_points' => 'Puntos Máximos',
+        'assign_to_teacher' => 'Asignar a profesor',
+        'select_teacher' => 'Seleccionar profesor',
+        
+        // Mensajes
+        'no_assignments_found' => 'No se encontraron asignaciones',
+        'assignment_created' => 'Asignación creada exitosamente',
+        'assignment_updated' => 'Asignación actualizada exitosamente',
+        'assignment_deleted' => 'Asignación eliminada exitosamente',
+        
+        // Acciones
+        'view_assignment' => 'Ver Asignación',
+        'edit_assignment' => 'Editar Asignación',
+        'delete_assignment' => 'Eliminar Asignación',
+        'submit_assignment' => 'Entregar Asignación',
+        'grade_assignment' => 'Calificar Asignación',
+    ],
     'dashboard' => [
         'title' => 'Panel de Control - Task Organizer',
         'welcome' => 'Bienvenido',
@@ -128,47 +179,47 @@ return [
                 'inactive_user' => 'Usuario inactivo. Por favor, verifica tu correo.',
                 'email_not_verified' => 'Correo no verificado. Por favor, verifica tu correo.',
                 'email_verified_link' => 'El enlace de verificación es inválido o ya fue usado.',
+                ]
+            ],
+            'forgot_password' => [
+                'title' => 'Recuperar Contraseña',
+                'instructions' => 'Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.',
+                'email' => 'Correo Electrónico',
+                'email_placeholder' => 'tu@ejemplo.com',
+                'submit' => 'Enviar Enlace de Recuperación',
+                'back_to_login' => 'Volver al Inicio de Sesión',
+                'email_not_exists'=> 'El correo electrónico no existe.',
+                'sended' => 'Instrucciones enviadas a tu correo.',
+                'password_reset_success' => 'Contraseña actualizada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.',
+                'password_reset_failed' => 'Error al actualizar la contraseña. Por favor, intenta nuevamente.',
+            ],
+            'new_password' => [
+                'title' => 'Establecer Nueva Contraseña',
+                'instructions' => 'Ingresa tu nueva contraseña. Asegúrate de que sea segura y diferente de las anteriores.',
+                'password' => 'Nueva Contraseña',
+                'password_placeholder' => 'Mínimo 8 caracteres',
+                'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
+                'password_confirm' => 'Confirmar Contraseña',
+                'password_confirm_placeholder' => 'Repite tu contraseña',
+                'submit' => 'Actualizar Contraseña',
+                'back_to_login' => 'Volver al Inicio de Sesión'
+            ],
+            'register' => [
+                'title' => 'Crear Cuenta',
+                'name' => 'Nombre Completo',
+                'email' => 'Correo Electrónico',
+                'password' => 'Contraseña',
+                'password_confirm' => 'Confirmar Contraseña',
+                'submit' => 'Crear Cuenta',
+                'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
+                'success' => 'Registro exitoso. Por favor, verifica tu correo.',
+            ],
+            'mail_verify' => [
+                'title' => 'Verifica tu Correo',
+                'instruction' => 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico.',
+                'check_email' => 'Por favor revisa tu email y haz clic en el enlace para verificar tu cuenta.',
+                'spam_notice' => 'Si no ves el correo, por favor revisa tu carpeta de spam.',
+                'resend_button' => 'Reenviar Correo de Verificación',
+            ],
             ]
-        ],
-        'forgot_password' => [
-            'title' => 'Recuperar Contraseña',
-            'instructions' => 'Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.',
-            'email' => 'Correo Electrónico',
-            'email_placeholder' => 'tu@ejemplo.com',
-            'submit' => 'Enviar Enlace de Recuperación',
-            'back_to_login' => 'Volver al Inicio de Sesión',
-            'email_not_exists'=> 'El correo electrónico no existe.',
-            'sended' => 'Instrucciones enviadas a tu correo.',
-            'password_reset_success' => 'Contraseña actualizada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.',
-            'password_reset_failed' => 'Error al actualizar la contraseña. Por favor, intenta nuevamente.',
-        ],
-        'new_password' => [
-            'title' => 'Establecer Nueva Contraseña',
-            'instructions' => 'Ingresa tu nueva contraseña. Asegúrate de que sea segura y diferente de las anteriores.',
-            'password' => 'Nueva Contraseña',
-            'password_placeholder' => 'Mínimo 8 caracteres',
-            'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
-            'password_confirm' => 'Confirmar Contraseña',
-            'password_confirm_placeholder' => 'Repite tu contraseña',
-            'submit' => 'Actualizar Contraseña',
-            'back_to_login' => 'Volver al Inicio de Sesión'
-        ],
-        'register' => [
-            'title' => 'Crear Cuenta',
-            'name' => 'Nombre Completo',
-            'email' => 'Correo Electrónico',
-            'password' => 'Contraseña',
-            'password_confirm' => 'Confirmar Contraseña',
-            'submit' => 'Crear Cuenta',
-            'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
-            'success' => 'Registro exitoso. Por favor, verifica tu correo.',
-        ],
-        'mail_verify' => [
-            'title' => 'Verifica tu Correo',
-            'instruction' => 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico.',
-            'check_email' => 'Por favor revisa tu email y haz clic en el enlace para verificar tu cuenta.',
-            'spam_notice' => 'Si no ves el correo, por favor revisa tu carpeta de spam.',
-            'resend_button' => 'Reenviar Correo de Verificación',
-        ],
-    ]
-];
+        ];

@@ -183,7 +183,7 @@
             <i class="bi bi-list-task me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.tasks') ?? 'Tareas' }}
         </a>
-        <a class="nav-link {{ url_is('asignaciones*') ? 'active' : '' }}" href="{{ base_url('asignaciones') }}" style="color: #ffffff !important;">
+        <a class="nav-link {{ url_is('asignaciones*') ? 'active' : '' }}" href="{{ base_url('assignments') }}" style="color: #ffffff !important;">
             <i class="bi bi-clipboard-check me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
         </a>
@@ -259,7 +259,7 @@
         <a class="list-group-item {{ url_is('tareas*') ? 'active' : '' }}" href="{{ base_url('tareas') }}">
           <i class="bi bi-list-task"></i> {{ lang('App.nav.tasks') ?? 'Tareas' }}
         </a>
-        <a class="list-group-item {{ url_is('asignaciones*') ? 'active' : '' }}" href="{{ base_url('asignaciones') }}">
+        <a class="list-group-item {{ url_is('asignaciones*') ? 'active' : '' }}" href="{{ base_url('assignments') }}">
           <i class="bi bi-clipboard-check"></i> {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
         </a>
         <a class="list-group-item" href="{{ base_url('ayuda') }}">

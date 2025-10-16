@@ -35,15 +35,22 @@ $routes->get('new-password/(:num)/(:any)', 'AuthMail::newPassword/$1/$2', ['as' 
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
     //? Logout only for the authenticated users
     $routes->post('logout', 'Auth::logout', ['as' => 'auth.logout']);
-
+    
     //* Dashboard
     $routes->get('/', 'Dashboard::index');
     $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
-    //* Profile
+    //? Profile
     $routes->get('profile', 'Profile::index');
-    //* PhotoProfile
+    //* update Data Profile
     $routes->post('profile/update', 'Profile::update', ['as' => 'profile.update']);
     $routes->post('profile/update-password', 'Profile::updatePassword', ['as' => 'profile.update.password']);
+    //* PhotoProfile
     $routes->post('profile/update-avatar', 'Profile::updateAvatar', ['as' => 'profile.update_avatar']);
     $routes->post('profile/delete-avatar', 'Profile::deleteAvatar', ['as' => 'profile.delete_avatar']);
+
+    $routes->group('assignments', static function($routes) {
+        $routes->get('/', 'Assignments::index', ['as' => 'assignments']);
+        $routes->post('update', 'Assignments::update', ['as' => 'assignments.update']);
+    });
+    
 });

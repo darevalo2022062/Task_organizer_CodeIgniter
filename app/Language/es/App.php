@@ -52,11 +52,15 @@ return [
         'intro' => 'Aquí puedes gestionar tus tareas y proyectos de manera eficiente.',
     ],
     'auth' => [
+        'logout' => [
+            'success' => 'Has cerrado sesión exitosamente.',
+        ],
         'login' => [
             'title' => 'Iniciar Sesión',
             'email' => 'Correo Electrónico',
             'password' => 'Contraseña',
             'submit' => 'Entrar',
+            'success' => '¡Inicio de sesión exitoso! Bienvenido de nuevo.',
             'register_link' => '¿No tienes una cuenta? Regístrate',
             'remember_me' => 'Recuérdame',
             'welcome' => '¡Bienvenido de nuevo!',

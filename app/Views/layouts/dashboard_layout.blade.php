@@ -93,6 +93,38 @@
   </style>
 </head>
 
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const flashSuccess = <?= json_encode(session()->getFlashdata('success') ?? null) ?>;
+    const flashError   = <?= json_encode(session()->getFlashdata('error') ?? null) ?>;
+    const flashInfo    = <?= json_encode(session()->getFlashdata('info') ?? null) ?>;
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 4000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    });
+
+    if (flashSuccess) {
+      Toast.fire({ icon: 'success', title: flashSuccess });
+    } else if (flashError) {
+      Toast.fire({ icon: 'error', title: flashError });
+    } else if (flashInfo) {
+      Toast.fire({ icon: 'info', title: flashInfo });
+    }
+  });
+</script>
+
+
 <body class="d-flex flex-column min-vh-100">
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
@@ -135,21 +167,27 @@
 
         <!-- User dropdown -->
         <div class="dropdown ms-2">
-          <button class="btn avatar-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle"></i>
-            <span class="text-truncate" style="max-width:140px;">
-              {{ lang('App.nav.hello') ?? 'Hola,' }} 
-              <strong>{{ session('name') ?? 'Usuario' }}</strong>
-          </span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow">
-            <li><a class="dropdown-item" href="{{ base_url('perfil') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
-            <li><a class="dropdown-item" href="{{ base_url('ajustes') }}"><i class="bi bi-gear me-2"></i> {{ lang('App.nav.settings') ?? 'Ajustes' }}</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="{{ base_url('auth/logout') }}"><i class="bi bi-box-arrow-right me-2"></i> {{ lang('App.nav.logout') ?? 'Salir' }}</a></li>
-          </ul>
-        </div>
-      </div>
+    <button class="btn avatar-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle"></i>
+        <span class="text-truncate" style="max-width:140px;">
+            {{ lang('App.nav.hello') ?? 'Hola,' }} 
+            <strong>{{ session('name') ?? 'Usuario' }}</strong>
+        </span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow">
+        <li><a class="dropdown-item" href="{{ base_url('perfil') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
+        <li><a class="dropdown-item" href="{{ base_url('ajustes') }}"><i class="bi bi-gear me-2"></i> {{ lang('App.nav.settings') ?? 'Ajustes' }}</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <form action="{{ base_url('logout') }}" method="POST" class="d-inline">
+                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent w-100 text-start">
+                    <i class="bi bi-box-arrow-right me-2"></i> {{ lang('App.nav.logout') ?? 'Salir' }}
+                </button>
+            </form>
+        </li>          
+    </ul>
+</div>
 
       <!-- Mobile toggler: Offcanvas -->
       <button class="navbar-toggler border-0 ms-2" type="button"
@@ -177,9 +215,12 @@
             <div class="text-muted">{{ lang('App.nav.hello') ?? 'Hola,' }}</div>
               <strong>{{ session('name') ?? 'Usuario' }}</strong>          </div>
         </div>
-        <a class="btn btn-outline-danger btn-sm" href="{{ base_url('auth/logout') }}">
-          <i class="bi bi-box-arrow-right me-1"></i> {{ lang('App.nav.logout') ?? 'Salir' }}
-        </a>
+        <form action="{{ base_url('logout') }}" method="POST" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-outline-danger btn-sm">
+        <i class="bi bi-box-arrow-right me-1"></i> {{ lang('App.nav.logout') ?? 'Salir' }}
+    </button>
+</form>
       </div>
 
       <!-- Nav links -->

@@ -51,6 +51,9 @@ return [
         'intro' => 'Here you can manage your tasks and projects efficiently.',
     ],
     'auth' => [
+        'logout' => [
+            'success' => 'You have been logged out successfully.',
+        ],
         'login' => [
             'title' => 'Log In',
             'email' => 'Email Address',
@@ -59,6 +62,7 @@ return [
             'register_link' => "Don't have an account? Sign Up",
             'remember_me' => 'Remember me',
             'welcome' => 'Welcome back!',
+            'success' => 'Login successful! Welcome back.',
             'verified' => 'Your email has been successfully verified. You can now log in.',
             'forgot_password' => 'Forgot your password?',
             'error' => [

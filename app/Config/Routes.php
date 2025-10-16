@@ -21,9 +21,8 @@ $routes->group('auth',['filter' => 'guest'], static function ($routes) {
     $routes->post('login', 'Auth::attemptLogin', ['as'=> 'auth.login.submit']);
     $routes->get('register', 'Auth::register', ['as' => 'auth.register']);
     $routes->post('register', 'Auth::attemptRegister', ['as' => 'auth.register.submit']);
-    //* email verification & logout
+    //* email verification
     $routes->get('mail-verify', 'AuthMail::mailVerifyView', ['as' => 'auth.mail_verify']);
-    $routes->post('logout', 'Auth::logout', ['as' => 'auth.logout']);
     //* forgot password
     $routes->get('forgot-password', 'Auth::forgotPassword', ['as' => 'auth.forgot_password']);
     $routes->post('forgot-password-send-mail', 'AuthMail::forgotPasswordSendMail', ['as' => 'auth.forgot_password.send_mail']);
@@ -35,6 +34,8 @@ $routes->get('new-password/(:num)/(:any)', 'AuthMail::newPassword/$1/$2', ['as' 
 
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
+    //? Logout only for the authenticated users
+    $routes->post('logout', 'Auth::logout', ['as' => 'auth.logout']);
     $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
     $routes->get('profile', 'Profile::index');
 });

@@ -24,6 +24,72 @@
   @stack('styles')
 </head>
 
+<?php
+$toastData = null;
+if ($raw = request()->getCookie('toast')) {
+    $decoded = json_decode(base64_decode($raw), true);
+    if (is_array($decoded) && isset($decoded['icon'], $decoded['text'])) {
+        $toastData = $decoded;
+    }
+    response()->deleteCookie(
+        name: 'toast',
+        path: '/',
+        domain: '',
+    );
+}
+?>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const flashSuccess = <?= json_encode(session()->getFlashdata('success') ?? null) ?>;
+    const flashError   = <?= json_encode(session()->getFlashdata('error') ?? null) ?>;
+    const flashInfo    = <?= json_encode(session()->getFlashdata('info') ?? null) ?>;
+    
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 4000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    });
+
+    if (flashSuccess) {
+      Toast.fire({ icon: 'success', title: flashSuccess });
+    } else if (flashError) {
+      Toast.fire({ icon: 'error', title: flashError });
+    } else if (flashInfo) {
+      Toast.fire({ icon: 'info', title: flashInfo });
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const fromCookie = <?= json_encode($toastData) ?>;
+  const Toast = Swal.mixin({
+    toast: true, position: 'top-end',
+    showConfirmButton: false, timer: 4000, timerProgressBar: true
+  });
+
+  if (fromCookie) {
+    Toast.fire({ icon: fromCookie.icon, title: fromCookie.text });
+    document.cookie = "toast=; Max-Age=0; path=/";
+  } else {
+    const ok  = <?= json_encode(session()->getFlashdata('success') ?? null) ?>;
+    const err = <?= json_encode(session()->getFlashdata('error') ?? null) ?>;
+    const inf = <?= json_encode(session()->getFlashdata('info') ?? null) ?>;
+    if (err) Toast.fire({ icon: 'error', title: err });
+    else if (ok) Toast.fire({ icon: 'success', title: ok });
+    else if (inf) Toast.fire({ icon: 'info', title: inf });
+  }
+});
+</script>
+
+
 <body class="d-flex flex-column">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">

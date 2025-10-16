@@ -84,7 +84,7 @@ class Auth extends BaseController
         }
         
         //
-        return redirect()->to(base_url('dashboard'));
+        return redirect()->to(uri: base_url('dashboard')) ->with('success', lang('App.auth.login.success'));
     }
     
     public function register()
@@ -175,5 +175,30 @@ class Auth extends BaseController
         }
         
     }
+    
+    public function logout()
+    {
+        $msg = lang('App.auth.logout.success');
+        $payload = base64_encode(json_encode([
+            'icon' => 'success',
+            'text' => $msg,
+        ]));
+        $response = redirect()->to(route_to('home'));
+        $response->setCookie(
+            name: 'toast',
+            value: $payload,
+            expire: 60,
+            path: '/',
+            domain: '',
+            secure: ENVIRONMENT === 'production',
+            httponly: true,
+            samesite: 'Lax'
+        );
+        $response->deleteCookie('remember', '/');
+        session()->destroy();
+        
+        return $response;
+    }
+    
     
 }

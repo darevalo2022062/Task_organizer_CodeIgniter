@@ -1,6 +1,22 @@
 <?php
 return [
     'brand' => 'Task Organizer',
+    'common' => [
+        'save' => 'Save Changes',
+        'cancel' => 'Cancel',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'update' => 'Update',
+        'create' => 'Create',
+        'back' => 'Back',
+        'actions' => 'Actions',
+        'search' => 'Search...',
+        'loading' => 'Loading...',
+        'no_data' => 'No data available.',
+        'confirm_delete' => 'Are you sure you want to delete this item?',
+        'yes' => 'Yes',
+        'no' => 'No',
+    ],
     'nav' => [
         'login' => 'Log In',
         'register' => 'Sign Up',
@@ -52,6 +68,35 @@ return [
     ],
     'profile' => [
         'title' => 'Profile - Task Organizer',
+        'back_to_dashboard' => 'Back to Dashboard',
+        'user_profile' => 'Personal Details',
+        'edit_profile' => 'Edit Profile',
+        'profile_picture' => 'Profile Picture',
+        'change_picture' => 'Change Picture',
+        'delete_picture' => 'Delete Picture',
+        'name' => 'Name',
+        'email' => 'Email',
+        'role' => 'Role',
+        'joined' => 'With us since',
+        'security' => [
+            'title' => 'Security',
+            'description' => 'Update your password to keep your account secure.',
+            'change_password' => 'Change Password',
+            'current_password' => 'Current Password',
+            'new_password' => 'New Password',
+            'confirm_new_password' => 'Confirm New Password',
+            'password_help' => 'Password must be at least 8 characters long.',
+        ],
+        'image' => [
+            'select' => 'Select Image',
+            'current' => 'Current Profile Picture',
+            'remove' => 'Remove Profile Picture',
+            'help' => 'Allowed formats: JPG, PNG, GIF. Max size 2MB.',
+            'save' => 'Save Picture',
+            'text_null' => 'No file selected.',
+            'delete_confirm' => 'Are you sure you want to delete your profile picture?',
+            'delete_success' => 'Profile picture deleted successfully.'
+        ],
     ],  
     'auth' => [
         'logout' => [

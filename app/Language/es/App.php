@@ -1,7 +1,22 @@
 <?php
 return [
     'brand' => 'Task Organizer',
-    
+    'common' => [
+        'save' => 'Guardar Cambios',
+        'cancel' => 'Cancelar',
+        'edit' => 'Editar',
+        'delete' => 'Eliminar',
+        'update' => 'Actualizar',
+        'create' => 'Crear',
+        'back' => 'Volver',
+        'actions' => 'Acciones',
+        'search' => 'Buscar...',
+        'loading' => 'Cargando...',
+        'no_data' => 'No hay datos disponibles.',
+        'confirm_delete' => '¿Estás seguro de que deseas eliminar este elemento?',
+        'yes' => 'Sí',
+        'no' => 'No',
+    ],
     'nav' => [
         'login' => 'Iniciar Sesión',
         'register' => 'Registrarse',
@@ -53,6 +68,36 @@ return [
     ],
     'profile' => [
         'title' => 'Perfil - Task Organizer',
+        'back_to_dashboard' => 'Volver al Panel',
+        'user_profile' => 'Información Personal',
+        'edit_profile' => 'Editar Perfil',
+        'profile_picture' => 'Foto de Perfil',
+        'change_picture' => 'Cambiar Foto',
+        'delete_picture' => 'Eliminar Foto',
+        'name' => 'Nombre',
+        'email' => 'Correo Electrónico',
+        'role' => 'Rol',
+        'joined' => 'Miembro desde',
+        'update_profile' => 'Actualizar Perfil',
+        'security' => [
+            'title' => 'Seguridad de la Cuenta',
+            'description' => 'Actualiza tu contraseña para mantener tu cuenta segura.',
+            'change_password' => 'Cambiar Contraseña',
+            'current_password' => 'Contraseña Actual',
+            'new_password' => 'Nueva Contraseña',
+            'confirm_new_password' => 'Confirmar Nueva Contraseña',
+            'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
+        ],
+        'image' => [
+            'select' => 'Seleccionar imagen',
+            'current' => 'Imagen actual',
+            'remove' => 'Eliminar imagen',
+            'help' => 'Formatos permitidos: JPG, PNG, GIF. Máx. 2MB.',
+            'save' => 'Guardar Foto',
+            'text_null' => 'No se ha seleccionado ninguna imagen.',
+            'delete_confirm' => '¿Estás seguro de que deseas eliminar tu foto de perfil?',
+            'delete_success' => 'Foto de perfil eliminada exitosamente.',
+        ],
     ],
     'auth' => [
         'logout' => [

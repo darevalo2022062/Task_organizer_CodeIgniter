@@ -150,24 +150,37 @@
                 <h5 class="modal-title" id="editarPerfilModalLabel">{{ lang('App.profile.edit_profile') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form id="formEditarPerfil">
+            <form id="formEditarPerfil" method="post" action="{{ route_to('profile.update') }}">
+                @csrf
+                <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nombreCompleto" class="form-label">{{ lang('App.profile.name') }}</label>
-                            <input type="text" class="form-control" id="nombreCompleto" value="{{ session('name') ?? '' }}">
+                            <input type="text" class="form-control" id="nombreCompleto" name="name" value="{{ session('name') ?? '' }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">{{ lang('App.profile.email') }}</label>
-                            <input type="email" class="form-control" id="email" value="{{ session('email') ?? '' }}">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ session('email') ?? '' }}" required>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
-                <button type="button" class="btn btn-primary">{{ lang('App.common.save') }}</button>
-            </div>
+                    
+                    <div class="border-top pt-3 mt-3">
+                        <h6 class="text-muted mb-3">
+                            <i class="bi bi-shield-check me-2"></i>
+                            {{ lang('App.profile.confirm_changes') }}
+                        </h6>
+                        <div class="mb-3">
+                            <label for="current_password" class="form-label">{{ lang('App.profile.security.current_password') }}</label>
+                            <input type="password" class="form-control" id="current_password" name="current_password" 
+                            placeholder="{{ lang('App.profile.enter_password_to_save') }}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ lang('App.common.save') }}</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

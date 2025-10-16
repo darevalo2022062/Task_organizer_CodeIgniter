@@ -78,6 +78,8 @@ return [
         'email' => 'Email',
         'role' => 'Role',
         'joined' => 'With us since',
+        'confirm_changes' => 'For your security, please enter your password to confirm changes.',
+        'enter_password_to_save' => 'Enter your password to save changes',
         'security' => [
             'title' => 'Security',
             'description' => 'Update your password to keep your account secure.',

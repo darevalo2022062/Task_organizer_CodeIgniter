@@ -40,4 +40,5 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
     $routes->get('profile', 'Profile::index');
+    $routes->post('profile/update', 'Profile::update', ['as' => 'profile.update']);
 });

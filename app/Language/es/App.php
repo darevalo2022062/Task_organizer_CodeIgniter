@@ -79,6 +79,8 @@ return [
         'role' => 'Rol',
         'joined' => 'Miembro desde',
         'update_profile' => 'Actualizar Perfil',
+        'confirm_changes' => 'Por tu seguridad, ingresa tu contraseña para confirmar los cambios.',
+        'enter_password_to_save' => 'Ingresa tu contraseña para guardar los cambios',
         'security' => [
             'title' => 'Seguridad de la Cuenta',
             'description' => 'Actualiza tu contraseña para mantener tu cuenta segura.',

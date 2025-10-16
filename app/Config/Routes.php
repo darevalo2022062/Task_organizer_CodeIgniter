@@ -43,4 +43,5 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('profile', 'Profile::index');
     $routes->post('profile/update', 'Profile::update', ['as' => 'profile.update']);
     $routes->post('profile/update-password', 'Profile::updatePassword', ['as' => 'profile.update.password']);
+    $routes->post('profile/update-avatar', 'Profile::updateAvatar', ['as' => 'profile.update_avatar']);
 });

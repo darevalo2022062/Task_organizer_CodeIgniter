@@ -60,6 +60,7 @@ class AuthFilter implements FilterInterface
             'name' => $user['name'],
             'email' => $user['email'],
             'role' => $user['role'] ?? 'student',
+            'avatar' => $user['image_path'] ?? '',
             'logged_in' => true,
         ]);
         
@@ -68,6 +69,7 @@ class AuthFilter implements FilterInterface
             'name' => $user['name'],
             'email' => $user['email'],
             'role' => $user['role'] ?? 'student',
+            'avatar' => $user['image_path'] ?? '',
             'logged_in' => true,
         ];
         

@@ -21,7 +21,7 @@
                         <div class="card-body text-center">
                             <!-- Foto de Perfil -->
                             <div class="position-relative d-inline-block">
-                                <img src="<?= base_url('assets/img/default_user_photo.png') ?>" 
+                                <img src="<?= (session()->has('avatar') && !empty(session('avatar'))) ? base_url(session('avatar')) : base_url('assets/img/default_user_photo.png') ?>"
                                      alt="Foto de perfil" 
                                      class="rounded-circle border"
                                      style="width: 150px; height: 150px; object-fit: cover;">
@@ -100,24 +100,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="formCambiarFoto" enctype="multipart/form-data">
+                <form action="<?= route_to('profile.update_avatar') ?>" method="post" enctype="multipart/form-data">
                     <div class="text-center mb-3">
-                        <img id="fotoPreview" src="<?= base_url('assets/img/default_user_photo.png') ?>" 
+                        <img id="fotoPreview" src="<?= (session()->has('avatar') && !empty(session('avatar'))) ? base_url(session('avatar')) : base_url('assets/img/default_user_photo.png') ?>"
                              alt="Vista previa" 
                              class="rounded-circle border mb-3"
                              style="width: 120px; height: 120px; object-fit: cover;">
                     </div>
                     <div class="mb-3">
-                        <label for="fotoPerfil" class="form-label">{{ lang('App.profile.image.select') }}</label>
-                        <input type="file" class="form-control" id="fotoPerfil" accept="image/*">
+                        <label for="avatar" class="form-label">{{ lang('App.profile.image.select') }}</label>
+                        <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
                         <div class="form-text">{{ lang('App.profile.image.help') }}</div>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
-                <button type="button" class="btn btn-primary">{{ lang('App.profile.image.save') }}</button>
+                <button type="submit" class="btn btn-primary">{{ lang('App.profile.image.save') }}</button>
             </div>
+            </form>
+
         </div>
     </div>
 </div>
@@ -185,7 +186,7 @@
     </div>
 </div>
 
-<!-- Modal: Cambiar Contraseña - VERSIÓN CORREGIDA -->
+<!-- Modal: Cambiar Contraseña -->
 <div class="modal fade" id="cambiarPasswordModal" tabindex="-1" aria-labelledby="cambiarPasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -225,7 +226,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Vista previa de foto
-    const fotoInput = document.getElementById('fotoPerfil');
+    const fotoInput = document.getElementById('avatar');
     const fotoPreview = document.getElementById('fotoPreview');
     
     if (fotoInput && fotoPreview) {

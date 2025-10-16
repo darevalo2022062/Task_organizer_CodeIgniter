@@ -84,7 +84,7 @@ class Auth extends BaseController
         }
         
         //
-        return redirect()->to(base_url('dashboard'))->with('message', lang('App.auth.login.welcome', [$user['name']]));
+        return redirect()->to(base_url('dashboard'));
     }
     
     public function register()

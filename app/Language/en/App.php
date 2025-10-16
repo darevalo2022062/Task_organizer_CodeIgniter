@@ -47,7 +47,7 @@ return [
     ],
     'dashboard' => [
         'title' => 'Dashboard - Task Organizer',
-        'welcome' => 'Welcome to your dashboard!',
+        'welcome' => 'Welcome',
         'intro' => 'Here you can manage your tasks and projects efficiently.',
     ],
     'auth' => [

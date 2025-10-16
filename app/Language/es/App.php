@@ -46,9 +46,9 @@ return [
             ],
         ],
     ],
-    'Dashboard' => [
+    'dashboard' => [
         'title' => 'Panel de Control - Task Organizer',
-        'welcome' => '¡Bienvenido a tu panel de control!',
+        'welcome' => 'Bienvenido',
         'intro' => 'Aquí puedes gestionar tus tareas y proyectos de manera eficiente.',
     ],
     'auth' => [

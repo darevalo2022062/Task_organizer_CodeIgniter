@@ -53,6 +53,7 @@
       padding:.35rem .65rem; border-radius:999px; background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12); color:#f8f9fa;
       transition: background .15s ease;
+      color: #ffffff !important;
     }
     .avatar-pill:hover{ background: rgba(255,255,255,.12); }
 
@@ -106,13 +107,17 @@
         </span>
       </a>
 
+       <!-- Language toggle -->
+        <div class="btn-group ms-2" role="group" aria-label="Cambiar idioma">
+          <a href="{{ base_url('lang/es') }}"
+             class="btn btn-sm {{ service('request')->getLocale()==='es' ? 'btn-light text-primary' : 'btn-outline-light' }}">ES</a>
+          <a href="{{ base_url('lang/en') }}"
+             class="btn btn-sm {{ service('request')->getLocale()==='en' ? 'btn-light text-primary' : 'btn-outline-light' }}">EN</a>
+        </div>
+
       <!-- Right actions (desktop) -->
       <div class="d-none d-lg-flex align-items-center ms-auto gap-2">
-        <!-- Links -->
-        <a class="nav-link {{ url_is('perfil*') ? 'active' : '' }}" href="{{ base_url('perfil') }}" style="color: #ffffff !important;">
-            <i class="bi bi-person me-1" style="color: #ffffff !important;"></i> 
-            {{ lang('App.nav.profile') ?? 'Perfil' }}
-        </a>
+        
         <a class="nav-link {{ url_is('usuarios*') ? 'active' : '' }}" href="{{ base_url('usuarios') }}" style="color: #ffffff !important;">
             <i class="bi bi-people me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.users') ?? 'Usuarios' }}
@@ -126,19 +131,16 @@
             {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
         </a>
 
-        <!-- Language toggle -->
-        <div class="btn-group ms-2" role="group" aria-label="Cambiar idioma">
-          <a href="{{ base_url('lang/es') }}"
-             class="btn btn-sm {{ service('request')->getLocale()==='es' ? 'btn-light text-primary' : 'btn-outline-light' }}">ES</a>
-          <a href="{{ base_url('lang/en') }}"
-             class="btn btn-sm {{ service('request')->getLocale()==='en' ? 'btn-light text-primary' : 'btn-outline-light' }}">EN</a>
-        </div>
+       
 
         <!-- User dropdown -->
         <div class="dropdown ms-2">
           <button class="btn avatar-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person-circle"></i>
-            <span class="text-truncate" style="max-width:140px;">{{ lang('App.nav.hello') ?? 'Hola,' }} <strong>NombreUsuario</strong></span>
+            <span class="text-truncate" style="max-width:140px;">
+              {{ lang('App.nav.hello') ?? 'Hola,' }} 
+              <strong>{{ session('name') ?? 'Usuario' }}</strong>
+          </span>
           </button>
           <ul class="dropdown-menu dropdown-menu-end shadow">
             <li><a class="dropdown-item" href="{{ base_url('perfil') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
@@ -173,8 +175,7 @@
           <i class="bi bi-person-circle fs-4 text-primary"></i>
           <div class="small">
             <div class="text-muted">{{ lang('App.nav.hello') ?? 'Hola,' }}</div>
-            <strong>NombreUsuario</strong>
-          </div>
+              <strong>{{ session('name') ?? 'Usuario' }}</strong>          </div>
         </div>
         <a class="btn btn-outline-danger btn-sm" href="{{ base_url('auth/logout') }}">
           <i class="bi bi-box-arrow-right me-1"></i> {{ lang('App.nav.logout') ?? 'Salir' }}

@@ -39,6 +39,8 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     //* Dashboard
     $routes->get('/', 'Dashboard::index');
     $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
+    //* Profile
     $routes->get('profile', 'Profile::index');
     $routes->post('profile/update', 'Profile::update', ['as' => 'profile.update']);
+    $routes->post('profile/update-password', 'Profile::updatePassword', ['as' => 'profile.update.password']);
 });

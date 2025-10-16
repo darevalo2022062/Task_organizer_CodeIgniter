@@ -185,7 +185,7 @@
     </div>
 </div>
 
-<!-- Modal: Cambiar Contraseña -->
+<!-- Modal: Cambiar Contraseña - VERSIÓN CORREGIDA -->
 <div class="modal fade" id="cambiarPasswordModal" tabindex="-1" aria-labelledby="cambiarPasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -193,27 +193,31 @@
                 <h5 class="modal-title" id="cambiarPasswordModalLabel">{{ lang('App.profile.security.change_password') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form id="formCambiarPassword">
+            <!-- FORM PRINCIPAL - Eliminé el form anidado -->
+            <form method="post" action="{{ route_to('profile.update.password') }}">
+                @csrf
+                <div class="modal-body">
+                    <!-- ELIMINÉ: <form id="formCambiarPassword"> -->
                     <div class="mb-3">
-                        <label for="passwordActual" class="form-label">{{ lang('App.profile.security.current_password') }}</label>
-                        <input type="password" class="form-control" id="passwordActual" required>
+                        <label for="current_password" class="form-label">{{ lang('App.profile.security.current_password') }}</label>
+                        <input type="password" class="form-control" id="current_password" name="current_password" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nuevaPassword" class="form-label">{{ lang('App.profile.security.new_password') }}</label>
-                        <input type="password" class="form-control" id="nuevaPassword" required>
+                        <label for="new_password" class="form-label">{{ lang('App.profile.security.new_password') }}</label>
+                        <input type="password" class="form-control" id="new_password" name="new_password" required>
                         <div class="form-text">{{ lang('App.profile.security.password_help') }}</div>
                     </div>
                     <div class="mb-3">
-                        <label for="confirmarPassword" class="form-label">{{ lang('App.profile.security.confirm_new_password') }}</label>
-                        <input type="password" class="form-control" id="confirmarPassword" required>
+                        <label for="confirm_new_password" class="form-label">{{ lang('App.profile.security.confirm_new_password') }}</label>
+                        <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
-                <button type="button" class="btn btn-warning">{{ lang('App.common.update') }}</button>
-            </div>
+                    <!-- ELIMINÉ: </form> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
+                    <button type="submit" class="btn btn-warning">{{ lang('App.common.update') }}</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -101,6 +101,8 @@
     const flashSuccess = <?= json_encode(session()->getFlashdata('success') ?? null) ?>;
     const flashError   = <?= json_encode(session()->getFlashdata('error') ?? null) ?>;
     const flashInfo    = <?= json_encode(session()->getFlashdata('info') ?? null) ?>;
+    //Errors
+    const flashErrors   = <?= json_encode(session()->getFlashdata('errors') ?? null) ?>;
 
     const Toast = Swal.mixin({
       toast: true,
@@ -113,6 +115,29 @@
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
     });
+
+    if(flashErrors){
+      let errorMessages = '';
+      if(typeof flashErrors === 'object'){
+        for(const key in flashErrors){
+          if(Array.isArray(flashErrors[key])){
+            flashErrors[key].forEach(msg => {
+              errorMessages += `&#8226; ${msg}<br>`;
+            });
+          } else {
+            errorMessages += `&#8226; ${flashErrors[key]}<br>`;
+          }
+        }
+      } else {
+        errorMessages = flashErrors;
+      }
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        html: errorMessages,
+        confirmButtonText: 'Cerrar'
+      });
+    } 
 
     if (flashSuccess) {
       Toast.fire({ icon: 'success', title: flashSuccess });

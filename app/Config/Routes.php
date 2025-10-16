@@ -48,9 +48,17 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('profile/update-avatar', 'Profile::updateAvatar', ['as' => 'profile.update_avatar']);
     $routes->post('profile/delete-avatar', 'Profile::deleteAvatar', ['as' => 'profile.delete_avatar']);
 
+    //? Assignments
     $routes->group('assignments', static function($routes) {
-        $routes->get('/', 'Assignments::index', ['as' => 'assignments']);
-        $routes->post('update', 'Assignments::update', ['as' => 'assignments.update']);
+        $routes->get('/', 'Assignment::index', ['as' => 'assignments']);
+        $routes->post('update', 'Assignment::update', ['as' => 'assignments.update']);
     });
+
+    //? Courses
+    $routes->group('courses', static function($routes) {
+        $routes->get('/', 'Course::index', ['as' => 'courses']);
+    });
+
+
     
 });

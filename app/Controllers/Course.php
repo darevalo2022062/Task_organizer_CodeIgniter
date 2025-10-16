@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-class Assignments extends BaseController
+class Course extends BaseController
 {
     public function index(): string
     {
         $blade = service(name: 'blade');
-        return $blade->render('assignments/index');
+        return $blade->render('courses/index');
     }
 }

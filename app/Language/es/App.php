@@ -24,6 +24,56 @@ return [
         'yes' => 'Sí',
         'no' => 'No',
     ],
+    // app/Language/es/App.php
+    'courses' => [
+        'title' => 'Cursos',
+        'subtitle' => 'Gestiona tus cursos y materiales',
+        'create_new' => 'Nuevo Curso',
+        'export' => 'Exportar',
+        
+        // Filtros
+        'filter_by_teacher' => 'Filtrar por profesor',
+        'filter_by_status' => 'Filtrar por estado',
+        'all_teachers' => 'Todos los profesores',
+        'all_status' => 'Todos los estados',
+        
+        // Estados
+        'status_active' => 'Activo',
+        'status_inactive' => 'Inactivo',
+        'status_archived' => 'Archivado',
+        
+        // Modal crear
+        'create_new_course' => 'Crear Nuevo Curso',
+        'course_name' => 'Nombre del Curso',
+        'course_code' => 'Código del Curso',
+        'description' => 'Descripción',
+        'start_date' => 'Fecha de Inicio',
+        'end_date' => 'Fecha de Fin',
+        'assign_to_teacher' => 'Asignar a profesor',
+        'select_teacher' => 'Seleccionar profesor',
+        'course_color' => 'Color del Curso',
+        
+        // Tarjeta de curso
+        'view_course' => 'Ver Curso',
+        'edit_course' => 'Editar Curso',
+        'delete_course' => 'Eliminar Curso',
+        'enter_course' => 'Entrar al Curso',
+        'manage' => 'Gestionar',
+        'students' => 'Estudiantes',
+        
+        // Mensajes
+        'no_courses_found' => 'No se encontraron cursos',
+        'create_first_course' => 'Crea tu primer curso para comenzar',
+        'course_created' => 'Curso creado exitosamente',
+        'course_updated' => 'Curso actualizado exitosamente',
+        'course_deleted' => 'Curso eliminado exitosamente',
+        
+        // Acciones
+        'enroll_course' => 'Inscribirse al Curso',
+        'unenroll_course' => 'Darse de Baja',
+        'view_students' => 'Ver Estudiantes',
+        'view_assignments' => 'Ver Asignaciones',
+    ],
     'nav' => [
         'login' => 'Iniciar Sesión',
         'register' => 'Registrarse',
@@ -35,6 +85,7 @@ return [
         'users' => 'Usuarios',
         'tasks' => 'Tareas',
         'assignments' => 'Asignaciones',
+        'courses' => 'Cursos',
         'logout' => 'Salir',
     ],
     'footer' => [

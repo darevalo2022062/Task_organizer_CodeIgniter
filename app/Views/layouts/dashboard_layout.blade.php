@@ -187,6 +187,10 @@
             <i class="bi bi-clipboard-check me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
         </a>
+        <a class="nav-link {{ url_is('cursos*') ? 'active' : '' }}" href="{{ base_url('courses') }}" style="color: #ffffff !important;">
+            <i class="bi bi-book me-1" style="color: #ffffff !important;"></i> 
+            {{ lang('App.nav.courses') ?? 'Cursos' }}
+        </a>
 
        
 

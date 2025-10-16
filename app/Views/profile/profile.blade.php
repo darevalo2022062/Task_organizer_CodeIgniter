@@ -131,14 +131,17 @@
                 <h5 class="modal-title" id="eliminarFotoModalLabel">Eliminar Foto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="<?= route_to('profile.delete_avatar') ?>" method="post">
+                @csrf
             <div class="modal-body text-center">
                 <i class="bi bi-exclamation-triangle text-warning display-4 mb-3"></i>
                 <p>{{ lang('App.profile.image.delete_confirm') }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
-                <button type="button" class="btn btn-danger">{{ lang('App.common.delete') }}</button>
+                <button type="submit" class="btn btn-danger">{{ lang('App.common.delete') }}</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

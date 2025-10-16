@@ -41,7 +41,9 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
     //* Profile
     $routes->get('profile', 'Profile::index');
+    //* PhotoProfile
     $routes->post('profile/update', 'Profile::update', ['as' => 'profile.update']);
     $routes->post('profile/update-password', 'Profile::updatePassword', ['as' => 'profile.update.password']);
     $routes->post('profile/update-avatar', 'Profile::updateAvatar', ['as' => 'profile.update_avatar']);
+    $routes->post('profile/delete-avatar', 'Profile::deleteAvatar', ['as' => 'profile.delete_avatar']);
 });

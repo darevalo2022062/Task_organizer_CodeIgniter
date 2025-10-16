@@ -152,4 +152,28 @@ class Profile extends BaseController
         
     }
     
+    public function deleteAvatar(){
+        $users = model(UserModel::class);
+        $userId = session()->get('uid');
+        $user = $users->where('id', $userId)->first();
+        
+        if (!$user) {
+            return redirect()->back()->with('error', lang('App.common.user_not_found'));
+        }
+        
+        if (empty($user['image_path'])) {
+            return redirect()->back()->with('error', lang('App.common.no_data'));
+        }
+        
+        $old = ROOTPATH . 'public/' . $user['image_path'];
+        if (is_file($old)) {
+            unlink($old);
+        }
+        
+        $users->update($userId, ['image_path' => null]);
+        session()->remove('avatar');
+        
+        return redirect()->back()->with('success', lang('App.common.delete_success'));
+    }
+    
 }

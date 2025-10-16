@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 // ? ORDER ROUTES
 
 // * Main Page
-$routes->get('/', 'Home::index');
+$routes->get('/home', 'Home::index');
 
 // * Switch Language
 $routes->get('lang/(:alpha)', 'Locale::switch/$1');
@@ -32,3 +32,9 @@ $routes->group('auth',['filter' => 'guest'], static function ($routes) {
 
 $routes->get('verify-email/(:num)/(:segment)', 'AuthMail::verifyEmail/$1/$2', ['as' => 'verify-email']);
 $routes->get('new-password/(:num)/(:any)', 'AuthMail::newPassword/$1/$2', ['as' => 'new-password']);
+
+$routes->group('', ['filter' => 'auth'], static function ($routes) {
+    $routes->get('/', 'Dashboard::index');
+    $routes->get('dashboard', 'Dashboard::index', ['as' => 'dashboard']);
+    $routes->get('profile', 'Profile::index');
+});

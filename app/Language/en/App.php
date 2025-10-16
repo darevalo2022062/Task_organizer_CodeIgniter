@@ -6,6 +6,13 @@ return [
         'register' => 'Sign Up',
         'spanish' => 'Spanish',
         'english' => 'English',
+        'hello' => 'Hello,',
+        'menu' => 'Menu',
+        'profile' => 'Profile',
+        'users' => 'Users',
+        'tasks' => 'Tasks',
+        'assignments' => 'Assignments',
+        'logout' => 'Logout',
     ],
     'footer' => [
         'copyright' => 'All rights reserved',
@@ -37,6 +44,11 @@ return [
                 'description' => 'Clearly see relevant information about your tasks.',
             ],
         ],
+    ],
+    'dashboard' => [
+        'title' => 'Dashboard - Task Organizer',
+        'welcome' => 'Welcome to your dashboard!',
+        'intro' => 'Here you can manage your tasks and projects efficiently.',
     ],
     'auth' => [
         'login' => [

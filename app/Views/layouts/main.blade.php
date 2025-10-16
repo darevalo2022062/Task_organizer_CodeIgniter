@@ -27,7 +27,7 @@
 <body class="d-flex flex-column">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="{{ base_url('/') }}">
+      <a class="navbar-brand fw-bold" href="{{ base_url('/home') }}">
         <i class="bi bi-backpack3-fill"></i> {{ lang('App.brand') }}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarGuest"

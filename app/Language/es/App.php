@@ -1,11 +1,19 @@
 <?php
 return [
     'brand' => 'Task Organizer',
+    
     'nav' => [
         'login' => 'Iniciar Sesión',
         'register' => 'Registrarse',
         'spanish' => 'Español',
         'english' => 'Inglés',
+        'hello' => 'Hola,',
+        'menu' => 'Menú',
+        'profile' => 'Perfil',
+        'users' => 'Usuarios',
+        'tasks' => 'Tareas',
+        'assignments' => 'Asignaciones',
+        'logout' => 'Salir',
     ],
     'footer' => [
         'copyright' => 'Todos los derechos reservados',
@@ -37,6 +45,11 @@ return [
                 'description' => 'Observa claramente la información relevante de tus tareas.',
             ],
         ],
+    ],
+    'Dashboard' => [
+        'title' => 'Panel de Control - Task Organizer',
+        'welcome' => '¡Bienvenido a tu panel de control!',
+        'intro' => 'Aquí puedes gestionar tus tareas y proyectos de manera eficiente.',
     ],
     'auth' => [
         'login' => [

@@ -134,14 +134,45 @@ class Auth extends BaseController
         return redirect()->to(route_to('auth.mail_verify'))->with('message', lang('App.auth.register.success'));
         
     }
-
+    
     public function forgotPassword()
     {
         $blade = service(name: 'blade');
         return $blade->render('auth.forgot_password');
     }
-
+    
     public function forgotPasswordNewPassword(){
+        
+        $rules = [
+            'password' => [
+                'label' => 'Password',
+                'rules' => 'required|min_length[8]',
+            ],
+            'password_confirm' => [
+                'label' => 'Confirm Password',
+                'rules' => 'required|matches[password]',
+            ],
+            'userId' => [
+                'rules' => 'required',
+            ],
+        ];
+        
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        
+        $pass = $this->request->getPost('password');
+        $userId = (int) $this->request->getPost('userId');
+        
+        $users = model(UserModel::class);
+        $response = $users->update($userId, [
+            'password_hash' => password_hash($pass, PASSWORD_BCRYPT)
+        ]);
+        if ($response) {
+            return redirect()->to(route_to('auth.login'))->with('success', lang('App.auth.forgot_password.password_reset_success'));
+        } else {
+            return redirect()->back()->withInput()->with('error', lang('App.auth.forgot_password.password_reset_failed'));
+        }
         
     }
     

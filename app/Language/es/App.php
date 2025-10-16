@@ -65,6 +65,8 @@ return [
             'back_to_login' => 'Volver al Inicio de Sesión',
             'email_not_exists'=> 'El correo electrónico no existe.',
             'sended' => 'Instrucciones enviadas a tu correo.',
+            'password_reset_success' => 'Contraseña actualizada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.',
+            'password_reset_failed' => 'Error al actualizar la contraseña. Por favor, intenta nuevamente.',
         ],
         'new_password' => [
             'title' => 'Establecer Nueva Contraseña',

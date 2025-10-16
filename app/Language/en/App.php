@@ -65,6 +65,8 @@ return [
             'back_to_login' => 'Back to Login',
             'email_not_exists'=> 'Email address does not exist.',
             'sended' => 'Instructions have been sent to your email.',
+            'password_reset_success' => 'Password updated successfully. You can now log in with your new password.',
+            'password_reset_failed' => 'Failed to update password. Please try again.',
         ],
         'new_password' => [
             'title' => 'Set New Password',

@@ -12,6 +12,7 @@ return [
         'actions' => 'Actions',
         'search' => 'Search...',
         'loading' => 'Loading...',
+        'invalid_password' => 'Invalid password',
         'no_data' => 'No data available.',
         'confirm_delete' => 'Are you sure you want to delete this item?',
         'yes' => 'Yes',

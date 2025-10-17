@@ -26,10 +26,10 @@
         @if(session('role') != 'student')
         <div>
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editTaskModal">
-            <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.common.edit') }}
+            <i class="bi bi-pencil me-2"></i>{{ lang('App.common.edit') }}
         </button>
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">
-            <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.common.delete') }}
+            <i class="bi bi-trash me-2"></i>{{ lang('App.common.delete') }}
         </button>
         </div>
         @endif

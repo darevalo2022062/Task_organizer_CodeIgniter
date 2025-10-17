@@ -83,7 +83,6 @@ return [
     // Create modal
     'create_new_task' => 'Create New Task',
     'select_course' => 'Select course',
-    'description' => 'Description',
     'max_points' => 'Max Points',
     'assign_to_teacher' => 'Assign to teacher',
     'select_teacher' => 'Select teacher',

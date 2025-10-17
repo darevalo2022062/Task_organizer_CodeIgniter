@@ -182,7 +182,6 @@ return [
     // Modal crear
     'create_new_task' => 'Crear Nueva Tarea',
     'select_course' => 'Seleccionar curso',
-    'description' => 'Descripción',
     'max_points' => 'Puntos Máximos',
     'assign_to_teacher' => 'Asignar a profesor',
     'select_teacher' => 'Seleccionar profesor',

@@ -46,6 +46,23 @@ class Task extends BaseController
             ];
         } else if (session()->get('role') === 'admin') {
             $tasksData = $taskModel->findAll();
+            $courses = $courseModel->findAll();
+            $taskViews = [];
+            foreach ($tasksData as $task) {
+                $course = $courseModel->where('id', $task['course_id'])->first();
+                $taskViews[] = [
+                    'id' => $task['id'],
+                    'name' => $task['name'],
+                    'description' => $task['description'],
+                    'due_date' => $task['due_date'],
+                    'status' => $task['status'],
+                    'course_name' => $course['name'] ?? 'Unknown Course',
+                ];
+            }
+            $data = [
+                'tasks' => $taskViews,
+                'courses' => $courses
+            ];
         } else {
             $tasksData = [];
             

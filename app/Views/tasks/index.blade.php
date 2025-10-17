@@ -84,7 +84,7 @@
                                 <td>{{ $task['due_date'] }}</td>
                                 <td>{{ $task['status'] === 0 ? lang('App.common.desactive') : lang('App.common.active') }}</td>
                                 <td>
-                                    <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-secondary">
+                                    <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-success">
                                         <i class="bi bi-eye"></i> {{ lang('App.common.view') }}
                                     </a>
                                 </td>

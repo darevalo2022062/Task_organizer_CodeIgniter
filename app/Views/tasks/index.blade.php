@@ -35,24 +35,34 @@
                         <thead>
                             <tr>
                                 <th>{{ lang('App.tasks.task_name') }}</th>
-                                <th>{{ lang('App.tasks.course') }}</th>
+                                <th>{{ lang('App.tasks.description') }}</th>
                                 <th>{{ lang('App.tasks.due_date') }}</th>
-                                <th>{{ lang('App.tasks.priority') }}</th>
                                 <th>{{ lang('App.tasks.status') }}</th>
                                 <th>{{ lang('App.common.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Datos dinámicos para estudiantes -->
+                            @foreach ($tasks as $task)
                             <tr>
-                                <td colspan="6" class="text-center text-muted py-4">
-                                    {{ lang('App.tasks.no_tasks_found') }}
+                                <td>{{ $task['name'] }}</td>
+                                <td>{{ $task['description'] }}</td>
+                                    <td>{{ $task['created_at'] }}</td>
+                                <td>{{ $task['status'] === 0 ? lang('App.tasks.status_completed') : lang('App.tasks.status_pending') }}</td>
+                                <td>
+                                    <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-eye"></i> {{ lang('App.common.view') }}
+                                    </a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-                @else
+                @endif
+            
+
+                @if(session('role') === 'teacher' || session('role') === 'admin')
                 <!-- Vista para teachers y admin -->
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -60,23 +70,26 @@
                             <tr>
                                 <th>{{ lang('App.tasks.task_name') }}</th>
                                 <th>{{ lang('App.tasks.course') }}</th>
-                                @if(session('role') === 'admin')
-                                <th>{{ lang('App.tasks.teacher') }}</th>
-                                @endif
                                 <th>{{ lang('App.tasks.due_date') }}</th>
-                                <th>{{ lang('App.tasks.priority') }}</th>
                                 <th>{{ lang('App.tasks.status') }}</th>
-                                <th>{{ lang('App.tasks.students_assigned') }}</th>
                                 <th>{{ lang('App.common.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Datos dinámicos para teachers/admin -->
+                            @foreach ($tasks as $task)
                             <tr>
-                                <td colspan="{{ session('role') === 'admin' ? '8' : '7' }}" class="text-center text-muted py-4">
-                                    {{ lang('App.tasks.no_tasks_found') }}
+                                <td>{{ $task['name'] }}</td>
+                                <td>{{ $task['course_name'] }}</td>
+                                <td>{{ $task['due_date'] }}</td>
+                                <td>{{ $task['status'] === 0 ? lang('App.common.desactive') : lang('App.common.active') }}</td>
+                                <td>
+                                    <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-eye"></i> {{ lang('App.common.view') }}
+                                    </a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

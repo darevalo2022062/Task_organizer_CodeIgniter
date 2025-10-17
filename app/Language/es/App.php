@@ -2,6 +2,7 @@
 return [
     'brand' => 'Task Organizer',
     'common' => [
+        'view' => 'Ver Detalles',
         'save' => 'Guardar Cambios',
         'cancel' => 'Cancelar',
         'edit' => 'Editar',
@@ -10,6 +11,8 @@ return [
         'create' => 'Crear',
         'back' => 'Volver',
         'actions' => 'Acciones',
+        'active' => 'Activo',
+        'desactive' => 'Inactivo',
         'search' => 'Buscar...',
         'delete_success' => 'Eliminación exitosa.',
         'invalid_password' => 'Contraseña inválida',
@@ -125,6 +128,7 @@ return [
     'subtitle' => 'Gestiona tus tareas y trabajos',
     'create_new' => 'Nueva Tarea',
     'export' => 'Exportar',
+    'description' => 'Descripción',
     
     // Filtros
     'filter_by_teacher' => 'Filtrar por profesor',

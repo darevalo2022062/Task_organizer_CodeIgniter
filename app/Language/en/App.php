@@ -2,12 +2,15 @@
 return [
     'brand' => 'Task Organizer',
     'common' => [
+        'view' => 'View Details',
         'save' => 'Save Changes',
         'cancel' => 'Cancel',
         'edit' => 'Edit',
         'delete' => 'Delete',
         'update' => 'Update',
         'create' => 'Create',
+        'active' => 'Active',
+        'desactive' => 'Inactive',
         'back' => 'Back',
         'actions' => 'Actions',
         'search' => 'Search...',
@@ -26,7 +29,7 @@ return [
     'subtitle' => 'Manage your tasks and assignments',
     'create_new' => 'New Task',
     'export' => 'Export',
-    
+    'description' => 'Description',
     // Filters
     'filter_by_teacher' => 'Filter by teacher',
     'filter_by_course' => 'Filter by course',

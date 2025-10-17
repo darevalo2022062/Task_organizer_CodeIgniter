@@ -174,6 +174,37 @@
     </div>
 </div>
 
+<!-- Modal: Eliminar Tarea -->
+@if(session('role') != 'student')
+<div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTaskModalLabel">
+                    <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.tasks.delete') }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="{{ route_to('tasks.delete', $task['id']) }}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <p>{{ lang('App.common.confirm_delete') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
+                        <button type="submit" class="btn btn-danger">{{ lang('App.common.delete') }}</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+@endif
+
+
 <!-- Modal: Editar Tarea -->
 @if(session('role') != 'student')
 <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">

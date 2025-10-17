@@ -88,16 +88,16 @@ class Task extends BaseController
         }
         $courseModel = model(CourseModel::class);
         $course = $courseModel->find($task['course_id']);
-
+        
         $data = [
             'task' => $task,
             'course' => $course,
         ];
-
+        
         $blade = service(name: 'blade');
         return $blade->render('tasks/view', $data);
     }
-
+    
     public function edit($id){
         $rules = [
             'name' => 'required|string|max_length[255]',
@@ -110,7 +110,7 @@ class Task extends BaseController
         }
         
         $taskModel = model(TaskModel::class);
-
+        
         $taskModel->update($id, [
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
@@ -119,5 +119,12 @@ class Task extends BaseController
         ]);
         return redirect()->back()->with('success', lang('App.common.update_success'));
     }
-
+    
+    public function delete($id){
+        $taskModel = model(TaskModel::class);
+        $taskModel->update($id, ['status' => 0]);
+        $taskModel->delete($id);
+        return redirect()->to('tasks')->with('success', lang('App.common.delete_success'));
+    }
+    
 }

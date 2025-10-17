@@ -109,4 +109,16 @@ class Assignment extends BaseController
         }
         
     }
+
+    public function delete($id){
+        $assignmentsModel = model(AssignmentModel::class);
+        $assignment = $assignmentsModel->find($id);
+        if(!$assignment){
+            return redirect()->back()->with('error', lang('App.assignments.assignment_not_found'));
+        }
+        
+        $assignmentsModel->update($id, ['status' => 0]);
+        $assignmentsModel->delete($id);
+        return redirect()->back()->with('success', lang('App.assignments.assignment_deleted'));
+    }
 }

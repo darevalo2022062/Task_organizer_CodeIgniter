@@ -75,9 +75,12 @@
                                     <td>{{ $assignment['student_name'] }}</td>
                                     <td>{{ $assignment['status'] == 1 ? 'Activo' : 'Inactivo' }}</td>
                                     <td>
-                                        <a href="{{ route_to('assignments.delete', $assignment['id']) }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('{{ lang('App.assignments.confirm_delete') }}');">
-                                            <i class="bi bi-trash"></i> {{ lang('App.common.delete') }}
-                                        </a>
+                                        <form action="{{ base_url('assignments/delete/' . $assignment['id']) }}" method="post" onsubmit="return confirm('{{ lang('App.common.confirm_delete') }}');">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i> {{ lang('App.common.delete') }}
+                                            </button>
+                                        </form>
                                     </td>
                             </tr>
                                                             @endforeach

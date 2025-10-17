@@ -35,16 +35,17 @@
                         <thead>
                             <tr>
                                 <th>{{ lang('App.assignments.course') }}</th>
+                                <th>{{ lang('App.assignments.teacher') }}</th>
                                 <th>{{ lang('App.assignments.status') }}</th>
-                                <th>{{ lang('App.assignments.grade') }}</th>
-                                <th>{{ lang('App.common.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="6" class="text-center text-muted py-4">
-                                    {{ lang('App.assignments.no_assignments_found') }}
-                                </td>
+                                @foreach ($assignments as $assignment)
+                                    <td>{{ $assignment['name'] }}</td>
+                                    <td>{{ $assignment['teacher_name'] }}</td>
+                                    <td>{{ $assignment['status'] }}</td> 
+                                @endforeach
                             </tr>
                         </tbody>
                     </table>
@@ -65,9 +66,17 @@
                         <tbody>
                             <!-- Datos dinámicos para teachers/admin -->
                             <tr>
-                                <td colspan="{{ session('role') === 'admin' ? '7' : '6' }}" class="text-center text-muted py-4">
-                                    {{ lang('App.assignments.no_assignments_found') }}
-                                </td>
+                                @foreach ($assignments as $assignment)
+                                    <td>{{ $assignment['name'] }}</td>
+                                    <td>{{ $assignment['teacher_name'] }}</td>
+                                    <td>{{ $assignment['student_name'] }}</td>
+                                    <td>{{ $assignment['status'] == 1 ? 'Activo' : 'Inactivo' }}</td>
+                                    <td>
+                                        <a href="{{ route_to('assignments.delete', $assignment['id']) }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('{{ lang('App.assignments.confirm_delete') }}');">
+                                            <i class="bi bi-trash"></i> {{ lang('App.common.delete') }}
+                                        </a>
+                                    </td>
+                                @endforeach
                             </tr>
                         </tbody>
                     </table>

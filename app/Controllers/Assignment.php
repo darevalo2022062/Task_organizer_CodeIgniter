@@ -20,28 +20,55 @@ class Assignment extends BaseController
             $courses = $coursesModel->where('teacher_owner_id', session()->get('uid'))->findAll();
             $students = $usersModel->where('role', 'student')->findAll();
             $assignments = $assignmentsModel->whereIn('id_course', array_column($courses, 'id'))->findAll();
-            
+            $viewedAssignments = [];
+            foreach ($assignments as $assignment) {
+                $viewedAssignments[] = [
+                    'id' => $assignment['id'],
+                    'name' => $coursesModel->where('id', $assignment['id_course'])->first()['name'] ?? 'Unknown Course',
+                    'status' => $assignment['status'] ,
+                    'teacher_name' => $usersModel->where('id', session()->get('uid'))->first()['name'] ?? 'Unknown Teacher',
+                    'student_name' => $usersModel->where('id', $assignment['id_user'])->first()['name'] ?? 'Unknown Student',
+                ];
+            }
             $data = [
                 'courses' => $courses,
                 'students' => $students,
-                'assignments' => $assignments,
+                'assignments' => $viewedAssignments,
             ];
             
         } else if (session()->get('role') === 'admin') {
             $courses = $coursesModel->where('teacher_owner_id', session()->get('uid'))->findAll();
             $students = $usersModel->where('role', 'student')->findAll();
             $assignments = $assignmentsModel->findAll();
-            
+            $viewedAssignments = [];
+            foreach ($assignments as $assignment) {
+                $viewedAssignments[] = [
+                    'id' => $assignment['id'],
+                    'name' => $coursesModel->where('id', $assignment['id_course'])->first()['name'] ?? 'Unknown Course',
+                    'status' => $assignment['status'] ,
+                    'teacher_name' => $usersModel->where('id', session()->get('uid'))->first()['name'] ?? 'Unknown Teacher',
+                    'student_name' => $usersModel->where('id', $assignment['id_user'])->first()['name'] ?? 'Unknown Student',
+                ];
+            }
             $data = [
                 'courses' => $courses,
                 'students' => $students,
-                'assignments' => $assignments,
+                'assignments' => $viewedAssignments,
             ];
             
         } else {
             $assignments = $assignmentsModel->where('id_user', session()->get('uid'))->findAll();
+            $viewedAssignments = [];
+            foreach ($assignments as $assignment) {
+                $viewedAssignments[] = [
+                    'id' => $assignment['id'],
+                    'name' => $coursesModel->where('id', $assignment['id_course'])->first()['name'] ?? 'Unknown Course',
+                    'status' => $assignment['status'] ,
+                    'teacher_name' => $usersModel->where('id', session()->get('uid'))->first()['name'] ?? 'Unknown Teacher',
+                ];
+            }
             $data = [
-                'assignments' => $assignments,
+                'assignments' => $viewedAssignments,
             ];
         }
         

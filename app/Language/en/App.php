@@ -38,6 +38,9 @@ return [
     'progress' => 'Progress',
     'completion' => 'Completed in a',
     'back_to_list' => 'Back to Task List',
+    'view_course' => 'View Course',
+    'edit' => 'Edit Task',
+    'delete' => 'Delete Task',
 
     //Submit
     'submit_instructions' => 'Submit your work for this task',

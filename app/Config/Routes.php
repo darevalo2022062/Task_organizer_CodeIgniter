@@ -68,7 +68,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->get('/', 'Task::index', ['as' => 'tasks']);
         $routes->post('create', 'Task::create', ['as' => 'tasks.create']);
         $routes->get('view/(:num)', 'Task::view/$1', ['as' => 'tasks.view']);
-        $routes->post('update-status/(:num)', 'Task::updateStatus/$1', ['as' => 'tasks.update_status']);
+        $routes->post('view/edit/(:num)', 'Task::edit/$1', ['as' => 'tasks.edit']);
         $routes->post('delete/(:num)', 'Task::delete/$1', ['as' => 'tasks.delete']);
     });
     

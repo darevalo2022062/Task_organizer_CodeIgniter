@@ -137,6 +137,9 @@ return [
     'progress' => 'Progreso',
     'completion' => 'Completado en un',
     'back_to_list' => 'Volver a la Lista de Tareas',
+    'view_course' => 'Ver Curso',
+    'edit'=> 'Editar Tarea',
+    'delete'=> 'Eliminar Tarea',
 
         //Submit
     'submit_instructions' => 'Entrega tu trabajo para esta tarea',

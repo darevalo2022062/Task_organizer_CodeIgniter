@@ -22,6 +22,18 @@
             <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.tasks.submit_task') }}
         </button>
         @endif
+
+        @if(session('role') != 'student')
+        <div>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editTaskModal">
+            <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.common.edit') }}
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">
+            <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.common.delete') }}
+        </button>
+        </div>
+        @endif
+
     </div>
 
     <div class="row">
@@ -162,6 +174,52 @@
     </div>
 </div>
 
+<!-- Modal: Editar Tarea -->
+@if(session('role') != 'student')
+<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTaskModalLabel">
+                    <i class="bi bi-cloud-upload me-2"></i>{{ lang('App.tasks.edit') }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="{{ route_to('tasks.edit', $task['id']) }}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ lang('App.tasks.task_name') }}</label>
+                                <input type="text" class="form-control" name="name" value="{{ $task['name'] }}" required>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <label class="form-label">{{ lang('App.tasks.description') }}</label>
+                                <textarea class="form-control" name="description" rows="3">{{ $task['description'] }}</textarea>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ lang('App.tasks.due_date') }}</label>
+                                <input type="datetime-local" class="form-control" name="due_date" value="{{ $task['due_date'] }}" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ lang('App.tasks.max_points') }}</label>
+                                <input type="number" class="form-control" name="grade" id="grade" min="1" value="{{ $task['grade'] }}" max="10">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ lang('App.common.edit') }}</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+@endif
+
 <!-- Modal: Entregar Tarea -->
 @if(session('role') === 'student')
 <div class="modal fade" id="submitTaskModal" tabindex="-1" aria-labelledby="submitTaskModalLabel" aria-hidden="true">
@@ -223,7 +281,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Vista previa de archivos
     const fileInput = document.querySelector('input[name="submission_files[]"]');
     const filePreview = document.getElementById('filePreview');
     const fileList = document.getElementById('fileList');

@@ -97,4 +97,27 @@ class Task extends BaseController
         $blade = service(name: 'blade');
         return $blade->render('tasks/view', $data);
     }
+
+    public function edit($id){
+        $rules = [
+            'name' => 'required|string|max_length[255]',
+            'description' => 'permit_empty|string',
+            'due_date' => 'required|valid_date[Y-m-d\TH:i]',
+            'grade' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[10]',
+        ];
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        
+        $taskModel = model(TaskModel::class);
+
+        $taskModel->update($id, [
+            'name' => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'due_date' => $this->request->getPost('due_date'),
+            'grade' => $this->request->getPost('grade'),
+        ]);
+        return redirect()->back()->with('success', lang('App.common.update_success'));
+    }
+
 }

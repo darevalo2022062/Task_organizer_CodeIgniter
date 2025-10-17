@@ -30,6 +30,8 @@ return [
         'of' => 'of',
         'previous' => 'Previous',
         'next' => 'Next',
+        'information' => 'Information',
+        'quick_actions' => 'Quick Actions',
     ],
     // app/Language/en/App.php
 'users' => [
@@ -39,6 +41,8 @@ return [
     'export' => 'Export',
     'updated_at' => 'Last Updated',
     'edit_user' => 'Edit User',
+    'statistics' => 'Statistics',
+    'enrolled_courses' => 'Enrolled Courses',
     
     // Filters and search
     'search' => 'Search',

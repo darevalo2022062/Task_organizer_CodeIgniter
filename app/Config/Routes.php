@@ -76,6 +76,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->group('users', static function($routes) {
         $routes->get('/', 'User::index', ['as' => 'users']);
         $routes->post('create', 'User::create', ['as' => 'users.create']);
+        $routes->get('edit-page/(:num)', 'User::editPage/$1');
     });
     
 });

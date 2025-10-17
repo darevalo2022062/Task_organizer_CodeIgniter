@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\UserModel;
+use App\Models\AssignmentModel;
+
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -37,5 +39,19 @@ class User extends BaseController
         $AuthMail->sendEmailVerification($userModel->where('email', $this->request->getPost('email'))->first());
         return redirect()->back()->with('success',lang('App.common.create_success'));
         
+    }
+    
+    public function editPage($id){
+        $userModel = model(UserModel::class);
+        $blade = service(name: 'blade');
+        $user = $userModel->find($id);
+        $assignmentsModel = model(AssignmentModel::class);
+        $assignments = $assignmentsModel->where('id_user', $id)->findAll();
+        $data = [
+            ...$user,
+            'number_courses' => count($assignments)
+        ];
+        
+        return $blade->render('users/edit', ['user' => $data]);
     }
 }

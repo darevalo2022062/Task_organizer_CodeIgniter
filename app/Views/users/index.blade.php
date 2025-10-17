@@ -130,7 +130,7 @@
                                     <ul class="dropdown-menu">
                                         
                                         <li>
-                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">
+                                            <a class="dropdown-item" href="{{ base_url('users/edit-page/' . $user['id']) }}">
                                                 <i class="bi bi-pencil me-2"></i>{{ lang('App.common.edit') }}
                                             </a>
                                         </li>
@@ -193,46 +193,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="crearUsuarioModalLabel">{{ lang('App.users.create_new_user') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" action="{{ route_to('users.create') }}">
-                @csrf
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">{{ lang('App.users.name') }}</label>
-                        <input type="text" class="form-control" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">{{ lang('App.users.email') }}</label>
-                        <input type="email" class="form-control" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">{{ lang('App.users.password') }}</label>
-                        <input type="password" class="form-control" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">{{ lang('App.users.role') }}</label>
-                        <select class="form-select" name="role" required>
-                            <option value="student">{{ lang('App.users.role_student') }}</option>
-                            <option value="teacher">{{ lang('App.users.role_teacher') }}</option>
-                            <option value="admin">{{ lang('App.users.role_admin') }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
-                    <button type="submit" class="btn btn-primary">{{ lang('App.common.create') }}</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Modal: Editar Usuario -->
-<div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarUsuarioModalLabel">{{ lang('App.users.edit_user') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" action="{{ route_to('users.create') }}">

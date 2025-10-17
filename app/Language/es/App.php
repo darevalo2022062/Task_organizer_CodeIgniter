@@ -34,6 +34,8 @@ return [
         'of' => 'de',
         'previous' => 'Anterior',
         'next' => 'Siguiente',
+        'information' => 'Información',
+        'quick_actions' => 'Acciones Rápidas',
     ],
     // app/Language/es/App.php
     'users' => [
@@ -43,6 +45,8 @@ return [
     'export' => 'Exportar',
     'updated_at' => 'Última Modifi',
     'edit_user' => 'Editar Usuario',
+    'statistics' => 'Estadísticas',
+    'enrolled_courses' => 'Cursos Inscritos',
     
     // Filtros y búsqueda
     'search' => 'Buscar',

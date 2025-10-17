@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\CourseModel;
 use App\Models\UserModel;
+use App\Models\AssignmentModel;
+
 
 class Course extends BaseController
 {
@@ -18,13 +20,10 @@ class Course extends BaseController
             $coursesData = $courseModel->where('teacher_owner_id', session('uid'))->findAll();
         } else if(session('role') === 'student') {
             $uid = (int) session('uid');
-            $coursesData = $courseModel
-            ->select('courses.*')
-            ->join('assignments a', 'a.course_id = courses.id')
-            ->where('a.user_id', $uid)
-            ->where('a.deleted_at', null) 
-            ->groupBy('courses.id')
-            ->findAll();
+            $assigmentsModel = model(AssignmentModel::class);
+            $assigments = $assigmentsModel->where('id_user', $uid)->findAll();
+            $courseIds = array_column($assigments, 'id_course');
+            $coursesData = $courseModel->whereIn('id', $courseIds)->findAll();
         } else {
             $coursesData = [];
         }

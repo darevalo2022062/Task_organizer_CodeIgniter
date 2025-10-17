@@ -64,7 +64,7 @@ class Assignment extends BaseController
                     'id' => $assignment['id'],
                     'name' => $coursesModel->where('id', $assignment['id_course'])->first()['name'] ?? 'Unknown Course',
                     'status' => $assignment['status'] ,
-                    'teacher_name' => $usersModel->where('id', session()->get('uid'))->first()['name'] ?? 'Unknown Teacher',
+                    'teacher_name' => $usersModel->where('id', $coursesModel->where('id', $assignment['id_course'])->first()['teacher_owner_id'] ?? 0)->first()['name'] ?? 'Unknown Teacher',
                 ];
             }
             $data = [

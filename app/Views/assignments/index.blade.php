@@ -40,13 +40,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                                                            @foreach ($assignments as $assignment)
+
                             <tr>
-                                @foreach ($assignments as $assignment)
                                     <td>{{ $assignment['name'] }}</td>
                                     <td>{{ $assignment['teacher_name'] }}</td>
-                                    <td>{{ $assignment['status'] }}</td> 
-                                @endforeach
+                                    <td>{{ $assignment['status'] == 1 ? 'Activo' : 'Inactivo' }}</td>
+                                
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -65,8 +67,9 @@
                         </thead>
                         <tbody>
                             <!-- Datos dinámicos para teachers/admin -->
+                            @foreach ($assignments as $assignment)
+
                             <tr>
-                                @foreach ($assignments as $assignment)
                                     <td>{{ $assignment['name'] }}</td>
                                     <td>{{ $assignment['teacher_name'] }}</td>
                                     <td>{{ $assignment['student_name'] }}</td>
@@ -76,8 +79,9 @@
                                             <i class="bi bi-trash"></i> {{ lang('App.common.delete') }}
                                         </a>
                                     </td>
-                                @endforeach
                             </tr>
+                                                            @endforeach
+
                         </tbody>
                     </table>
                 </div>

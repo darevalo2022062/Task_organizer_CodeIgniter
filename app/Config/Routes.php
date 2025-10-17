@@ -80,6 +80,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->post('update/(:num)', 'User::edit/$1', ['as' => 'users.update']);
         $routes->post('update-avatar/(:num)', 'User::updateAvatar/$1', ['as' => 'users.update_avatar']);
         $routes->post('set-new-password/(:num)', 'User::setNewPassword/$1', ['as' => 'users.set_new_password']);
+        $routes->post('delete/(:num)', 'User::delete/$1', ['as' => 'users.delete'] );
     });
     
 });

@@ -148,5 +148,17 @@ class User extends BaseController
 
         return redirect()->back()->with('success', lang('App.common.update_success'));
     }
+
+    public function delete($userId){
+        $UserModel = model(UserModel::class);
+        $user = $UserModel->find($userId);
+        if (! $user) {
+            return redirect()->back()->with('error', lang('App.common.user_not_found'));
+        }
+        $UserModel->update($userId, ['status' => 0]);
+        $UserModel->delete($userId);
+
+        return redirect()->back()->with('success', lang('App.common.delete_success'));
+    }
     
 }

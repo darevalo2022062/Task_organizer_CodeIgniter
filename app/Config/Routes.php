@@ -78,6 +78,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->post('create', 'User::create', ['as' => 'users.create']);
         $routes->get('edit-page/(:num)', 'User::editPage/$1');
         $routes->post('update/(:num)', 'User::edit/$1', ['as' => 'users.update']);
+        $routes->post('update-avatar/(:num)', 'User::updateAvatar/$1', ['as' => 'users.update_avatar']);
     });
     
 });

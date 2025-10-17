@@ -54,7 +54,7 @@ class User extends BaseController
         
         return $blade->render('users/edit', ['user' => $data]);
     }
-
+    
     public function edit($id){
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
@@ -74,4 +74,52 @@ class User extends BaseController
         ]);
         return redirect()->back()->with('success',lang('App.common.update_success'));
     }
+    
+    public function updateAvatar($userId){
+        $rules = [
+            'avatar' => [
+                'label' => 'Avatar',
+                'rules' => 'uploaded[avatar]|is_image[avatar]|max_size[avatar,8048]|mime_in[avatar,image/jpg,image/jpeg,image/png,image/gif]'
+            ],
+        ];
+        
+        if (!$this->validate($rules)) {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
+        
+        $users = model(UserModel::class);
+        $user = $users->where('id', $userId)->first();
+        
+        if (!$user) {
+            return redirect()->back()->with('error', lang('App.common.user_not_found'));
+        }
+        
+        $file = $this->request->getFile('avatar');
+        if (! $file->isValid()) {
+            return redirect()->back()->with('error', 'Archivo inválido');
+        }
+        
+        $newName = $file->getRandomName();
+        $targetFolder = WRITEPATH . '../public/uploads/avatars/';
+        $file->move($targetFolder, $newName);
+        $relativePath = 'uploads/avatars/' . $newName;
+        
+        $users = model(UserModel::class);
+        $user = $users->find($userId);
+        
+        if (! empty($user['image_path'])) {
+            $old = ROOTPATH . 'public/' . $user['image_path'];
+            if (is_file($old)) {
+                unlink($old);
+            }
+        }
+        
+        $users->update($userId, ['image_path' => $relativePath]);
+        
+        session()->set('avatar', $relativePath);
+        
+        return redirect()->back()->with('success', 'Avatar actualizado');
+        
+    }
+    
 }

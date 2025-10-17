@@ -83,7 +83,7 @@
                                     <i class="bi bi-camera me-2"></i>{{ lang('App.profile.change_picture') }}
                                 </button>
                                 <button class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#cambiarPasswordModal">
-                                    <i class="bi bi-key me-2"></i>Resetear Password
+                                    <i class="bi bi-key me-2"></i>{{ lang('App.profile.security.change_password') }}
                                 </button>
                             </div>
                         </div>

@@ -17,6 +17,7 @@ return [
         'delete_success' => 'Deletion successful.',
         'loading' => 'Loading...',
         'user_not_found' => 'User not found.',
+        'update_success' => 'Update successful.',
         'invalid_password' => 'Invalid password',
         'no_data' => 'No data available.',
         'confirm_delete' => 'Are you sure you want to delete this item?',

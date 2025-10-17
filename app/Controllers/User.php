@@ -54,4 +54,24 @@ class User extends BaseController
         
         return $blade->render('users/edit', ['user' => $data]);
     }
+
+    public function edit($id){
+        $rules = [
+            'name' => 'required|min_length[3]|max_length[255]',
+            'role' => 'required|in_list[admin,teacher,student]',
+            'email' => 'required|valid_email',
+            'status' => 'required|in_list[1,0]',
+        ];
+        if (! $this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        $userModel = model(UserModel::class);
+        $userModel->update($id, [
+            'name' => $this->request->getPost('name'),
+            'role' => $this->request->getPost('role'),
+            'email' => $this->request->getPost('email'),
+            'status' => $this->request->getPost('status'),
+        ]);
+        return redirect()->back()->with('success',lang('App.common.update_success'));
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\CourseModel;
 use App\Models\UserModel;
+use App\Models\TaskModel;
 use App\Models\AssignmentModel;
 
 
@@ -88,9 +89,12 @@ class Course extends BaseController
         
         //delete assignments and tasks related to the course
         $assignmentModel = model(AssignmentModel::class);
-        $assignmentModel->where('course_id', $id)->update(['status' => 0]);
+        $taskModel = model(TaskModel::class);
+        $assignmentModel->where('id_course', $id)->update(['status' => 0]);
         $assignmentModel->where('id_course', $id)->delete();
-        
+        $taskModel->where('id_course', $id)->update(['status' => 0]);
+        $taskModel->where('course_id', $id)->delete();
+
         return redirect()->back()->with('success', lang('App.courses.course_deleted'));
     }
     

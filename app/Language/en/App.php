@@ -25,6 +25,11 @@ return [
         'sort_by' => 'Sort by',
         'ascending' => 'Ascending',
         'descending' => 'Descending',
+        'showing' => 'Showing',
+        'to' => 'to',
+        'of' => 'of',
+        'previous' => 'Previous',
+        'next' => 'Next',
     ],
     // app/Language/en/App.php
 'users' => [
@@ -32,6 +37,7 @@ return [
     'subtitle' => 'Manage all system users',
     'create_new' => 'New User',
     'export' => 'Export',
+    'updated_at' => 'Last Updated',
     
     // Filters and search
     'search' => 'Search',

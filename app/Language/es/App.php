@@ -29,6 +29,11 @@ return [
         'sort_by' => 'Ordenar por',
         'ascending' => 'Ascendente',
         'descending' => 'Descendente',
+        'showing' => 'Mostrando',
+        'to' => 'a',
+        'of' => 'de',
+        'previous' => 'Anterior',
+        'next' => 'Siguiente',
     ],
     // app/Language/es/App.php
     'users' => [
@@ -36,6 +41,7 @@ return [
     'subtitle' => 'Administra todos los usuarios del sistema',
     'create_new' => 'Nuevo Usuario',
     'export' => 'Exportar',
+    'updated_at' => 'Última Modifi',
     
     // Filtros y búsqueda
     'search' => 'Buscar',

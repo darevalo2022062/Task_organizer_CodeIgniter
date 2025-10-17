@@ -65,6 +65,7 @@
                             <th>{{ lang('App.users.status') }}</th>
                             <th>{{ lang('App.users.email_verified') }}</th>
                             <th>{{ lang('App.users.created_at') }}</th>
+                            <th>{{ lang('App.users.updated_at') }}</th>
                             <th>{{ lang('App.common.actions') }}</th>
                         </tr>
                     </thead>
@@ -115,6 +116,11 @@
                                 </small>
                             </td>
                             <td>
+                                <small class="text-muted">
+                                    {{ date('d/m/Y', strtotime($user['updated_at'])) }}
+                                </small>
+                            </td>
+                            <td>
                                 <div class="dropdown">
                                     <button class="btn btn-outline-secondary btn-sm dropdown-toggle" 
                                             type="button" 
@@ -122,11 +128,7 @@
                                         <i class="bi bi-gear"></i>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="{{ base_url('users/view/' . $user['id']) }}">
-                                                <i class="bi bi-eye me-2"></i>{{ lang('App.common.view') }}
-                                            </a>
-                                        </li>
+                                        
                                         <li>
                                             <a class="dropdown-item" href="{{ base_url('users/edit/' . $user['id']) }}">
                                                 <i class="bi bi-pencil me-2"></i>{{ lang('App.common.edit') }}

@@ -49,6 +49,32 @@ class Course extends BaseController
         
         return $blade->render('courses/index', $data);
     }
+
+    public function create(){
+
+        $rules = [
+            'name' => 'required|min_length[3]|max_length[255]',
+            'description' => 'permit_empty|max_length[1000]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->with('errors', $this->validator->getErrors());
+        }
+
+        $name = $this->request->getPost('name');
+        $description = $this->request->getPost('description');
+
+        $courses = model(CourseModel::class);
+
+        $courses->insert([
+            'name' => $name,
+            'description' => $description,
+            'teacher_owner_id' => session('uid'),
+        ]);
+
+        return redirect()->back()->with('success', lang('App.courses.course_created'));
+
+    }
     
     private function getStudentsCount($courseId)
     {

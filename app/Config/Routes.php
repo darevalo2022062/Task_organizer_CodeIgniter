@@ -57,6 +57,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     //? Courses
     $routes->group('courses', static function($routes) {
         $routes->get('/', 'Course::index', ['as' => 'courses']);
+        $routes->post('create', 'Course::create', ['as' => 'courses.create']);
     });
 
 

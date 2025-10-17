@@ -1,12 +1,57 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\CourseModel;
+use App\Models\UserModel;
 
 class Course extends BaseController
 {
     public function index(): string
     {
-        $blade = service(name: 'blade');
-        return $blade->render('courses/index');
+        $blade = service('blade');
+        $courseModel = model(CourseModel::class);
+        $userModel = model(UserModel::class);
+        
+        if(session('role') === 'admin') {
+            $coursesData = $courseModel->findAll();
+        } else if(session('role') === 'teacher') {
+            $coursesData = $courseModel->where('teacher_owner_id', session('uid'))->findAll();
+        } else if(session('role') === 'student') {
+            $uid = (int) session('uid');
+            $coursesData = $courseModel
+            ->select('courses.*')
+            ->join('assignments a', 'a.course_id = courses.id')
+            ->where('a.user_id', $uid)
+            ->where('a.deleted_at', null) 
+            ->groupBy('courses.id')
+            ->findAll();
+        } else {
+            $coursesData = [];
+        }
+        
+        $courses = [];
+        foreach($coursesData as $course) {
+            $courses[] = [
+                'id' => $course['id'],
+                'name' => $course['name'],
+                'description' => $course['description'],
+                'teacher_owner_id' => $course['teacher_owner_id'],
+                'teacher_name' => $userModel->where('id', $course['teacher_owner_id'])->first()['name'] ?? 'Unknown Teacher',
+                'created_at' => $course['created_at'],
+                'color' => $course['color'] ?? '#4361ee',
+                'students_count' => $this->getStudentsCount($course['id'])
+            ];
+        }
+        
+        $data = [
+            'courses' => $courses
+        ];
+        
+        return $blade->render('courses/index', $data);
+    }
+    
+    private function getStudentsCount($courseId)
+    {
+        return 0;
     }
 }

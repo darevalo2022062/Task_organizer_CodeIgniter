@@ -3,25 +3,19 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class CourseModel extends Model
 {
-    protected $table = 'users';
-    protected $primaryKey = 'id';
-    protected $returnType = 'array';
+    protected $table = "courses";
+    protected $primaryKey = "id";
+    protected $returnType = "array";
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $allowedFields = [
         'name',
-        'email',
-        'password_hash',
-        'role',
-        'status',
-        'confirm_email_at',
-        'image_path',
+        'description',
+        'teacher_owner_id',
     ];
-
     protected $deleteField = 'deleted_at';
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
 }
-

@@ -53,33 +53,91 @@
 
         <!-- Grid de Cursos -->
         <div class="row">
-            @if(session('role') === 'student')
-            <!-- Vista para estudiantes -->
-            <div class="col-12">
-                <div class="row" id="coursesGrid">
-                    <!-- Cursos dinámicos para estudiantes -->
-                    <div class="col-12 text-center py-5">
-                        <div class="text-muted">
-                            <i class="bi bi-journal-x display-4 mb-3"></i>
-                            <p class="h5">{{ lang('App.courses.no_courses_found') }}</p>
-                        </div>
+            @if(empty($courses))
+                <!-- No hay cursos para ningún rol -->
+                <div class="col-12 text-center py-5">
+                    <div class="text-muted">
+                        <i class="bi bi-journal-x display-4 mb-3"></i>
+                        <p class="h5">{{ lang('App.courses.no_courses_found') }}</p>
+                        @if(session('role') !== 'student')
+                        <p class="small">{{ lang('App.courses.create_first_course') }}</p>
+                        @endif
                     </div>
                 </div>
-            </div>
             @else
-            <!-- Vista para teachers y admin -->
-            <div class="col-12">
-                <div class="row" id="coursesGrid">
-                    <!-- Cursos dinámicos para teachers/admin -->
-                    <div class="col-12 text-center py-5">
-                        <div class="text-muted">
-                            <i class="bi bi-journal-plus display-4 mb-3"></i>
-                            <p class="h5">{{ lang('App.courses.no_courses_found') }}</p>
-                            <p class="small">{{ lang('App.courses.create_first_course') }}</p>
+                <!-- Mostrar cursos dinámicamente para TODOS los roles -->
+                @foreach($courses as $course)
+                <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
+                    <div class="card card-soft h-100 course-card">
+                        <div class="card-header border-0 pb-0">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="badge rounded-pill text-bg-success">
+                                    <i class="bi bi-journal-check"></i> {{ lang('App.courses.status_active') }}
+                                </span>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary border-0" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @if(session('role') !== 'student')
+                                        <li>
+                                            <form action="{{ base_url('courses/delete/' . $course['id']) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent" 
+                                                        onclick="return confirm('{{ lang('App.common.confirm_delete') }}')">
+                                                    <i class="bi bi-trash me-2"></i>{{ lang('App.courses.delete_course') }}
+                                                </button>
+                                            </form>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $course['name'] ?? 'Curso sin nombre' }}</h5>
+                            <p class="card-text text-muted small">{{ $course['description'] ?? 'Sin descripción' }}</p>
+                            <div class="course-meta">
+                                <div class="d-flex justify-content-between align-items-center text-sm text-muted mb-2">
+                                    <span><i class="bi bi-person me-1"></i>
+                                        @if(isset($course['teacher_name']))
+                                            {{ $course['teacher_name'] }}
+                                        @else
+                                            {{ lang('App.courses.teacher_unknown') }}
+                                        @endif
+                                    </span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center text-sm text-muted">
+                                    <span>
+                                        <i class="bi bi-calendar3 me-1"></i>
+                                        @if(isset($course['created_at']))
+                                            {{ date('d/m/Y', strtotime($course['created_at'])) }}
+                                        @else
+                                            {{ lang('App.courses.no_date') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            @if(session('role') === 'student')
+                            <a href="{{ base_url('courses/enter/' . $course['id']) }}" class="btn btn-primary btn-sm w-100">
+                                {{ lang('App.courses.enter_course') }}
+                            </a>
+                            @else
+                            <div class="d-flex gap-2">
+                                <a href="{{ base_url('courses/manage/' . $course['id']) }}" class="btn btn-outline-primary btn-sm flex-fill">
+                                    {{ lang('App.courses.manage') }}
+                                </a>
+                                <a href="{{ base_url('courses/students/' . $course['id']) }}" class="btn btn-outline-secondary btn-sm">
+                                    {{ lang('App.courses.students') }}
+                                </a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
+                @endforeach
             @endif
         </div>
     </div>
@@ -124,72 +182,4 @@
         </div>
     </div>
     @endif
-
-    <!-- Template para Tarjeta de Curso -->
-    <template id="courseCardTemplate">
-        <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
-            <div class="card card-soft h-100 course-card">
-                <div class="card-header border-0 pb-0">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div class="course-badge" style="background-color: {color}; width: 12px; height: 12px; border-radius: 50%;"></div>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-outline-secondary border-0" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>{{ lang('App.courses.view_course') }}</a></li>
-                                @if(session('role') !== 'student')
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>{{ lang('App.courses.edit_course') }}</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>{{ lang('App.courses.delete_course') }}</a></li>
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{name}</h5>
-                    <p class="card-text text-muted small">{description}</p>
-                    <div class="course-meta">
-                        <div class="d-flex justify-content-between align-items-center text-sm text-muted mb-2">
-                            <span><i class="bi bi-code me-1"></i>{code}</span>
-                            <span><i class="bi bi-people me-1"></i>{students_count} {{ lang('App.courses.students') }}</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center text-sm text-muted">
-                            <span><i class="bi bi-calendar3 me-1"></i>{start_date} - {end_date}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent">
-                    @if(session('role') === 'student')
-                    <a href="#" class="btn btn-primary btn-sm w-100">{{ lang('App.courses.enter_course') }}</a>
-                    @else
-                    <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-outline-primary btn-sm flex-fill">{{ lang('App.courses.manage') }}</a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">{{ lang('App.courses.students') }}</a>
-                    </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </template>
 @endsection
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const colorOptions = document.querySelectorAll('.color-option');
-    const selectedColor = document.getElementById('selectedColor');
-    
-    colorOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            selectedColor.value = color;
-            
-            colorOptions.forEach(opt => opt.classList.remove('border', 'border-3'));
-            this.classList.add('border', 'border-3', 'border-dark');
-        });
-    });
-});
-</script>
-@endpush

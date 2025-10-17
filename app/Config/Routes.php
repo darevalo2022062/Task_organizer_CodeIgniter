@@ -47,7 +47,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     //* PhotoProfile
     $routes->post('profile/update-avatar', 'Profile::updateAvatar', ['as' => 'profile.update_avatar']);
     $routes->post('profile/delete-avatar', 'Profile::deleteAvatar', ['as' => 'profile.delete_avatar']);
-
+    
     //? Assignments
     $routes->group('assignments', static function($routes) {
         $routes->get('/', 'Assignment::index', ['as' => 'assignments']);
@@ -55,14 +55,21 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->post('create', 'Assignment::create', ['as' => 'assignments.create']);
         $routes->post('delete/(:num)', 'Assignment::delete/$1');
     });
-
+    
     //? Courses
     $routes->group('courses', static function($routes) {
         $routes->get('/', 'Course::index', ['as' => 'courses']);
         $routes->post('create', 'Course::create', ['as' => 'courses.create']);
         $routes->post('delete/(:num)', 'Course::delete/$1');
     });
-
-
+    
+    //? Tasks
+    $routes->group('tasks', static function($routes) {
+        $routes->get('/', 'Task::index', ['as' => 'tasks']);
+        $routes->post('create', 'Task::create', ['as' => 'tasks.create']);
+        $routes->post('update-status/(:num)', 'Task::updateStatus/$1', ['as' => 'tasks.update_status']);
+        $routes->post('delete/(:num)', 'Task::delete/$1', ['as' => 'tasks.delete']);
+    });
+    
     
 });

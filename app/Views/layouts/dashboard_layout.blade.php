@@ -179,7 +179,7 @@
             <i class="bi bi-people me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.users') ?? 'Usuarios' }}
         </a>
-        <a class="nav-link {{ url_is('tareas*') ? 'active' : '' }}" href="{{ base_url('tareas') }}" style="color: #ffffff !important;">
+        <a class="nav-link {{ url_is('tareas*') ? 'active' : '' }}" href="{{ base_url('tasks') }}" style="color: #ffffff !important;">
             <i class="bi bi-list-task me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.tasks') ?? 'Tareas' }}
         </a>

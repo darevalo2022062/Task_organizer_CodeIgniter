@@ -119,6 +119,77 @@ return [
             ],
         ],
     ],
+    // app/Language/es/App.php
+'tasks' => [
+    'title' => 'Tareas',
+    'subtitle' => 'Gestiona tus tareas y trabajos',
+    'create_new' => 'Nueva Tarea',
+    'export' => 'Exportar',
+    
+    // Filtros
+    'filter_by_teacher' => 'Filtrar por profesor',
+    'filter_by_course' => 'Filtrar por curso',
+    'filter_by_status' => 'Filtrar por estado',
+    'filter_by_priority' => 'Filtrar por prioridad',
+    'all_teachers' => 'Todos los profesores',
+    'all_courses' => 'Todos los cursos',
+    'all_status' => 'Todos los estados',
+    'all_priorities' => 'Todas las prioridades',
+    
+    // Estados
+    'status_pending' => 'Pendiente',
+    'status_in_progress' => 'En Progreso',
+    'status_completed' => 'Completado',
+    'status_overdue' => 'Vencida',
+    
+    // Prioridades
+    'priority_low' => 'Baja',
+    'priority_medium' => 'Media',
+    'priority_high' => 'Alta',
+    'priority_urgent' => 'Urgente',
+    
+    // Tabla
+    'task_name' => 'Nombre de Tarea',
+    'course' => 'Curso',
+    'teacher' => 'Profesor',
+    'due_date' => 'Fecha Límite',
+    'priority' => 'Prioridad',
+    'status' => 'Estado',
+    'students_assigned' => 'Estudiantes Asignados',
+    'actions' => 'Acciones',
+    
+    // Modal crear
+    'create_new_task' => 'Crear Nueva Tarea',
+    'select_course' => 'Seleccionar curso',
+    'description' => 'Descripción',
+    'max_points' => 'Puntos Máximos',
+    'assign_to_teacher' => 'Asignar a profesor',
+    'select_teacher' => 'Seleccionar profesor',
+    'attachments' => 'Archivos Adjuntos',
+    'attachments_help' => 'Puedes adjuntar múltiples archivos (PDF, Word, imágenes)',
+    
+    // Modal entregar (estudiantes)
+    'submit_task' => 'Entregar Tarea',
+    'submission_notes' => 'Notas de Entrega',
+    'notes_placeholder' => 'Agrega cualquier comentario sobre tu entrega...',
+    'upload_files' => 'Subir Archivos',
+    'files_help' => 'Sube los archivos de tu trabajo',
+    'submit_work' => 'Entregar Trabajo',
+    
+    // Mensajes
+    'no_tasks_found' => 'No se encontraron tareas',
+    'task_created' => 'Tarea creada exitosamente',
+    'task_updated' => 'Tarea actualizada exitosamente',
+    'task_deleted' => 'Tarea eliminada exitosamente',
+    'task_submitted' => 'Tarea entregada exitosamente',
+    
+    // Acciones
+    'view_task' => 'Ver Tarea',
+    'edit_task' => 'Editar Tarea',
+    'delete_task' => 'Eliminar Tarea',
+    'grade_task' => 'Calificar Tarea',
+    'download_files' => 'Descargar Archivos',
+],
     'assignments' => [
         'title' => 'Asignaciones',
         'subtitle' => 'Gestiona tus tareas y asignaciones',

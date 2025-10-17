@@ -21,6 +21,77 @@ return [
         'no' => 'No',
     ],
     // app/Language/en/App.php
+'tasks' => [
+    'title' => 'Tasks',
+    'subtitle' => 'Manage your tasks and assignments',
+    'create_new' => 'New Task',
+    'export' => 'Export',
+    
+    // Filters
+    'filter_by_teacher' => 'Filter by teacher',
+    'filter_by_course' => 'Filter by course',
+    'filter_by_status' => 'Filter by status',
+    'filter_by_priority' => 'Filter by priority',
+    'all_teachers' => 'All teachers',
+    'all_courses' => 'All courses',
+    'all_status' => 'All statuses',
+    'all_priorities' => 'All priorities',
+    
+    // Statuses
+    'status_pending' => 'Pending',
+    'status_in_progress' => 'In Progress',
+    'status_completed' => 'Completed',
+    'status_overdue' => 'Overdue',
+    
+    // Priorities
+    'priority_low' => 'Low',
+    'priority_medium' => 'Medium',
+    'priority_high' => 'High',
+    'priority_urgent' => 'Urgent',
+    
+    // Table
+    'task_name' => 'Task Name',
+    'course' => 'Course',
+    'teacher' => 'Teacher',
+    'due_date' => 'Due Date',
+    'priority' => 'Priority',
+    'status' => 'Status',
+    'students_assigned' => 'Students Assigned',
+    'actions' => 'Actions',
+    
+    // Create modal
+    'create_new_task' => 'Create New Task',
+    'select_course' => 'Select course',
+    'description' => 'Description',
+    'max_points' => 'Max Points',
+    'assign_to_teacher' => 'Assign to teacher',
+    'select_teacher' => 'Select teacher',
+    'attachments' => 'Attachments',
+    'attachments_help' => 'You can attach multiple files (PDF, Word, images)',
+    
+    // Submit modal (students)
+    'submit_task' => 'Submit Task',
+    'submission_notes' => 'Submission Notes',
+    'notes_placeholder' => 'Add any comments about your submission...',
+    'upload_files' => 'Upload Files',
+    'files_help' => 'Upload your work files',
+    'submit_work' => 'Submit Work',
+    
+    // Messages
+    'no_tasks_found' => 'No tasks found',
+    'task_created' => 'Task created successfully',
+    'task_updated' => 'Task updated successfully',
+    'task_deleted' => 'Task deleted successfully',
+    'task_submitted' => 'Task submitted successfully',
+    
+    // Actions
+    'view_task' => 'View Task',
+    'edit_task' => 'Edit Task',
+    'delete_task' => 'Delete Task',
+    'grade_task' => 'Grade Task',
+    'download_files' => 'Download Files',
+],
+    // app/Language/en/App.php
     'courses' => [
         'title' => 'Courses',
         'subtitle' => 'Manage your courses and materials',

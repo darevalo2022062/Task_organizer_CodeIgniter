@@ -72,18 +72,17 @@ class Auth extends BaseController
                 'exp'=> time()+60*60*24*30,
             ];
             $enc = service('encrypter')->encrypt(json_encode($payload));
-            response()->setCookie(
-                name:'remember',
-                value: base64_encode($enc),
-                expire: 60*60*24*30,
-                path:'/', domain:'',
-                secure: ENVIRONMENT==='production',
-                httponly:true,
-                samesite:'Lax'
+            setcookie(
+                'remember',
+                base64_encode($enc),
+                time() + 60*60*24*30,
+                '/',
+                '',
+                false,
+                true
             );
         }
         
-        //
         return redirect()->to(uri: base_url('dashboard')) ->with('success', lang('App.auth.login.success'));
     }
     

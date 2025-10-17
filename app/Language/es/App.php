@@ -1,6 +1,55 @@
 <?php
 return [
     'brand' => 'Task Organizer',
+    'dashboard' => [
+        'title' => 'Dashboard',
+        'welcome' => 'Bienvenido',
+        'subtitle' => 'Resumen de tu actividad',
+        'today' => 'Hoy es',
+        
+        // Estudiantes
+        'student' => [
+            'courses_enrolled' => 'Cursos Inscritos',
+            'pending_tasks' => 'Tareas Pendientes',
+            'completed_tasks' => 'Tareas Completadas',
+            'average_grade' => 'Promedio General',
+        ],
+        
+        // Profesores
+        'teacher' => [
+            'active_courses' => 'Cursos Activos',
+            'total_students' => 'Total Estudiantes',
+            'tasks_to_grade' => 'Tareas por Calificar',
+            'avg_course_rating' => 'Rating Promedio',
+        ],
+        
+        // Administradores
+        'admin' => [
+            'total_users' => 'Total Usuarios',
+            'active_courses' => 'Cursos Activos',
+            'system_health' => 'Salud del Sistema',
+            'storage_used' => 'Almacenamiento Usado',
+        ],
+        
+        // Acciones rápidas
+        'quick_actions' => 'Acciones Rápidas',
+        'actions' => [
+            'view_tasks' => 'Ver Tareas',
+            'my_courses' => 'Mis Cursos',
+            'create_task' => 'Crear Tarea',
+            'manage_courses' => 'Gestionar Cursos',
+            'manage_users' => 'Gestionar Usuarios',
+            'system_settings' => 'Configuración',
+        ],
+        
+        // Actividad reciente
+        'recent_activity' => 'Actividad Reciente',
+        'activity' => [
+            'completed_task' => 'Completaste la tarea "Introducción a PHP"',
+            'joined_course' => 'Te uniste al curso "Matemáticas Avanzadas"',
+            'new_message' => 'Tienes un nuevo mensaje del profesor',
+        ],
+    ],
     'common' => [
         'view' => 'Ver Detalles',
         'save' => 'Guardar Cambios',
@@ -37,57 +86,58 @@ return [
         'information' => 'Información',
         'quick_actions' => 'Acciones Rápidas',
     ],
+    
     // app/Language/es/App.php
     'users' => [
-    'title' => 'Gestión de Usuarios',
-    'subtitle' => 'Administra todos los usuarios del sistema',
-    'create_new' => 'Nuevo Usuario',
-    'export' => 'Exportar',
-    'updated_at' => 'Última Modifi',
-    'edit_user' => 'Editar Usuario',
-    'statistics' => 'Estadísticas',
-    'enrolled_courses' => 'Cursos Inscritos',
-    'info_change_password' => 'La contraseña ingresasda será enviada al usuario por email.',
-    'set_new_password' => 'Establecer Nueva Contraseña',
-    
-    // Filtros y búsqueda
-    'search' => 'Buscar',
-    'search_placeholder' => 'Buscar por nombre o email...',
-    'filter_by_role' => 'Filtrar por rol',
-    'filter_by_status' => 'Filtrar por estado',
-    'all_roles' => 'Todos los roles',
-    'all_status' => 'Todos los estados',
-    
-    // Roles
-    'role_admin' => 'Administrador',
-    'role_teacher' => 'Profesor',
-    'role_student' => 'Estudiante',
-    
-    // Estados
-    'status_active' => 'Activo',
-    'status_inactive' => 'Inactivo',
-    
-    // Tabla
-    'user' => 'Usuario',
-    'name' => 'Nombre',
-    'email' => 'Correo Electrónico',
-    'role' => 'Rol',
-    'status' => 'Estado',
-    'email_verified' => 'Email Verificado',
-    'created_at' => 'Fecha de Registro',
-    'verified' => 'Verificado',
-    'not_verified' => 'No Verificado',
-    
-    // Modal crear
-    'create_new_user' => 'Crear Nuevo Usuario',
-    'password' => 'Contraseña',
-    'active_account' => 'Cuenta activa',
-    
-    // Mensajes
-    'no_users_found' => 'No se encontraron usuarios',
-    'create_first_user' => 'Crea el primer usuario para comenzar',
-    'confirm_delete' => '¿Estás seguro de que quieres eliminar este usuario? Esta acción no se puede deshacer.',
-    'users' => 'usuarios',
+        'title' => 'Gestión de Usuarios',
+        'subtitle' => 'Administra todos los usuarios del sistema',
+        'create_new' => 'Nuevo Usuario',
+        'export' => 'Exportar',
+        'updated_at' => 'Última Modifi',
+        'edit_user' => 'Editar Usuario',
+        'statistics' => 'Estadísticas',
+        'enrolled_courses' => 'Cursos Inscritos',
+        'info_change_password' => 'La contraseña ingresasda será enviada al usuario por email.',
+        'set_new_password' => 'Establecer Nueva Contraseña',
+        
+        // Filtros y búsqueda
+        'search' => 'Buscar',
+        'search_placeholder' => 'Buscar por nombre o email...',
+        'filter_by_role' => 'Filtrar por rol',
+        'filter_by_status' => 'Filtrar por estado',
+        'all_roles' => 'Todos los roles',
+        'all_status' => 'Todos los estados',
+        
+        // Roles
+        'role_admin' => 'Administrador',
+        'role_teacher' => 'Profesor',
+        'role_student' => 'Estudiante',
+        
+        // Estados
+        'status_active' => 'Activo',
+        'status_inactive' => 'Inactivo',
+        
+        // Tabla
+        'user' => 'Usuario',
+        'name' => 'Nombre',
+        'email' => 'Correo Electrónico',
+        'role' => 'Rol',
+        'status' => 'Estado',
+        'email_verified' => 'Email Verificado',
+        'created_at' => 'Fecha de Registro',
+        'verified' => 'Verificado',
+        'not_verified' => 'No Verificado',
+        
+        // Modal crear
+        'create_new_user' => 'Crear Nuevo Usuario',
+        'password' => 'Contraseña',
+        'active_account' => 'Cuenta activa',
+        
+        // Mensajes
+        'no_users_found' => 'No se encontraron usuarios',
+        'create_first_user' => 'Crea el primer usuario para comenzar',
+        'confirm_delete' => '¿Estás seguro de que quieres eliminar este usuario? Esta acción no se puede deshacer.',
+        'users' => 'usuarios',
     ],
     // app/Language/es/App.php
     'courses' => [
@@ -203,8 +253,8 @@ return [
     'edit'=> 'Editar Tarea',
     'delete'=> 'Eliminar Tarea',
     'created_at'=> 'Fecha de Creación',
-
-        //Submit
+    
+    //Submit
     'submit_instructions' => 'Entrega tu trabajo para esta tarea',
     'submission_warning' => 'Asegúrate de que todos los archivos estén correctos antes de enviar.',
     'notes_help' => 'Agrega cualquier comentario sobre tu entrega...',
@@ -273,162 +323,157 @@ return [
     'grade_task' => 'Calificar Tarea',
     'download_files' => 'Descargar Archivos',
 ],
-    'assignments' => [
-        'title' => 'Asignaciones',
-        'subtitle' => 'Gestiona tus tareas y asignaciones',
-        'create_new' => 'Nueva Asignación',
-        'export' => 'Exportar',
-        
-        // Filtros
-        'filter_by_teacher' => 'Filtrar por profesor',
-        'filter_by_course' => 'Filtrar por curso',
-        'filter_by_status' => 'Filtrar por estado',
-        'all_teachers' => 'Todos los profesores',
-        'all_courses' => 'Todos los cursos',
-        'all_status' => 'Todos los estados',
-        
-        // Estados
-        'status_pending' => 'Pendiente',
-        'status_in_progress' => 'En Progreso',
-        'status_completed' => 'Completado',
-        'status_graded' => 'Calificado',
-        
-        // Tabla
-        'assignment_name' => 'Nombre de Asignación',
-        'course' => 'Curso',
-        'teacher' => 'Profesor',
-        'due_date' => 'Fecha Límite',
-        'status' => 'Estado',
-        'grade' => 'Calificación',
-        'students_assigned' => 'Estudiantes Asignados',
-        'actions' => 'Acciones',
-        
-        // Modal crear
-        'create_new_assignment' => 'Crear Nueva Asignación',
-        'select_course' => 'Seleccionar curso',
-        'select_student' => 'Seleccionar estudiante',
-        'description' => 'Descripción',
-        'max_points' => 'Puntos Máximos',
-        'assign_to_teacher' => 'Asignar a profesor',
-        'select_teacher' => 'Seleccionar profesor',
-        
-        // Mensajes
-        'no_assignments_found' => 'No se encontraron asignaciones',
-        'assignment_created' => 'Asignación creada exitosamente',
-        'assignment_updated' => 'Asignación actualizada exitosamente',
-        'assignment_deleted' => 'Asignación eliminada exitosamente',
-        
-        // Acciones
-        'view_assignment' => 'Ver Asignación',
-        'edit_assignment' => 'Editar Asignación',
-        'delete_assignment' => 'Eliminar Asignación',
-        'submit_assignment' => 'Entregar Asignación',
-        'grade_assignment' => 'Calificar Asignación',
+'assignments' => [
+    'title' => 'Asignaciones',
+    'subtitle' => 'Gestiona tus tareas y asignaciones',
+    'create_new' => 'Nueva Asignación',
+    'export' => 'Exportar',
+    
+    // Filtros
+    'filter_by_teacher' => 'Filtrar por profesor',
+    'filter_by_course' => 'Filtrar por curso',
+    'filter_by_status' => 'Filtrar por estado',
+    'all_teachers' => 'Todos los profesores',
+    'all_courses' => 'Todos los cursos',
+    'all_status' => 'Todos los estados',
+    
+    // Estados
+    'status_pending' => 'Pendiente',
+    'status_in_progress' => 'En Progreso',
+    'status_completed' => 'Completado',
+    'status_graded' => 'Calificado',
+    
+    // Tabla
+    'assignment_name' => 'Nombre de Asignación',
+    'course' => 'Curso',
+    'teacher' => 'Profesor',
+    'due_date' => 'Fecha Límite',
+    'status' => 'Estado',
+    'grade' => 'Calificación',
+    'students_assigned' => 'Estudiantes Asignados',
+    'actions' => 'Acciones',
+    
+    // Modal crear
+    'create_new_assignment' => 'Crear Nueva Asignación',
+    'select_course' => 'Seleccionar curso',
+    'select_student' => 'Seleccionar estudiante',
+    'description' => 'Descripción',
+    'max_points' => 'Puntos Máximos',
+    'assign_to_teacher' => 'Asignar a profesor',
+    'select_teacher' => 'Seleccionar profesor',
+    
+    // Mensajes
+    'no_assignments_found' => 'No se encontraron asignaciones',
+    'assignment_created' => 'Asignación creada exitosamente',
+    'assignment_updated' => 'Asignación actualizada exitosamente',
+    'assignment_deleted' => 'Asignación eliminada exitosamente',
+    
+    // Acciones
+    'view_assignment' => 'Ver Asignación',
+    'edit_assignment' => 'Editar Asignación',
+    'delete_assignment' => 'Eliminar Asignación',
+    'submit_assignment' => 'Entregar Asignación',
+    'grade_assignment' => 'Calificar Asignación',
+],
+'profile' => [
+    'title' => 'Perfil - Task Organizer',
+    'back_to_dashboard' => 'Volver al Panel',
+    'user_profile' => 'Información Personal',
+    'edit_profile' => 'Editar Perfil',
+    'profile_picture' => 'Foto de Perfil',
+    'change_picture' => 'Cambiar Foto',
+    'delete_picture' => 'Eliminar Foto',
+    'name' => 'Nombre',
+    'email' => 'Correo Electrónico',
+    'role' => 'Rol',
+    'joined' => 'Miembro desde',
+    'update_profile' => 'Actualizar Perfil',
+    'confirm_changes' => 'Por tu seguridad, ingresa tu contraseña para confirmar los cambios.',
+    'enter_password_to_save' => 'Ingresa tu contraseña para guardar los cambios',
+    'security' => [
+        'title' => 'Seguridad de la Cuenta',
+        'description' => 'Actualiza tu contraseña para mantener tu cuenta segura.',
+        'change_password' => 'Cambiar Contraseña',
+        'current_password' => 'Contraseña Actual',
+        'new_password' => 'Nueva Contraseña',
+        'confirm_new_password' => 'Confirmar Nueva Contraseña',
+        'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
     ],
-    'dashboard' => [
-        'title' => 'Panel de Control - Task Organizer',
-        'welcome' => 'Bienvenido',
-        'intro' => 'Aquí puedes gestionar tus tareas y proyectos de manera eficiente.',
+    'image' => [
+        'select' => 'Seleccionar imagen',
+        'current' => 'Imagen actual',
+        'remove' => 'Eliminar imagen',
+        'help' => 'Formatos permitidos: JPG, PNG, GIF. Máx. 2MB.',
+        'save' => 'Guardar Foto',
+        'text_null' => 'No se ha seleccionado ninguna imagen.',
+        'delete_confirm' => '¿Estás seguro de que deseas eliminar tu foto de perfil?',
+        'delete_success' => 'Foto de perfil eliminada exitosamente.',
     ],
-    'profile' => [
-        'title' => 'Perfil - Task Organizer',
-        'back_to_dashboard' => 'Volver al Panel',
-        'user_profile' => 'Información Personal',
-        'edit_profile' => 'Editar Perfil',
-        'profile_picture' => 'Foto de Perfil',
-        'change_picture' => 'Cambiar Foto',
-        'delete_picture' => 'Eliminar Foto',
-        'name' => 'Nombre',
+],
+'auth' => [
+    'logout' => [
+        'success' => 'Has cerrado sesión exitosamente.',
+    ],
+    'email'=>[
+        'new_password_set' => 'Un administrador ha establecido una nueva contraseña para tu cuenta. Por favor, utiliza la siguiente contraseña para iniciar sesión:',
+    ],
+    'login' => [
+        'title' => 'Iniciar Sesión',
         'email' => 'Correo Electrónico',
-        'role' => 'Rol',
-        'joined' => 'Miembro desde',
-        'update_profile' => 'Actualizar Perfil',
-        'confirm_changes' => 'Por tu seguridad, ingresa tu contraseña para confirmar los cambios.',
-        'enter_password_to_save' => 'Ingresa tu contraseña para guardar los cambios',
-        'security' => [
-            'title' => 'Seguridad de la Cuenta',
-            'description' => 'Actualiza tu contraseña para mantener tu cuenta segura.',
-            'change_password' => 'Cambiar Contraseña',
-            'current_password' => 'Contraseña Actual',
-            'new_password' => 'Nueva Contraseña',
-            'confirm_new_password' => 'Confirmar Nueva Contraseña',
+        'password' => 'Contraseña',
+        'submit' => 'Entrar',
+        'success' => '¡Inicio de sesión exitoso! Bienvenido de nuevo.',
+        'register_link' => '¿No tienes una cuenta? Regístrate',
+        'remember_me' => 'Recuérdame',
+        'welcome' => '¡Bienvenido de nuevo!',
+        'verified' => 'Tu correo ha sido verificado exitosamente. Ahora puedes iniciar sesión.',
+        'forgot_password' => '¿Olvidaste tu contraseña?',
+        'error' => [
+            'invalid_credentials' => 'Credenciales inválidas',
+            'inactive_user' => 'Usuario inactivo. Por favor, verifica tu correo.',
+            'email_not_verified' => 'Correo no verificado. Por favor, verifica tu correo.',
+            'email_verified_link' => 'El enlace de verificación es inválido o ya fue usado.',
+            ]
+        ],
+        'forgot_password' => [
+            'title' => 'Recuperar Contraseña',
+            'instructions' => 'Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.',
+            'email' => 'Correo Electrónico',
+            'email_placeholder' => 'tu@ejemplo.com',
+            'submit' => 'Enviar Enlace de Recuperación',
+            'back_to_login' => 'Volver al Inicio de Sesión',
+            'email_not_exists'=> 'El correo electrónico no existe.',
+            'sended' => 'Instrucciones enviadas a tu correo.',
+            'password_reset_success' => 'Contraseña actualizada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.',
+            'password_reset_failed' => 'Error al actualizar la contraseña. Por favor, intenta nuevamente.',
+        ],
+        'new_password' => [
+            'title' => 'Establecer Nueva Contraseña',
+            'instructions' => 'Ingresa tu nueva contraseña. Asegúrate de que sea segura y diferente de las anteriores.',
+            'password' => 'Nueva Contraseña',
+            'password_placeholder' => 'Mínimo 8 caracteres',
             'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password_confirm' => 'Confirmar Contraseña',
+            'password_confirm_placeholder' => 'Repite tu contraseña',
+            'submit' => 'Actualizar Contraseña',
+            'back_to_login' => 'Volver al Inicio de Sesión'
         ],
-        'image' => [
-            'select' => 'Seleccionar imagen',
-            'current' => 'Imagen actual',
-            'remove' => 'Eliminar imagen',
-            'help' => 'Formatos permitidos: JPG, PNG, GIF. Máx. 2MB.',
-            'save' => 'Guardar Foto',
-            'text_null' => 'No se ha seleccionado ninguna imagen.',
-            'delete_confirm' => '¿Estás seguro de que deseas eliminar tu foto de perfil?',
-            'delete_success' => 'Foto de perfil eliminada exitosamente.',
-        ],
-    ],
-    'auth' => [
-        'logout' => [
-            'success' => 'Has cerrado sesión exitosamente.',
-        ],
-        'email'=>[
-            'new_password_set' => 'Un administrador ha establecido una nueva contraseña para tu cuenta. Por favor, utiliza la siguiente contraseña para iniciar sesión:',
-        ],
-        'login' => [
-            'title' => 'Iniciar Sesión',
+        'register' => [
+            'title' => 'Crear Cuenta',
+            'name' => 'Nombre Completo',
             'email' => 'Correo Electrónico',
             'password' => 'Contraseña',
-            'submit' => 'Entrar',
-            'success' => '¡Inicio de sesión exitoso! Bienvenido de nuevo.',
-            'register_link' => '¿No tienes una cuenta? Regístrate',
-            'remember_me' => 'Recuérdame',
-            'welcome' => '¡Bienvenido de nuevo!',
-            'verified' => 'Tu correo ha sido verificado exitosamente. Ahora puedes iniciar sesión.',
-            'forgot_password' => '¿Olvidaste tu contraseña?',
-            'error' => [
-                'invalid_credentials' => 'Credenciales inválidas',
-                'inactive_user' => 'Usuario inactivo. Por favor, verifica tu correo.',
-                'email_not_verified' => 'Correo no verificado. Por favor, verifica tu correo.',
-                'email_verified_link' => 'El enlace de verificación es inválido o ya fue usado.',
-                ]
-            ],
-            'forgot_password' => [
-                'title' => 'Recuperar Contraseña',
-                'instructions' => 'Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.',
-                'email' => 'Correo Electrónico',
-                'email_placeholder' => 'tu@ejemplo.com',
-                'submit' => 'Enviar Enlace de Recuperación',
-                'back_to_login' => 'Volver al Inicio de Sesión',
-                'email_not_exists'=> 'El correo electrónico no existe.',
-                'sended' => 'Instrucciones enviadas a tu correo.',
-                'password_reset_success' => 'Contraseña actualizada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.',
-                'password_reset_failed' => 'Error al actualizar la contraseña. Por favor, intenta nuevamente.',
-            ],
-            'new_password' => [
-                'title' => 'Establecer Nueva Contraseña',
-                'instructions' => 'Ingresa tu nueva contraseña. Asegúrate de que sea segura y diferente de las anteriores.',
-                'password' => 'Nueva Contraseña',
-                'password_placeholder' => 'Mínimo 8 caracteres',
-                'password_help' => 'La contraseña debe tener al menos 8 caracteres.',
-                'password_confirm' => 'Confirmar Contraseña',
-                'password_confirm_placeholder' => 'Repite tu contraseña',
-                'submit' => 'Actualizar Contraseña',
-                'back_to_login' => 'Volver al Inicio de Sesión'
-            ],
-            'register' => [
-                'title' => 'Crear Cuenta',
-                'name' => 'Nombre Completo',
-                'email' => 'Correo Electrónico',
-                'password' => 'Contraseña',
-                'password_confirm' => 'Confirmar Contraseña',
-                'submit' => 'Crear Cuenta',
-                'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
-                'success' => 'Registro exitoso. Por favor, verifica tu correo.',
-            ],
-            'mail_verify' => [
-                'title' => 'Verifica tu Correo',
-                'instruction' => 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico.',
-                'check_email' => 'Por favor revisa tu email y haz clic en el enlace para verificar tu cuenta.',
-                'spam_notice' => 'Si no ves el correo, por favor revisa tu carpeta de spam.',
-                'resend_button' => 'Reenviar Correo de Verificación',
-            ],
-            ]
-        ];
+            'password_confirm' => 'Confirmar Contraseña',
+            'submit' => 'Crear Cuenta',
+            'login_link' => '¿Ya tienes una cuenta? Inicia Sesión',
+            'success' => 'Registro exitoso. Por favor, verifica tu correo.',
+        ],
+        'mail_verify' => [
+            'title' => 'Verifica tu Correo',
+            'instruction' => 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico.',
+            'check_email' => 'Por favor revisa tu email y haz clic en el enlace para verificar tu cuenta.',
+            'spam_notice' => 'Si no ves el correo, por favor revisa tu carpeta de spam.',
+            'resend_button' => 'Reenviar Correo de Verificación',
+        ],
+        ]
+    ];

@@ -47,6 +47,8 @@ return [
     'edit_user' => 'Editar Usuario',
     'statistics' => 'Estadísticas',
     'enrolled_courses' => 'Cursos Inscritos',
+    'info_change_password' => 'La contraseña ingresasda será enviada al usuario por email.',
+    'set_new_password' => 'Establecer Nueva Contraseña',
     
     // Filtros y búsqueda
     'search' => 'Buscar',
@@ -366,6 +368,9 @@ return [
     'auth' => [
         'logout' => [
             'success' => 'Has cerrado sesión exitosamente.',
+        ],
+        'email'=>[
+            'new_password_set' => 'Un administrador ha establecido una nueva contraseña para tu cuenta. Por favor, utiliza la siguiente contraseña para iniciar sesión:',
         ],
         'login' => [
             'title' => 'Iniciar Sesión',

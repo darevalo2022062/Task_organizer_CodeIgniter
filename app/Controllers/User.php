@@ -121,5 +121,32 @@ class User extends BaseController
         return redirect()->back()->with('success', 'Avatar actualizado');
         
     }
+
+    public function setNewPassword($userId){
+        $rules = [
+            'new_password' => 'required|min_length[8]',
+        ];
+        
+        if (! $this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        
+        $userModel = model(UserModel::class);
+        $user = $userModel->find($userId);
+        
+        if (! $user) {
+            return redirect()->back()->with('error', lang('App.common.user_not_found'));
+        }
+        
+        $userModel->update($userId, [
+            'password_hash' => password_hash($this->request->getPost('new_password'), PASSWORD_BCRYPT),
+        ]);
+        
+        $AuthMail = new AuthMail();
+        $AuthMail->setNewPassword($user, $this->request->getPost('new_password'));
+        
+
+        return redirect()->back()->with('success', lang('App.common.update_success'));
+    }
     
 }

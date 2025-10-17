@@ -137,4 +137,30 @@ class AuthMail extends BaseController
         return $blade->render('auth.create_new_password', ['userId' => $userId, 'token' => $encrypt]);
     }
     
+    public function setNewPassword($user, $pass)
+    {
+        $email = service('email');
+        $blade = service('blade');
+        
+        $email->setFrom(config('Email')->fromEmail, config('Email')->fromName);
+        
+        $email->setMailType('html');
+        $email->setNewline("\r\n");
+        $email->setCRLF("\r\n");
+        
+        $email->setTo($user['email']);
+        $email->setSubject('Nueva Contraseña Establecida');
+        $email->setMessage($blade->render('emails.new_password_set', [
+            'name' => $user['name'],
+            'newPassword' => $pass,
+        ]));
+        
+        if (!$email->send()) {
+            log_message('error', 'Email send failed: {debug}', [
+                'debug' => print_r($email->printDebugger(['headers', 'subject', 'body']), true),
+            ]);
+            return false;
+        }
+    }
+    
 }

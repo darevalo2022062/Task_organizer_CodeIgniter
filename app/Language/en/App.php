@@ -44,6 +44,8 @@ return [
     'edit_user' => 'Edit User',
     'statistics' => 'Statistics',
     'enrolled_courses' => 'Enrolled Courses',
+    'info_change_password' => 'The entered password will be sent to the user via email.',
+    'set_new_password' => 'Set New Password',
     
     // Filters and search
     'search' => 'Search',
@@ -360,6 +362,9 @@ return [
 ],
 ],  
 'auth' => [
+    'email'=>[
+            'new_password_set' => 'An administrator has set a new password for your account. Please use the following password to log in:',
+        ],
 'logout' => [
 'success' => 'You have been logged out successfully.',
 ],

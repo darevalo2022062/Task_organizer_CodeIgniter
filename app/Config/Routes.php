@@ -79,6 +79,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->get('edit-page/(:num)', 'User::editPage/$1');
         $routes->post('update/(:num)', 'User::edit/$1', ['as' => 'users.update']);
         $routes->post('update-avatar/(:num)', 'User::updateAvatar/$1', ['as' => 'users.update_avatar']);
+        $routes->post('set-new-password/(:num)', 'User::setNewPassword/$1', ['as' => 'users.set_new_password']);
     });
     
 });

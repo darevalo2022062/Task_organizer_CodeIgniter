@@ -129,7 +129,6 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2 mt-4">
-                                    <button type="button" class="btn btn-secondary">{{ lang('App.common.cancel') }}</button>
                                     <button type="submit" class="btn btn-primary">
                                         <i class="bi bi-check-lg me-2"></i>{{ lang('App.common.save') }}
                                     </button>
@@ -227,29 +226,29 @@
     </div>
 </div>
 
-<!-- Modal: Resetear Contraseña -->
+<!-- Modal: Cambiar Contraseña -->
 <div class="modal fade" id="cambiarPasswordModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Resetear Contraseña</h5>
+                <h5 class="modal-title">{{ lang('App.profile.security.change_password') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form method="post" action="{{ route_to('users.reset_password', $user['id']) }}">
+            <form method="post" action="{{ route_to('users.set_new_password', $user['id']) }}">
                 @csrf
                 <div class="modal-body">
                     <div class="alert alert-info">
                         <i class="bi bi-info-circle me-2"></i>
-                        Se generará una nueva contraseña aleatoria y se enviará al usuario por email.
+                        {{ lang('App.users.info_change_password') }}
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Confirmar Acción</label>
-                        <input type="text" class="form-control" placeholder="Escribe 'RESET' para confirmar" required>
+                        <label class="form-label">{{ lang('App.users.set_new_password') }}</label>
+                        <input type="password" class="form-control" placeholder="*******" required name="new_password" id="new_password">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-warning">Resetear Contraseña</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>
+                    <button type="submit" class="btn btn-warning">{{ lang('App.common.save') }}</button>
                 </div>
             </form>
         </div>

@@ -85,6 +85,12 @@ class Course extends BaseController
         }
         $courses->update($id, ['status' => 0]);
         $courses->delete($id);
+        
+        //delete assignments and tasks related to the course
+        $assignmentModel = model(AssignmentModel::class);
+        $assignmentModel->where('course_id', $id)->update(['status' => 0]);
+        $assignmentModel->where('id_course', $id)->delete();
+        
         return redirect()->back()->with('success', lang('App.courses.course_deleted'));
     }
     

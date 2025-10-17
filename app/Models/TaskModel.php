@@ -13,6 +13,8 @@ class TaskModel extends Model
     protected $allowedFields = [
         'name',
         'description',
+        'grade',
+        'due_date',
         'course_id',
         'status',
     ];

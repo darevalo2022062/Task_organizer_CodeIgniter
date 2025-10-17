@@ -119,42 +119,25 @@
                                 <label class="form-label">{{ lang('App.tasks.course') }}</label>
                                 <select class="form-select" name="course_id" required>
                                     <option value="">{{ lang('App.tasks.select_course') }}</option>
+                                    @foreach ($courses as $course)
+                                        <option value="{{ $course['id'] }}">{{ $course['name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label">{{ lang('App.tasks.description') }}</label>
                                 <textarea class="form-control" name="description" rows="3"></textarea>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label class="form-label">{{ lang('App.tasks.due_date') }}</label>
                                 <input type="datetime-local" class="form-control" name="due_date" required>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label">{{ lang('App.tasks.priority') }}</label>
-                                <select class="form-select" name="priority" required>
-                                    <option value="low">{{ lang('App.tasks.priority_low') }}</option>
-                                    <option value="medium" selected>{{ lang('App.tasks.priority_medium') }}</option>
-                                    <option value="high">{{ lang('App.tasks.priority_high') }}</option>
-                                    <option value="urgent">{{ lang('App.tasks.priority_urgent') }}</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 mb-3">
+                            
+                            <div class="col-md-6 mb-3">
                                 <label class="form-label">{{ lang('App.tasks.max_points') }}</label>
-                                <input type="number" class="form-control" name="max_points" min="1" value="100">
+                                <input type="number" class="form-control" name="grade" id="grade" min="1" value="10" max="10">
                             </div>
-                            @if(session('role') === 'admin')
-                            <div class="col-12 mb-3">
-                                <label class="form-label">{{ lang('App.tasks.assign_to_teacher') }}</label>
-                                <select class="form-select" name="teacher_id">
-                                    <option value="">{{ lang('App.tasks.select_teacher') }}</option>
-                                </select>
-                            </div>
-                            @endif
-                            <div class="col-12 mb-3">
-                                <label class="form-label">{{ lang('App.tasks.attachments') }}</label>
-                                <input type="file" class="form-control" name="attachments[]" multiple>
-                                <div class="form-text">{{ lang('App.tasks.attachments_help') }}</div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="modal-footer">

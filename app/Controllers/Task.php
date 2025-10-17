@@ -22,7 +22,7 @@ class Task extends BaseController
             $data = [
                 'tasks' => $tasksData
             ];
-        
+            
         } else if (session()->get('role') === 'teacher') {
             $uid = (int) session()->get('uid');
             $courses = $courseModel->where('teacher_owner_id', $uid)->findAll();
@@ -35,24 +35,48 @@ class Task extends BaseController
                     'id' => $task['id'],
                     'name' => $task['name'],
                     'description' => $task['description'],
-                    'due_date' => $task['created_at'],
+                    'due_date' => $task['due_date'],
                     'status' => $task['status'],
                     'course_name' => $course['name'] ?? 'Unknown Course',
                 ];
-
             }
             $data = [
-                'tasks' => $taskViews
+                'tasks' => $taskViews,
+                'courses' => $courses
             ];
         } else if (session()->get('role') === 'admin') {
             $tasksData = $taskModel->findAll();
         } else {
             $tasksData = [];
-
+            
         }
         
         
         $blade = service(name: 'blade');
         return $blade->render('tasks/index', $data);
+    }
+    
+    public function create(){
+        $rules = [
+            'name' => 'required|string|max_length[255]',
+            'description' => 'permit_empty|string',
+            'due_date' => 'required|valid_date[Y-m-d\TH:i]',
+            'course_id' => 'required|integer|is_not_unique[courses.id]',
+            'grade' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[10]',
+        ];
+        
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        
+        $taskModel = model(TaskModel::class);
+        $taskModel->insert([
+            'name' => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'course_id' => $this->request->getPost('course_id'),
+            'grade' => $this->request->getPost('grade'),
+            'due_date' => $this->request->getPost('due_date'),
+        ]);
+        return redirect()->back()->with('success',lang('App.common.create_success'));
     }
 }

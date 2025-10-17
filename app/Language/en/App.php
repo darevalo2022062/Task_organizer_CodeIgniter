@@ -22,6 +22,9 @@ return [
         'confirm_delete' => 'Are you sure you want to delete this item?',
         'yes' => 'Yes',
         'no' => 'No',
+        'sort_by' => 'Sort by',
+        'ascending' => 'Ascending',
+        'descending' => 'Descending',
     ],
     // app/Language/en/App.php
 'tasks' => [
@@ -79,6 +82,7 @@ return [
     'status' => 'Status',
     'students_assigned' => 'Students Assigned',
     'actions' => 'Actions',
+    'created_at' => 'Creation Date',
     
     // Create modal
     'create_new_task' => 'Create New Task',

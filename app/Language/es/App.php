@@ -26,6 +26,9 @@ return [
         'confirm_delete' => '¿Estás seguro de que deseas eliminar este elemento?',
         'yes' => 'Sí',
         'no' => 'No',
+        'sort_by' => 'Ordenar por',
+        'ascending' => 'Ascendente',
+        'descending' => 'Descendente',
     ],
     // app/Language/es/App.php
     'courses' => [
@@ -140,6 +143,7 @@ return [
     'view_course' => 'Ver Curso',
     'edit'=> 'Editar Tarea',
     'delete'=> 'Eliminar Tarea',
+    'created_at'=> 'Fecha de Creación',
 
         //Submit
     'submit_instructions' => 'Entrega tu trabajo para esta tarea',

@@ -14,20 +14,35 @@ class Task extends BaseController
         $assigmentsModel = model(AssignmentModel::class);
         $courseModel = model(CourseModel::class);
         
+        $sortBy = $this->request->getGet('sort_by') ?? 'due_date';
+        $sortOrder = $this->request->getGet('sort_order') ?? 'desc';
+        
         if (session()->get('role') === 'student') {
             $uid = (int) session('uid');
             $assigments = $assigmentsModel->where('id_user', $uid)->findAll();
             $courseIds = array_column($assigments, 'id_course');
-            $tasksData = $taskModel->whereIn('course_id', $courseIds)->findAll();
+            
+            $tasksData = $taskModel
+            ->whereIn('course_id', $courseIds)
+            ->orderBy($sortBy, $sortOrder)
+            ->findAll();
+            
             $data = [
-                'tasks' => $tasksData
+                'tasks' => $tasksData,
+                'sort_by' => $sortBy,
+                'sort_order' => $sortOrder
             ];
             
         } else if (session()->get('role') === 'teacher') {
             $uid = (int) session()->get('uid');
             $courses = $courseModel->where('teacher_owner_id', $uid)->findAll();
             $courseIds = array_column($courses, 'id');
-            $tasksData = $taskModel->whereIn('course_id', $courseIds)->findAll();
+            
+            $tasksData = $taskModel
+            ->whereIn('course_id', $courseIds)
+            ->orderBy($sortBy, $sortOrder)
+            ->findAll();
+            
             $taskViews = [];
             foreach ($tasksData as $task) {
                 $course = $courseModel->where('id', $task['course_id'])->first();
@@ -38,14 +53,21 @@ class Task extends BaseController
                     'due_date' => $task['due_date'],
                     'status' => $task['status'],
                     'course_name' => $course['name'] ?? 'Unknown Course',
+                    'created_at' => $task['created_at'],
                 ];
             }
             $data = [
                 'tasks' => $taskViews,
-                'courses' => $courses
+                'courses' => $courses,
+                'sort_by' => $sortBy,
+                'sort_order' => $sortOrder
             ];
         } else if (session()->get('role') === 'admin') {
-            $tasksData = $taskModel->findAll();
+            // AGREGAR ORDENAMIENTO PARA ADMIN
+            $tasksData = $taskModel
+            ->orderBy($sortBy, $sortOrder)
+            ->findAll();
+            
             $courses = $courseModel->findAll();
             $taskViews = [];
             foreach ($tasksData as $task) {
@@ -57,22 +79,27 @@ class Task extends BaseController
                     'due_date' => $task['due_date'],
                     'status' => $task['status'],
                     'course_name' => $course['name'] ?? 'Unknown Course',
+                    'created_at' => $task['created_at'],
                 ];
             }
             $data = [
                 'tasks' => $taskViews,
-                'courses' => $courses
+                'courses' => $courses,
+                'sort_by' => $sortBy,
+                'sort_order' => $sortOrder
             ];
         } else {
             $tasksData = [];
-            
+            $data = [
+                'tasks' => $tasksData,
+                'sort_by' => $sortBy,
+                'sort_order' => $sortOrder
+            ];
         }
-        
         
         $blade = service(name: 'blade');
         return $blade->render('tasks/index', $data);
     }
-    
     public function create(){
         $rules = [
             'name' => 'required|string|max_length[255]',

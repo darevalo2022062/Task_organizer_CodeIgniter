@@ -28,6 +28,64 @@
         <!-- Lista de Tareas -->
         <div class="card card-soft">
             <div class="card-body">
+                <!-- Ordenamiento Funcional -->
+<!-- Versión Compacta Mejorada -->
+<!-- Con Separadores Visuales -->
+<div class="card card-soft border-0 bg-light mb-4">
+    <div class="card-body py-3">
+        <div class="d-flex flex-wrap align-items-center gap-1">
+            <div class="d-flex align-items-center me-3">
+                <i class="bi bi-funnel text-primary me-2"></i>
+                <span class="fw-medium text-dark">{{ lang('App.common.sort_by') }}</span>
+            </div>
+            
+            <!-- Fecha Límite -->
+            <div class="d-flex align-items-center border-end pe-3 me-3">
+                <span class="text-muted small me-2">{{ lang('App.tasks.due_date') }}</span>
+                <div class="btn-group btn-group-sm" role="group">
+                    <a href="?sort_by=due_date&sort_order=asc" 
+                       class="btn {{ $sort_by === 'due_date' && $sort_order === 'asc' ? 'btn-primary' : 'btn-outline-secondary' }} px-2">
+                        <i class="bi bi-arrow-up-short me-1"></i>{{ lang('App.common.ascending') }}
+                    </a>
+                    <a href="?sort_by=due_date&sort_order=desc" 
+                       class="btn {{ $sort_by === 'due_date' && $sort_order === 'desc' ? 'btn-primary' : 'btn-outline-secondary' }} px-2">
+                        <i class="bi bi-arrow-down-short me-1"></i>{{ lang('App.common.descending') }}
+                    </a>
+                </div>
+            </div>
+
+            <!-- Fecha Creación -->
+            <div class="d-flex align-items-center border-end pe-3 me-3">
+                <span class="text-muted small me-2">{{ lang('App.tasks.created_at') }}</span>
+                <div class="btn-group btn-group-sm" role="group">
+                    <a href="?sort_by=created_at&sort_order=asc" 
+                       class="btn {{ $sort_by === 'created_at' && $sort_order === 'asc' ? 'btn-primary' : 'btn-outline-secondary' }} px-2">
+                        <i class="bi bi-arrow-up-short me-1"></i>{{ lang('App.common.ascending') }}
+                    </a>
+                    <a href="?sort_by=created_at&sort_order=desc" 
+                       class="btn {{ $sort_by === 'created_at' && $sort_order === 'desc' ? 'btn-primary' : 'btn-outline-secondary' }} px-2">
+                        <i class="bi bi-arrow-down-short me-1"></i>{{ lang('App.common.descending') }}
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nombre -->
+            <div class="d-flex align-items-center">
+                <span class="text-muted small me-2">{{ lang('App.tasks.task_name') }}</span>
+                <div class="btn-group btn-group-sm" role="group">
+                    <a href="?sort_by=name&sort_order=asc" 
+                       class="btn {{ $sort_by === 'name' && $sort_order === 'asc' ? 'btn-primary' : 'btn-outline-secondary' }} px-2">
+                        <i class="bi bi-sort-alpha-down me-1"></i>A-Z
+                    </a>
+                    <a href="?sort_by=name&sort_order=desc" 
+                       class="btn {{ $sort_by === 'name' && $sort_order === 'desc' ? 'btn-primary' : 'btn-outline-secondary' }} px-2">
+                        <i class="bi bi-sort-alpha-down-alt me-1"></i>Z-A
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                 @if(session('role') === 'student')
                 <!-- Vista para estudiantes -->
                 <div class="table-responsive">
@@ -38,6 +96,7 @@
                                 <th>{{ lang('App.tasks.description') }}</th>
                                 <th>{{ lang('App.tasks.due_date') }}</th>
                                 <th>{{ lang('App.tasks.status') }}</th>
+                                <th>{{ lang('App.tasks.created_at') }}</th>
                                 <th>{{ lang('App.common.actions') }}</th>
                             </tr>
                         </thead>
@@ -49,6 +108,7 @@
                                 <td>{{ $task['description'] }}</td>
                                 <td style="color: darkcyan;">{{ date('d \d\e F \d\e Y \a \l\a\s H:i', strtotime($task['due_date'])) }}</td>
                                 <td>{{ $task['status'] === 0 ? lang('App.tasks.status_completed') : lang('App.tasks.status_pending') }}</td>
+                                <td style="font-size: small; ">{{ date('d \d\e F \d\e Y', strtotime($task['created_at'])) }}</td>
                                 <td>
                                     <a href="{{ base_url('tasks/view/' . $task['id']) }}" class="btn btn-sm btn-outline-secondary">
                                         <i class="bi bi-eye"></i> {{ lang('App.common.view') }}
@@ -72,6 +132,8 @@
                                 <th>{{ lang('App.tasks.course') }}</th>
                                 <th>{{ lang('App.tasks.due_date') }}</th>
                                 <th>{{ lang('App.tasks.status') }}</th>
+                                                                <th>{{ lang('App.tasks.created_at') }}</th>
+
                                 <th>{{ lang('App.common.actions') }}</th>
                             </tr>
                         </thead>
@@ -83,6 +145,8 @@
                                 <td>{{ $task['course_name'] }}</td>
                                 <td>{{ date('d \d\e F \d\e Y \a \l\a\s H:i', strtotime($task['due_date'])) }}</td>
                                 <td>{{ $task['status'] === 0 ? lang('App.common.desactive') : lang('App.common.active') }}</td>
+                                <td style="font-size: small; ">{{ date('d \d\e F \d\e Y', strtotime($task['created_at'])) }}</td>
+
                                 <td>
                                     <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-success">
                                         <i class="bi bi-eye"></i> {{ lang('App.common.view') }}

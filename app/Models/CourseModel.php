@@ -13,6 +13,7 @@ class CourseModel extends Model
     protected $allowedFields = [
         'name',
         'description',
+        'status',
         'teacher_owner_id',
     ];
     protected $deleteField = 'deleted_at';

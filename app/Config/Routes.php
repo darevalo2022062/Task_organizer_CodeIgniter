@@ -58,6 +58,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->group('courses', static function($routes) {
         $routes->get('/', 'Course::index', ['as' => 'courses']);
         $routes->post('create', 'Course::create', ['as' => 'courses.create']);
+        $routes->post('delete/(:num)', 'Course::delete/$1');
     });
 
 

@@ -49,31 +49,44 @@ class Course extends BaseController
         
         return $blade->render('courses/index', $data);
     }
-
+    
     public function create(){
-
+        
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
             'description' => 'permit_empty|max_length[1000]',
         ];
-
+        
         if (!$this->validate($rules)) {
             return redirect()->back()->with('errors', $this->validator->getErrors());
         }
-
+        
         $name = $this->request->getPost('name');
         $description = $this->request->getPost('description');
-
+        
         $courses = model(CourseModel::class);
-
+        
         $courses->insert([
             'name' => $name,
             'description' => $description,
             'teacher_owner_id' => session('uid'),
         ]);
-
+        
         return redirect()->back()->with('success', lang('App.courses.course_created'));
-
+        
+    }
+    public function delete($id){
+        $courses = model(CourseModel::class);
+        $course = $courses->find($id);
+        if(!$course){
+            return redirect()->back()->with('error', lang('App.courses.course_not_found'));
+        }
+        if(session('role') !== 'admin' && session('uid') != $course['teacher_owner_id']){
+            return redirect()->back()->with('error', lang('App.courses.unauthorized'));
+        }
+        $courses->update($id, ['status' => 0]);
+        $courses->delete($id);
+        return redirect()->back()->with('success', lang('App.courses.course_deleted'));
     }
     
     private function getStudentsCount($courseId)

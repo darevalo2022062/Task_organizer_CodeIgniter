@@ -52,6 +52,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->group('assignments', static function($routes) {
         $routes->get('/', 'Assignment::index', ['as' => 'assignments']);
         $routes->post('update', 'Assignment::update', ['as' => 'assignments.update']);
+        $routes->post('create', 'Assignment::create', ['as' => 'assignments.create']);
     });
 
     //? Courses

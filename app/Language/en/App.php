@@ -149,6 +149,7 @@ return [
         'create_new_assignment' => 'Create New Assignment',
         'select_course' => 'Select course',
         'description' => 'Description',
+        'select_student' => 'Select student',
         'max_points' => 'Max Points',
         'assign_to_teacher' => 'Assign to teacher',
         'select_teacher' => 'Select teacher',

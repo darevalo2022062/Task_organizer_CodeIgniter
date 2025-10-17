@@ -152,6 +152,7 @@ return [
         // Modal crear
         'create_new_assignment' => 'Crear Nueva Asignación',
         'select_course' => 'Seleccionar curso',
+        'select_student' => 'Seleccionar estudiante',
         'description' => 'Descripción',
         'max_points' => 'Puntos Máximos',
         'assign_to_teacher' => 'Asignar a profesor',

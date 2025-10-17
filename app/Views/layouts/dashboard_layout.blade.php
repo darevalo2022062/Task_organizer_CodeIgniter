@@ -199,7 +199,9 @@
         <!-- User dropdown -->
         <div class="dropdown ms-2">
     <button class="btn avatar-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi bi-person-circle"></i>
+        <img src="{{ session('avatar') ?? base_url('uploads/avatars/default.png') }}" class="rounded-circle" style="width: 35px;"
+  alt="Avatar" />
+
         <span class="text-truncate" style="max-width:140px;">
             {{ lang('App.nav.hello') ?? 'Hola,' }} 
             <strong>{{ session('name') ?? 'Usuario' }}</strong>

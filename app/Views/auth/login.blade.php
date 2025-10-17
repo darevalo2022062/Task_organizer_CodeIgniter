@@ -47,7 +47,7 @@
 
                             <div class="mb-3 form-check d-flex justify-content-between">
                                 <div>
-                                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                    <input type="checkbox" class="form-check-input" id="remember" name="remember" value="true">
                                 <label class="form-check-label"
                                     for="remember">{{ lang('App.auth.login.remember_me') }}</label>
                                 </div>

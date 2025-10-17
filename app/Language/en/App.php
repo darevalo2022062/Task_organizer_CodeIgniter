@@ -38,6 +38,7 @@ return [
     'create_new' => 'New User',
     'export' => 'Export',
     'updated_at' => 'Last Updated',
+    'edit_user' => 'Edit User',
     
     // Filters and search
     'search' => 'Search',

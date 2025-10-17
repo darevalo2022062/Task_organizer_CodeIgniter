@@ -42,6 +42,7 @@ return [
     'create_new' => 'Nuevo Usuario',
     'export' => 'Exportar',
     'updated_at' => 'Última Modifi',
+    'edit_user' => 'Editar Usuario',
     
     // Filtros y búsqueda
     'search' => 'Buscar',

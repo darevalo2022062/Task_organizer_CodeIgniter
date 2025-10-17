@@ -30,6 +30,21 @@ return [
     'create_new' => 'New Task',
     'export' => 'Export',
     'description' => 'Description',
+    'task_details' => 'Task Details',
+    'grade' => 'Grade',
+    'ponderation' => 'Ponderation',
+    'points' => 'Points',
+    'course_info' => 'Course Information',
+    'progress' => 'Progress',
+    'completion' => 'Completed in a',
+    'back_to_list' => 'Back to Task List',
+
+    //Submit
+    'submit_instructions' => 'Submit your work for this task',
+    'submission_warning' => 'Make sure all files are correct before submitting.',
+    'notes_help' => 'Add any comments about your submission...',
+    'selected_files' => 'Selected Files',
+
     // Filters
     'filter_by_teacher' => 'Filter by teacher',
     'filter_by_course' => 'Filter by course',

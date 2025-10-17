@@ -79,4 +79,22 @@ class Task extends BaseController
         ]);
         return redirect()->back()->with('success',lang('App.common.create_success'));
     }
+    
+    public function view($id){
+        $taskModel = model(TaskModel::class);
+        $task = $taskModel->find($id);
+        if (!$task) {
+            return redirect()->back()->with('error', lang('App.tasks.not_found'));
+        }
+        $courseModel = model(CourseModel::class);
+        $course = $courseModel->find($task['course_id']);
+
+        $data = [
+            'task' => $task,
+            'course' => $course,
+        ];
+
+        $blade = service(name: 'blade');
+        return $blade->render('tasks/view', $data);
+    }
 }

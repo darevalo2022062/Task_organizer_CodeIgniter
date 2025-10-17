@@ -47,10 +47,10 @@
                             <tr>
                                 <td>{{ $task['name'] }}</td>
                                 <td>{{ $task['description'] }}</td>
-                                    <td>{{ $task['created_at'] }}</td>
+                                <td style="color: darkcyan;">{{ date('d \d\e F \d\e Y \a \l\a\s H:i', strtotime($task['due_date'])) }}</td>
                                 <td>{{ $task['status'] === 0 ? lang('App.tasks.status_completed') : lang('App.tasks.status_pending') }}</td>
                                 <td>
-                                    <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-secondary">
+                                    <a href="{{ base_url('tasks/view/' . $task['id']) }}" class="btn btn-sm btn-outline-secondary">
                                         <i class="bi bi-eye"></i> {{ lang('App.common.view') }}
                                     </a>
                                 </td>
@@ -81,7 +81,7 @@
                             <tr>
                                 <td>{{ $task['name'] }}</td>
                                 <td>{{ $task['course_name'] }}</td>
-                                <td>{{ $task['due_date'] }}</td>
+                                <td>{{ date('d \d\e F \d\e Y \a \l\a\s H:i', strtotime($task['due_date'])) }}</td>
                                 <td>{{ $task['status'] === 0 ? lang('App.common.desactive') : lang('App.common.active') }}</td>
                                 <td>
                                     <a href="{{ route_to('tasks.view', $task['id']) }}" class="btn btn-sm btn-outline-success">

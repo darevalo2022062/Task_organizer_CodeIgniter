@@ -129,6 +129,20 @@ return [
     'create_new' => 'Nueva Tarea',
     'export' => 'Exportar',
     'description' => 'Descripción',
+    'task_details' => 'Detalles de la Tarea',
+    'grade' => 'Calificación',
+    'ponderation' => 'Ponderación',
+    'points' => 'Puntos',
+    'course_info' => 'Información del Curso',
+    'progress' => 'Progreso',
+    'completion' => 'Completado en un',
+    'back_to_list' => 'Volver a la Lista de Tareas',
+
+        //Submit
+    'submit_instructions' => 'Entrega tu trabajo para esta tarea',
+    'submission_warning' => 'Asegúrate de que todos los archivos estén correctos antes de enviar.',
+    'notes_help' => 'Agrega cualquier comentario sobre tu entrega...',
+    'selected_files' => 'Archivos Seleccionados',
     
     // Filtros
     'filter_by_teacher' => 'Filtrar por profesor',

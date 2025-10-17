@@ -83,6 +83,32 @@
       box-shadow: 0 6px 22px rgba(20,20,20,.06);
     }
 
+    .navbar-glass .nav-link {
+    border-radius: 999px;
+    padding: .45rem .9rem;
+    transition: transform .15s ease, background-color .15s ease, color .15s ease;
+    color: #ffffff !important;
+}
+
+.navbar-glass .nav-link:hover {
+    background: var(--app-primary-soft);
+    transform: translateY(-1px);
+}
+
+.navbar-glass .nav-link.active {
+    background: #2b4ad4ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 18px rgba(67,97,238,.25);
+}
+
+.navbar-glass .nav-link i {
+    color: #ffffff !important;
+}
+
+.navbar-glass .nav-link.active i {
+    color: #ffffff !important;
+}
+
     /* Footer */
     footer{ border-top:1px solid rgba(0,0,0,.06); }
 
@@ -154,82 +180,82 @@
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top">
     <div class="container">
-      <!-- Brand -->
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ base_url('/') }}">
-        <span class="brand-badge">
-          <i class="bi bi-backpack3-fill"></i>
-          <span>{{ lang('App.brand') ?? 'Task Organizer' }}</span>
-        </span>
-      </a>
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ base_url('/') }}">
+            <span class="brand-badge">
+                <i class="bi bi-backpack3-fill"></i>
+                <span>{{ lang('App.brand') ?? 'Task Organizer' }}</span>
+            </span>
+        </a>
 
-       <!-- Language toggle -->
+        <!-- Language toggle -->
         <div class="btn-group ms-2" role="group" aria-label="Cambiar idioma">
-          <a href="{{ base_url('lang/es') }}"
-             class="btn btn-sm {{ service('request')->getLocale()==='es' ? 'btn-light text-primary' : 'btn-outline-light' }}">ES</a>
-          <a href="{{ base_url('lang/en') }}"
-             class="btn btn-sm {{ service('request')->getLocale()==='en' ? 'btn-light text-primary' : 'btn-outline-light' }}">EN</a>
+            <a href="{{ base_url('lang/es') }}"
+                class="btn btn-sm {{ service('request')->getLocale()==='es' ? 'btn-light text-primary' : 'btn-outline-light' }}">ES</a>
+            <a href="{{ base_url('lang/en') }}"
+                class="btn btn-sm {{ service('request')->getLocale()==='en' ? 'btn-light text-primary' : 'btn-outline-light' }}">EN</a>
         </div>
 
-      <!-- Right actions (desktop) -->
-      <div class="d-none d-lg-flex align-items-center ms-auto gap-2">
-        
-        @if (session()->get('role') === 'admin')
-          <a class="nav-link {{ url_is('usuarios*') ? 'active' : '' }}" href="{{ base_url('users') }}" style="color: #ffffff !important;">
-              <i class="bi bi-people me-1" style="color: #ffffff !important;"></i> 
-              {{ lang('App.nav.users') ?? 'Usuarios' }}
-          </a>
-        @endif
-        <a class="nav-link {{ url_is('tareas*') ? 'active' : '' }}" href="{{ base_url('tasks') }}" style="color: #ffffff !important;">
-            <i class="bi bi-list-task me-1" style="color: #ffffff !important;"></i> 
-            {{ lang('App.nav.tasks') ?? 'Tareas' }}
-        </a>
-        <a class="nav-link {{ url_is('asignaciones*') ? 'active' : '' }}" href="{{ base_url('assignments') }}" style="color: #ffffff !important;">
-            <i class="bi bi-clipboard-check me-1" style="color: #ffffff !important;"></i> 
-            {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
-        </a>
-        <a class="nav-link {{ url_is('cursos*') ? 'active' : '' }}" href="{{ base_url('courses') }}" style="color: #ffffff !important;">
-            <i class="bi bi-book me-1" style="color: #ffffff !important;"></i> 
-            {{ lang('App.nav.courses') ?? 'Cursos' }}
-        </a>
+        <!-- Right actions (desktop) -->
+        <div class="d-none d-lg-flex align-items-center ms-auto gap-2">
+            
+            @if (session()->get('role') === 'admin')
+            <a class="nav-link {{ url_is('users*') ? 'active' : '' }}" href="{{ base_url('users') }}">
+                <i class="bi bi-people me-1"></i> 
+                {{ lang('App.nav.users') ?? 'Usuarios' }}
+            </a>
+            @endif
+            
+            <a class="nav-link {{ url_is('tasks*') ? 'active' : '' }}" href="{{ base_url('tasks') }}">
+                <i class="bi bi-list-task me-1"></i> 
+                {{ lang('App.nav.tasks') ?? 'Tareas' }}
+            </a>
+            
+            <a class="nav-link {{ url_is('assignments*') ? 'active' : '' }}" href="{{ base_url('assignments') }}">
+                <i class="bi bi-clipboard-check me-1"></i> 
+                {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
+            </a>
+            
+            <a class="nav-link {{ url_is('courses*') ? 'active' : '' }}" href="{{ base_url('courses') }}">
+                <i class="bi bi-book me-1"></i> 
+                {{ lang('App.nav.courses') ?? 'Cursos' }}
+            </a>
 
-       
-
-        <!-- User dropdown -->
-        <div class="dropdown ms-2">
-    <button class="btn avatar-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="{{ session('avatar') ?? base_url('uploads/avatars/default.png') }}" class="rounded-circle" style="width: 35px;"
-  alt="Avatar" />
-
-        <span class="text-truncate" style="max-width:140px;">
-            {{ lang('App.nav.hello') ?? 'Hola,' }} 
-            <strong>{{ session('name') ?? 'Usuario' }}</strong>
-        </span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end shadow">
-        <li><a class="dropdown-item" href="{{ base_url('profile') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
-        <li><a class="dropdown-item" href="{{ base_url('settings') }}"><i class="bi bi-gear me-2"></i> {{ lang('App.nav.settings') ?? 'Ajustes' }}</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li>
-            <form action="{{ base_url('logout') }}" method="POST" class="d-inline">
-                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
-                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent w-100 text-start">
-                    <i class="bi bi-box-arrow-right me-2"></i> {{ lang('App.nav.logout') ?? 'Salir' }}
+            <!-- User dropdown -->
+            <div class="dropdown ms-2">
+                <button class="btn avatar-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ session('avatar') ?? base_url('uploads/avatars/default.png') }}" class="rounded-circle" style="width: 35px;" alt="Avatar" />
+                    <span class="text-truncate" style="max-width:140px;">
+                        {{ lang('App.nav.hello') ?? 'Hola,' }} 
+                        <strong>{{ session('name') ?? 'Usuario' }}</strong>
+                    </span>
                 </button>
-            </form>
-        </li>          
-    </ul>
-</div>
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+                    <li><a class="dropdown-item {{ url_is('profile*') ? 'active' : '' }}" href="{{ base_url('profile') }}"><i class="bi bi-person me-2"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form action="{{ base_url('logout') }}" method="POST" class="d-inline">
+                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                            <button type="submit" class="dropdown-item text-danger border-0 bg-transparent w-100 text-start">
+                                <i class="bi bi-box-arrow-right me-2"></i> {{ lang('App.nav.logout') ?? 'Salir' }}
+                            </button>
+                        </form>
+                    </li>          
+                </ul>
+            </div>
+        </div>
 
-      <!-- Mobile toggler: Offcanvas -->
-      <button class="navbar-toggler border-0 ms-2" type="button"
-              data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"
-              aria-controls="offcanvasNav" aria-label="Abrir menú">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Mobile toggler: Offcanvas -->
+        <button class="navbar-toggler border-0 ms-2" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"
+                aria-controls="offcanvasNav" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-  </nav>
+</nav>
 
   <!-- OFFCANVAS (Mobile / tablet) -->
   <div class="offcanvas offcanvas-end offcanvas-modern" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
@@ -248,31 +274,7 @@
             <div class="text-muted">{{ lang('App.nav.hello') ?? 'Hola,' }}</div>
               <strong>{{ session('name') ?? 'Usuario' }}</strong>          </div>
         </div>
-        <form action="{{ base_url('logout') }}" method="POST" class="d-inline">
-    @csrf
-    <button type="submit" class="btn btn-outline-danger btn-sm">
-        <i class="bi bi-box-arrow-right me-1"></i> {{ lang('App.nav.logout') ?? 'Salir' }}
-    </button>
-</form>
-      </div>
-
-      <!-- Nav links -->
-      <div class="list-group list-group-flush list-group-nav mb-3">
-        <a class="list-group-item {{ url_is('perfil*') ? 'active' : '' }}" href="{{ base_url('profile') }}">
-          <i class="bi bi-person"></i> {{ lang('App.nav.profile') ?? 'Perfil' }}
-        </a>
-        <a class="list-group-item {{ url_is('usuarios*') ? 'active' : '' }}" href="{{ base_url('usuarios') }}">
-          <i class="bi bi-people"></i> {{ lang('App.nav.users') ?? 'Usuarios' }}
-        </a>
-        <a class="list-group-item {{ url_is('tareas*') ? 'active' : '' }}" href="{{ base_url('tareas') }}">
-          <i class="bi bi-list-task"></i> {{ lang('App.nav.tasks') ?? 'Tareas' }}
-        </a>
-        <a class="list-group-item {{ url_is('asignaciones*') ? 'active' : '' }}" href="{{ base_url('assignments') }}">
-          <i class="bi bi-clipboard-check"></i> {{ lang('App.nav.assignments') ?? 'Asignaciones' }}
-        </a>
-        <a class="list-group-item" href="{{ base_url('ayuda') }}">
-          <i class="bi bi-life-preserver"></i> {{ lang('App.nav.help') ?? 'Ayuda' }}
-        </a>
+        
       </div>
 
       <!-- Language -->

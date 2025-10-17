@@ -218,12 +218,6 @@
                             <option value="admin">{{ lang('App.users.role_admin') }}</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" value="1" checked>
-                            <label class="form-check-label">{{ lang('App.users.active_account') }}</label>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ lang('App.common.cancel') }}</button>

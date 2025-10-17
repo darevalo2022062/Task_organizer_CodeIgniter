@@ -371,6 +371,7 @@ return [
     'submit_assignment' => 'Submit Assignment',
     'grade_assignment' => 'Grade Assignment',
 ],
+
 'profile' => [
 'title' => 'Profile - Task Organizer',
 'back_to_dashboard' => 'Back to Dashboard',

@@ -27,6 +27,52 @@ return [
         'descending' => 'Descending',
     ],
     // app/Language/en/App.php
+'users' => [
+    'title' => 'User Management',
+    'subtitle' => 'Manage all system users',
+    'create_new' => 'New User',
+    'export' => 'Export',
+    
+    // Filters and search
+    'search' => 'Search',
+    'search_placeholder' => 'Search by name or email...',
+    'filter_by_role' => 'Filter by role',
+    'filter_by_status' => 'Filter by status',
+    'all_roles' => 'All roles',
+    'all_status' => 'All statuses',
+    
+    // Roles
+    'role_admin' => 'Administrator',
+    'role_teacher' => 'Teacher',
+    'role_student' => 'Student',
+    
+    // Statuses
+    'status_active' => 'Active',
+    'status_inactive' => 'Inactive',
+    
+    // Table
+    'user' => 'User',
+    'name' => 'Name',
+    'email' => 'Email',
+    'role' => 'Role',
+    'status' => 'Status',
+    'email_verified' => 'Email Verified',
+    'created_at' => 'Registration Date',
+    'verified' => 'Verified',
+    'not_verified' => 'Not Verified',
+    
+    // Create modal
+    'create_new_user' => 'Create New User',
+    'password' => 'Password',
+    'active_account' => 'Active account',
+    
+    // Messages
+    'no_users_found' => 'No users found',
+    'create_first_user' => 'Create the first user to get started',
+    'confirm_delete' => 'Are you sure you want to delete this user? This action cannot be undone.',
+    'users' => 'users',
+],
+    // app/Language/en/App.php
 'tasks' => [
     'title' => 'Tasks',
     'subtitle' => 'Manage your tasks and assignments',

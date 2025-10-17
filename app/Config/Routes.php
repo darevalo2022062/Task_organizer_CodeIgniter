@@ -72,5 +72,10 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->post('delete/(:num)', 'Task::delete/$1', ['as' => 'tasks.delete']);
     });
     
+    //? Users (only for admin)
+    $routes->group('users', static function($routes) {
+        $routes->get('/', 'User::index', ['as' => 'users']);
+        $routes->post('create', 'User::create', ['as' => 'users.create']);
+    });
     
 });

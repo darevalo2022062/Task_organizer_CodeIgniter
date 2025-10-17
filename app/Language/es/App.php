@@ -31,6 +31,52 @@ return [
         'descending' => 'Descendente',
     ],
     // app/Language/es/App.php
+    'users' => [
+    'title' => 'Gestión de Usuarios',
+    'subtitle' => 'Administra todos los usuarios del sistema',
+    'create_new' => 'Nuevo Usuario',
+    'export' => 'Exportar',
+    
+    // Filtros y búsqueda
+    'search' => 'Buscar',
+    'search_placeholder' => 'Buscar por nombre o email...',
+    'filter_by_role' => 'Filtrar por rol',
+    'filter_by_status' => 'Filtrar por estado',
+    'all_roles' => 'Todos los roles',
+    'all_status' => 'Todos los estados',
+    
+    // Roles
+    'role_admin' => 'Administrador',
+    'role_teacher' => 'Profesor',
+    'role_student' => 'Estudiante',
+    
+    // Estados
+    'status_active' => 'Activo',
+    'status_inactive' => 'Inactivo',
+    
+    // Tabla
+    'user' => 'Usuario',
+    'name' => 'Nombre',
+    'email' => 'Correo Electrónico',
+    'role' => 'Rol',
+    'status' => 'Estado',
+    'email_verified' => 'Email Verificado',
+    'created_at' => 'Fecha de Registro',
+    'verified' => 'Verificado',
+    'not_verified' => 'No Verificado',
+    
+    // Modal crear
+    'create_new_user' => 'Crear Nuevo Usuario',
+    'password' => 'Contraseña',
+    'active_account' => 'Cuenta activa',
+    
+    // Mensajes
+    'no_users_found' => 'No se encontraron usuarios',
+    'create_first_user' => 'Crea el primer usuario para comenzar',
+    'confirm_delete' => '¿Estás seguro de que quieres eliminar este usuario? Esta acción no se puede deshacer.',
+    'users' => 'usuarios',
+    ],
+    // app/Language/es/App.php
     'courses' => [
         'title' => 'Cursos',
         'subtitle' => 'Gestiona tus cursos y materiales',

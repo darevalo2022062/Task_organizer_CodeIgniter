@@ -175,10 +175,12 @@
       <!-- Right actions (desktop) -->
       <div class="d-none d-lg-flex align-items-center ms-auto gap-2">
         
-        <a class="nav-link {{ url_is('usuarios*') ? 'active' : '' }}" href="{{ base_url('usuarios') }}" style="color: #ffffff !important;">
-            <i class="bi bi-people me-1" style="color: #ffffff !important;"></i> 
-            {{ lang('App.nav.users') ?? 'Usuarios' }}
-        </a>
+        @if (session()->get('role') === 'admin')
+          <a class="nav-link {{ url_is('usuarios*') ? 'active' : '' }}" href="{{ base_url('users') }}" style="color: #ffffff !important;">
+              <i class="bi bi-people me-1" style="color: #ffffff !important;"></i> 
+              {{ lang('App.nav.users') ?? 'Usuarios' }}
+          </a>
+        @endif
         <a class="nav-link {{ url_is('tareas*') ? 'active' : '' }}" href="{{ base_url('tasks') }}" style="color: #ffffff !important;">
             <i class="bi bi-list-task me-1" style="color: #ffffff !important;"></i> 
             {{ lang('App.nav.tasks') ?? 'Tareas' }}
